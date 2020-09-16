@@ -21,7 +21,7 @@
 </div>
 
 <div class="ke-page-content">
-	${ ui.includeFragment("kenyaemr", "patient/patientSearchResults", [ pageProvider: "kenyaemr", page: "example/swViewPatients" ]) }
+	${ ui.includeFragment("kenyaemr", "patient/patientSearchResults", [ pageProvider: "keaddonexample", page: "example/patientProfile" ]) }
 </div>
 
 <script type="text/javascript">
