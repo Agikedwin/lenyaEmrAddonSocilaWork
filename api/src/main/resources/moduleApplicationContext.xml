@@ -24,7 +24,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:example.xml" />
+		<property name="htmlform" value="keaddonexample:example.html" />
 	</bean>
 
 	<!-- SOCIAL WORK FORMS -->
@@ -37,7 +37,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:socialwork.xml" />
+		<property name="htmlform" value="keaddonexample:socialwork.html" />
 	</bean>
 
 
@@ -49,6 +49,7 @@
 		<property name="commonVisitForms">
 			<set>
 				<ref bean="keaddonexample.form.example" />
+				<ref bean="keaddonexample.form.socialwork" />
 			</set>
 		</property>
 
