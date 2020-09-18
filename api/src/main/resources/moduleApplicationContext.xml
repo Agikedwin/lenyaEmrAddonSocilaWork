@@ -7,7 +7,7 @@
 
 	<bean id="keaddonexample.app.example" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
 		<constructor-arg value="keaddonexample.example" />
-		<constructor-arg value="Example" />
+		<constructor-arg value="Social Work" />
 		<constructor-arg value="keaddonexample/example/home.page" />
 		<constructor-arg value="keaddonexample:apps/example.png" />
 		<constructor-arg value="700" />
@@ -19,13 +19,30 @@
 		<property name="targetUuid" value="b694b1bc-2086-47dd-a4ad-ba48f9471e4b" />
 		<property name="apps">
 			<set>
-				<ref bean="kenyaemr.app.clinician" />
+				<ref bean="keaddonexample.app.example" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
 		<property name="htmlform" value="keaddonexample:example.xml" />
 	</bean>
+
+	<!-- SOCIAL WORK FORMS -->
+	<bean id="keaddonexample.form.socialwork" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="1b6ee7e0-5194-4896-b2bd-a37ed91b7f41" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:socialwork.xml" />
+	</bean>
+
+
+
+
 
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
 		<!-- Example of adding a form to the general visit form list -->
