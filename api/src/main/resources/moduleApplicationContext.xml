@@ -40,12 +40,65 @@
 		<property name="htmlform" value="keaddonexample:socialwork.xml" />
 	</bean>
 
+	<bean id="keaddonexample.form.childsocialworkscreening" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="8635d6b6-d9d5-4bb9-a28d-cf3a90e1ba57" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:childsocialworkscreening.xml" />
+	</bean>
+
+	<bean id="keaddonexample.form.socialworklosttofollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="fd15765c-9086-4b63-beb8-3555c7837cd1" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:socialworklosttofollowup.xml" />
+	</bean>
+
+	<bean id="keaddonexample.form.socialworkphonecontact" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="606219f3-de00-4113-9d44-9a84dff018ad" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:socialworkphonecontact.xml" />
+	</bean>
+
+	<bean id="keaddonexample.form.socialworkverbalautopsy" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="6f65a8ae-03b2-44ad-8873-43e6be628c37" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:socialworkverbalautopsy.xml" />
+	</bean>
+
+
+
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
 		<!-- Example of adding a form to the general visit form list -->
 		<property name="commonVisitForms">
 			<set>
 				<ref bean="keaddonexample.form.example" />
-				<ref bean="keaddonexample.form.socialwork" />
+				<ref bean="keaddonexample.form.childsocialworkscreening" />
+				<ref bean="keaddonexample.form.socialworklosttofollowup" />
+				<ref bean="keaddonexample.form.socialworkphonecontact" />
+				<ref bean="keaddonexample.form.socialworkverbalautopsy" />
 			</set>
 		</property>
 
