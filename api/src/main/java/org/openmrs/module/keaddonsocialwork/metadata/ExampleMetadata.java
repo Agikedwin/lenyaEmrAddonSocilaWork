@@ -46,7 +46,7 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 	public void install() {
 		install(encounterType("Example encounter", "Just an example", _EncounterType.EXAMPLE));
 
-		install(form("Example form", null, _EncounterType.EXAMPLE, "1", _Form.EXAMPLE));
+		install(form("Adult Social Work Screening Form", null, _EncounterType.EXAMPLE, "1", _Form.EXAMPLE));
 
 
 		install(encounterType("Social encounter", "Just an example", _EncounterType.SOCIALWORK));

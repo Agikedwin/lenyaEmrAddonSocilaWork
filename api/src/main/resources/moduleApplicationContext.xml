@@ -40,15 +40,12 @@
 		<property name="htmlform" value="keaddonexample:socialwork.xml" />
 	</bean>
 
-
-
-
-
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
 		<!-- Example of adding a form to the general visit form list -->
 		<property name="commonVisitForms">
 			<set>
 				<ref bean="keaddonexample.form.example" />
+				<ref bean="keaddonexample.form.socialwork" />
 			</set>
 		</property>
 
