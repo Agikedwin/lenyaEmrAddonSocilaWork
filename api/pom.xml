@@ -10,8 +10,8 @@
 
 	<artifactId>keaddonexample-api</artifactId>
 	<packaging>jar</packaging>
-	<name>KenyaEMR Add-on Example Module API</name>
-	<description>API project for KenyaEMR Add-on Example</description>
+	<name>Coptic Hospital</name>
+	<description>Coptic Hospital Module</description>
 
 	<dependencies>
 

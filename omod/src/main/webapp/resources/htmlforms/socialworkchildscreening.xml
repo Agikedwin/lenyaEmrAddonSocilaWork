@@ -208,9 +208,11 @@
                             <option value="1385">Other Specify</option>
                         </select>
                         </td>
-                            <td>  <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                       id="session-number" />
-                            </td>
+                        <td>Specify</td>
+                        <td>  <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                   id="session-number" />
+                        </td>
+
                 </tr>
                 <tr>
                     <td>3. Are both parents alive? (If Yes go to 4, if No go to 4a) :</td>
@@ -226,8 +228,7 @@
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" required="true"/>
                     </td>
-                </tr>
-                <tr>
+
                     <td> 2a .Relationship to phone owner(tick one ) :</td>
                     <td><select name="question-8" class="question-8">
                         <option value="1066">Select</option>
@@ -238,6 +239,8 @@
                         <option value="1804">Unknown</option>
                     </select>
                     </td>
+                </tr>
+                <tr>
 
                     <td> 5. Public Transport to the House: First trip </td>
                     <td><select name="question-8" class="question-8">
@@ -249,30 +252,37 @@
                     </select>
                     </td>
 
-                </tr>
-                <tr>
+
                     <td>Other (Specify) :</td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
                     </td>
+                </tr>
+                <tr>
 
                     <td>5b. Number :</td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
                     </td>
-                </tr>
 
-                <tr>
                     <td>5c. Stage Name :</td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
                     </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="adherence-1">
+
+                <tr>
                     <td> 5d. General name of the are :</td>
                     <td><obs conceptId="164986"  style="text" /></td>
                 </tr>
+
+            </table>
+            <table class="simple-table" id="adherence-1">
 
                 <tr>
 
@@ -412,8 +422,7 @@
 
                         </select>
                         </td>
-                    </tr>
-                    <tr>
+
                         <td>Family or caregivers get support from other sources (specify) :</td>
                         <td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
                     </tr>
@@ -456,21 +465,15 @@
                     <tr>
                         <td>15. If yes specify referrals(tick all that apply)? : </td>
 
-                        <td><input type="checkbox" name="question-7" class="question-7" value="1065"/> Socila work
-                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Counseling
-                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Nutrition
-                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Pediatric consultant
+                        <td><input type="checkbox" name="question-7" class="question-7" value="1065"/> Socila work<td></td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Counseling<td></td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Nutrition<td></td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Pediatric consultant<td></td>
                         </td>
                     </tr>
 
                 </table>
             </fieldset>
-
-
-
-
-
-
         </fieldset>
     </div>
     <div class="ke-form-footer">

@@ -210,12 +210,18 @@
                         <option value="1385">Other Specify</option>
                     </select>
                     </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="adherence-1">
+                <tr>
                     <td> Other Specify : </td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number"/>
                     </td>
                 </tr>
+            </table>
+            <table class="simple-table" id="adherence-1">
                 <tr>
                     <td>3a.Did the source of information have credible knowledge for whether the patient was alive or dead? :</td>
                     <td><select name="question-8" class="question-8">
@@ -305,9 +311,7 @@
                         <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
                     </td>
 
-                </tr>
 
-                <tr>
                     <td>7c If NO, why did the patient not schedule an appointment (tick all that apply) :</td>
                     <td>
                         <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Unable to attend because of health problems </br>
@@ -318,6 +322,9 @@
                         <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Other (Specify) </br>
 
                     </td>
+                </tr>
+
+                <tr>
 
                     <td> Other Specify  :</td>
                     <td>
@@ -325,9 +332,7 @@
                              id="session-number" />
                     </td>
 
-                </tr>
 
-                <tr>
                     <td>7c If NO, why did the patient not schedule an appointment (tick all that apply) :</td>
                     <td>
 
@@ -345,17 +350,19 @@
                         <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Other (Specify)  </br>
                     </td>
 
+                </tr>
+
+                <tr>
+
                     <td> Other Specify  :</td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
                     </td>
 
-                </tr>
-                <tr>
+
                     <td>9. Did you refer the client to any of the following ( Tick all that apply) :</td>
-                </tr>
-                <tr>
+
                     <td>
                         <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Clinic  </br>
                         <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Counselor  </br>

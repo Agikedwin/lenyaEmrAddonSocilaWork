@@ -173,97 +173,80 @@
     </div>
 
     <div class="ke-form-content">
-        <fieldset class="session-number">
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> Notes :</strong>
+                </legend>
+                <table class="simple-table" id="adherence-1">
+
+
+                    <tr>
+
+                        <td><td><obs conceptId="164982" rows="4" cols="100" style="textarea" /></td></td>
+                    </tr>
+
+                </table>
+            </fieldset>
+
+        </fieldset>
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
             <legend>
-                <strong> Section A</strong>
+                <strong> </strong>
             </legend>
-            <table class="simple-table" id="session">
-
+            <table class="simple-table" id="adherence-1">
 
                 <tr>
+                    <td>What is the focus of the session (tick all that apply) :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Pretest<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>Hygiene<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Family planning<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Crisis<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Discordance<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Sex and sexuality<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Basic Care Session<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Post-test<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> PMTCT<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child(ren)<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Opportunistic infection<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Welfare<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Drug therapy<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Repeat Adherence 1<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> HIV STD Prevention<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> HAART FU Session<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Bereavement<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Spirituality<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Disclosure<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child transfer to Adult clinic<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
+                    </td>
 
-                    <td> 1. Type of client followed up </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">ART</option>
-                        <option value="159416">HEI</option>
-                        <option value="1385">PMTCT</option>
-                        <option value="1385">TB</option>
-                    </select>
-                    </td>
-                    <td>2. Reason for the visit? :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Ambulatory Service</option>
-                        <option value="159416">DVL Client</option>
-                        <option value="1385">Lost To Follow Up</option>
-                        <option value="1385">Other Specify</option>
-                    </select>
-                    </td>
                 </tr>
             </table>
             <table class="simple-table" id="adherence-1">
-            <tr>
-                    <td> Other Specify : </td>
+
+                <tr>
+                    <td>If repeat adherence 1, is the patient ready to start ART today? :</td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number"/>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-                <tr>
-                    <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
-
-                    <td>4. The visit is taking place at the clients  :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Central Market Shop Or Other Public Places</option>
-                        <option value="159416">Hospital due to clinics admission</option>
-                        <option value="1385">Place of residence</option>
-                        <option value="1385">Place of work or School</option>
-                    </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td> 5. For lost followup, Indicate the reasons? : </td>
-                    <td><input type="checkbox" name="question-7" class="question-7" value="1065"/><br> clinic elsewhere</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Sick and immobile</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/><br>Work related issues or travelled</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Financial challenges</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br> Stigma</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>RIP</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Others</br>
+                        <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                     </td>
 
-                    <td> Other Specify:</td>
+                    <td>Did the patient pick condoms :</td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
+                        <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                     </td>
-                </tr>
-                <tr>
-                    <td>6. Is the patient willing to come back? </td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
 
-                    <td>6a. If yees, indicate the preferred appointment date. :</td>
-                    <td>
-                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
-                    </td>
-                </tr>
-            </table>
-
-            <table class="simple-table" id="session">
-                <tr>
-                    <td>Comments :</td>
-                    <td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
 
                 </tr>
 
 
             </table>
+
+
         </fieldset>
 
     </div>

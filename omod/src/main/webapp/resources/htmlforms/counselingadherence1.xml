@@ -173,97 +173,193 @@
     </div>
 
     <div class="ke-form-content">
-        <fieldset class="session-number">
+
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
             <legend>
-                <strong> Section A</strong>
+                <strong> 1 Adherence Counseling</strong>
             </legend>
-            <table class="simple-table" id="session">
-
+            <table class="simple-table" id="adherence-1">
 
                 <tr>
-
-                    <td> 1. Type of client followed up </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">ART</option>
-                        <option value="159416">HEI</option>
-                        <option value="1385">PMTCT</option>
-                        <option value="1385">TB</option>
-                    </select>
-                    </td>
-                    <td>2. Reason for the visit? :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Ambulatory Service</option>
-                        <option value="159416">DVL Client</option>
-                        <option value="1385">Lost To Follow Up</option>
-                        <option value="1385">Other Specify</option>
-                    </select>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-            <tr>
-                    <td> Other Specify : </td>
+                    <td>HIV Explain about HIV, how is transmitted why family members should be tested for HIV :</td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number"/>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
                     </td>
+
+                    <td>Viral Load and CD4 Explain about CD 4 cells and viral load and how often each is measured. :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
                 </tr>
+                <tr>
+                    <td>ART and other medications Explain about ART, When ART is started, it doesnt not cure, Benefits </td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                    <td>Treatment failure. Explain treatment failure :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>ART side effects. What are the side effects and what you should do if you notice any side effects :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                    <td>Adherence. Adherence , how should Art be taken ,interference with good adherence ,difficulty in taki :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> For children only</strong>
+            </legend>
+            <table class="simple-table" id="adherence-1">
+                <tr>
+                    <td>The caretakers role as the person taking responsibility for the childs treatment and well being :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                    <td>Commitment to life-long therapy. :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Commitment to treatment schedule. :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                    <td>Ability to follow up care at this clinic. :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
+                    </td>
+
+                </tr>
+
+
             </table>
             <table class="simple-table" id="adherence-1">
                 <tr>
-                    <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
 
-                    <td>4. The visit is taking place at the clients  :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Central Market Shop Or Other Public Places</option>
-                        <option value="159416">Hospital due to clinics admission</option>
-                        <option value="1385">Place of residence</option>
-                        <option value="1385">Place of work or School</option>
-                    </select>
+                    <td>
+                        Availability of adequate medical, phychological , emotional and social support for the caregiver and :
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br>
+
                     </td>
                 </tr>
+            </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> 2 Barriers to Adherence</strong>
+            </legend>
+            <table class="simple-table" id="adherence-1">
 
                 <tr>
-                    <td> 5. For lost followup, Indicate the reasons? : </td>
-                    <td><input type="checkbox" name="question-7" class="question-7" value="1065"/><br> clinic elsewhere</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Sick and immobile</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/><br>Work related issues or travelled</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Financial challenges</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br> Stigma</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>RIP</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Others</br>
+                    <td>Identify barriers to adherence ( Tick all that apply) : </td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Poor Communication<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>Inadequate understanding abouy HIV AIDS <br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Failure to disclose status<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Language Barriers<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Stigma<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Lack of social support<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Alcohol and Drug use<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Potential conflict and safety issues<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Mental State<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Low literacy<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> None<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
                     </td>
 
-                    <td> Other Specify:</td>
+                    <td>Specify:</td>
+
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>6. Is the patient willing to come back? </td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
 
-                    <td>6a. If yees, indicate the preferred appointment date. :</td>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>Did the patient pick condoms? :</td>
                     <td>
-                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
+                        <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>4. Child readiness for disclosure (Tick all that apply) :</td>
+                    <td>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child cognitive and develoment maturity<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br>The child has adequate coping skills</br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has a stable emotional status<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has an established support system<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has a stable health status<br></br>
+                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
+                    </td>
+                    <td>Specify:</td>
+                    <td>
+                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+
                     </td>
                 </tr>
-            </table>
-
-            <table class="simple-table" id="session">
-                <tr>
-                    <td>Comments :</td>
-                    <td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
-
-                </tr>
-
 
             </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> Comments/Notes or summary assesment :</strong>
+                </legend>
+                <table class="simple-table" id="adherence-1">
+
+                    <tr>
+
+                        <td><td><obs conceptId="164982" rows="4" cols="100" style="textarea" /></td></td>
+                    </tr>
+
+                </table>
+            </fieldset>
+
         </fieldset>
 
     </div>

@@ -213,6 +213,8 @@
 					</td>
 
 				</tr>
+			</table>
+			<table class="simple-table" id="adherence-1">
 
 				<tr>
 					<td> 3. Emergency contact(In case we cannot reach the owner) (First, Middle, Last) :	</td>
@@ -268,16 +270,20 @@
 						</td>
 
 					</tr>
+				</table>
+				<table class="simple-table" id="adherence-1">
 
 					<tr>
 
 						<td> 5. Public Transport to the House: First Trip Type : </td>
-						<td><input type="radio" name="question-2" class="question-2" value="1065"/> Bus
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Caravan
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Matatu
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Others
+						<td><input type="radio" name="question-2" class="question-2" value="1065"/> Bus<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Caravan<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Matatu<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Others<br></br>
 						</td>
 					</tr>
+				</table>
+				<table class="simple-table" id="adherence-1">
 					<tr>
 						<td> 5b.Route  Number :	 </td>
 						<td>
@@ -318,14 +324,16 @@
 					<tr>
 						<td> Means During Second trip
 						</td>
-						<td><input type="radio" name="question-2" class="question-2" value="1065"/> Bus
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Caravan
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Matatu
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Others
+						<td><input type="radio" name="question-2" class="question-2" value="1065"/> Bus<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Caravan<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Matatu<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Others<br></br>
 						</td>
 
 
 					</tr>
+				</table>
+				<table class="simple-table" id="adherence-1">
 					<tr>
 						<td>6b.Route  Number :	</td>
 						<td>
@@ -343,9 +351,7 @@
 					<tr>
 						<td>   6d. General name of the area :    </td>
 						<td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="100" style="textarea" /></td>
-					</tr>
 
-					<tr>
 						<td>   7. Walking directions to house from the stage?(Include all relevant Landmarks)     </td>
 						<td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="100" style="textarea" /></td>
 					</tr>
@@ -361,6 +367,8 @@
 						<td>7. Walking directions to house from the stage?(Include all relevant Landmarks) </td>
 						<td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="100" style="textarea" /></td>
 					</tr>
+				</table>
+				<table class="simple-table" id="adherence-1">
 
                     <tr>
 						<td>2. 8. How is the client called or referred to in the home area: 	</td>
@@ -369,8 +377,7 @@
 							<obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 								 id="session-number" />
 						</td>
-					</tr>
-					<tr>
+
 						<td>8a. How is the caregiver called or referred to in the home area N/A: </td>
 
 						<td><obs conceptId="164999" answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /><br /><br /></td>
@@ -391,6 +398,8 @@
 						<td> 10a. Treatment supporter name(Last, First, Middle) : </td>
 						<td><obs conceptId="165000" rows="2" cols="100" style="textarea" /></td>
 					</tr>
+				</table>
+				<table class="simple-table" id="adherence-1">
 
 					<tr>
 
@@ -400,8 +409,7 @@
 							<obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 								 id="session-number" />
 						</td>
-					</tr>
-				    <tr>
+
 						<td>10c. Treatment supporter number(cell) :
 						</td>
 						<td>
@@ -416,10 +424,9 @@
 							 id="session-number" />
 					    </td>
 
-					</tr>
-					<tr>
-						<td> 5. Adherence plan	</td>
-						<td><obs conceptId="165002" rows="2" cols="100" style="textarea" /></td>
+
+						<td>  Adherence plan	</td>
+						<td><obs conceptId="165002" rows="2" cols="40" style="textarea" /></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -453,62 +460,56 @@
 						<td>12. Does the patient abuse substance? (If yes go to 12a, if no go to 13) : </td>
 						<td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
-					</tr>
-
-					<tr>
 
 						<td>12a. If yes, which ones?(Tick all that apply) 	</td>
 						<td>
-							<input type="radio" name="question-2" class="question-2" value="1065"/> Medical
-							<input type="radio" name="question-2" class="question-2" value="1066"/> drugs(diazepam,Tranquilizer
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Alcohol(Changaa, busaa, beer,wine)
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Nicotine or Tobacco
+							<input type="radio" name="question-2" class="question-2" value="1065"/> Medical<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> drugs(diazepam,Tranquilizer<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Alcohol(Changaa, busaa, beer,wine)<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Nicotine or Tobacco<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Inhalants(Glue,petrol)
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Inhalants(Glue,petrol)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Miraa(khat)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Miraa(khat)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Opiates(Heroine)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Opiates(Heroine)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Cannabis(bhang)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Cannabis(bhang)<br></br>
 
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Hallucinogens
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Hallucinogens<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Cannabis(bhang)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Cannabis(bhang)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Others
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Others<br></br>
 						</td>
 					</tr>
 					<tr>
 
 						<td>13. What is your Current Marital Status(tick one) :	</td>
 						<td>
-							<input type="radio" name="question-2" class="question-2" value="1065"/> Cohabiting
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Divorced
-							<input type="radio" name="question-2" class="question-2" value="1066"/>
+							<input type="radio" name="question-2" class="question-2" value="1065"/> Cohabiting<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Divorced<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/><br></br>
 							Married (monogamous)
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Married (Polygomous)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Married (Polygomous)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Separated
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Separated<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Single
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Single<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Widowed
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Widowed<br></br>
 						</td>
 
 
-
-					</tr>
-					<tr>
 						<td> 14 What is your occupation?	</td>
 						<td>
-							<input type="radio" class="question-2" value="1066"/> Casual Laborer
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Employed
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Housewife
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Self Employed
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Student
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Unemployed
+							<input type="radio" class="question-2" value="1066"/> Casual Laborer<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Employed<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Housewife<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Self Employed<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Student<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Unemployed<br></br>
 
 						</td>
 					</tr>
@@ -516,51 +517,44 @@
 					<tr>
 						<td> 14 What is your occupation?	</td>
 						<td>
-							<input type="radio" class="question-2" value="1066"/> Casual Laborer
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Employed
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Housewife
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Self Employed
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Student
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Unemployed
+							<input type="radio" class="question-2" value="1066"/> Casual Laborer<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Employed<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Housewife<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Self Employed<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Student<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Unemployed<br></br>
 
 						</td>
-					</tr>
-					<tr>
+
 						<td>15. What is your highest level of education?(Tick one) :</td>
 						<td>
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Beyond primary
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Beyond primary<br></br>
 
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Five to eight years of primary education
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Five to eight years of primary education<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Lower primary education
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Lower primary education<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> No education
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Special education
+							<input type="radio" name="question-2" class="question-2" value="1066"/> No education<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Special education<br></br>
 						</td>
 					</tr>
 
 					<tr>
 						<td>16.  Does the client require home assessment :</td>
-						<td>
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Yes
+						<td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> No
-						</td>
-					</tr>
-					<tr>
 						<td>16a. If yes, why? :</td>
 						<td>
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Physically or mentally disabled adult
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Physically or mentally disabled adult<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Adult dependent on care-giver
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Adult dependent on care-giver<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Client request a home visit
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Disclosure(patient would like help disclosing status to family members)
-							<input type="radio" name="question-2" class="question-2" value="1066"/> Disclosure(patient would like help disclosing status to family members)
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Family testing(patient would like other family members to be tested)
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Client request a home visit<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/> Disclosure(patient would like help disclosing status to family members)<br></br>
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Family testing(patient would like other family members to be tested)<br></br>
 
-							<input type="radio" name="question-2" class="question-2" value="1066"/>Other
+							<input type="radio" name="question-2" class="question-2" value="1066"/>Other<br></br>
 						</td>
 					</tr>
 				</table>

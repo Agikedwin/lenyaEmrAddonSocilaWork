@@ -173,98 +173,66 @@
     </div>
 
     <div class="ke-form-content">
-        <fieldset class="session-number">
-            <legend>
-                <strong> Section A</strong>
-            </legend>
-            <table class="simple-table" id="session">
 
 
-                <tr>
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> Nurses form - Female Patients Only </strong>
+                </legend>
+                <table class="simple-table" id="adherence-1">
 
-                    <td> 1. Type of client followed up </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">ART</option>
-                        <option value="159416">HEI</option>
-                        <option value="1385">PMTCT</option>
-                        <option value="1385">TB</option>
-                    </select>
-                    </td>
-                    <td>2. Reason for the visit? :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Ambulatory Service</option>
-                        <option value="159416">DVL Client</option>
-                        <option value="1385">Lost To Follow Up</option>
-                        <option value="1385">Other Specify</option>
-                    </select>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-            <tr>
-                    <td> Other Specify : </td>
-                    <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number"/>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-                <tr>
-                    <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+                    <tr>
+                        <td>1: Is the patient being referred for Cervical Cancer screening ? :</td>
 
-                    <td>4. The visit is taking place at the clients  :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Central Market Shop Or Other Public Places</option>
-                        <option value="159416">Hospital due to clinics admission</option>
-                        <option value="1385">Place of residence</option>
-                        <option value="1385">Place of work or School</option>
-                    </select>
-                    </td>
-                </tr>
+                        <td>
+                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
 
-                <tr>
-                    <td> 5. For lost followup, Indicate the reasons? : </td>
-                    <td><input type="checkbox" name="question-7" class="question-7" value="1065"/><br> clinic elsewhere</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Sick and immobile</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/><br>Work related issues or travelled</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Financial challenges</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br> Stigma</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>RIP</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Others</br>
-                    </td>
+                        <td>2: Why has the patient NOT been refered for Cervical Cancer Screening ? :</td>
 
-                    <td> Other Specify:</td>
-                    <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>6. Is the patient willing to come back? </td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+                        <td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1065"/> Patient has never been sexually active<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Patient has had total hysterectomy, LEEP or cryotherapy<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> No service available at this time<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Patient had screening test in last year<br></br>
+                        </td>
 
-                    <td>6a. If yees, indicate the preferred appointment date. :</td>
-                    <td>
-                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
-                    </td>
-                </tr>
-            </table>
+                    </tr>
 
-            <table class="simple-table" id="session">
-                <tr>
-                    <td>Comments :</td>
-                    <td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
-
-                </tr>
+                    <tr>
+                        <td>3:Has the patient delivered in the past 18 months ? :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
 
-            </table>
+                        <td>4 Is the patient currently breastfeeding ? :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>5:Is this the first time the patient has returned to hope center since delivery? :	</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                        <td>6:If this this is the first time the client is returning please select baby enrollment :</td>
+                        <td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1065"/> Enrolled in HEI Clinic<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/>Enrolled in Paeds CCC Program <br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Not enrolled<br>Baby died</br>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </fieldset>
+
+
         </fieldset>
+
 
     </div>
     <div class="ke-form-footer">

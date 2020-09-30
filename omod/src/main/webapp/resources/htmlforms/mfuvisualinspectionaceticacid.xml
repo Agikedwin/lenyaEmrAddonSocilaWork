@@ -1,0 +1,545 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset class="session-number">
+            <legend>
+                <strong> A. PHYSICAL EXAMINATION</strong>
+            </legend>
+            <table class="simple-table" id="session">
+                <tr>
+                    <td> 1) Temperature (F)   :</td>
+                    <td>
+                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+                    </td>
+
+                    <td>2) Were there any abnormalities found on general physical exam?  :</td>
+                    <td>
+                        <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                </tr>
+            </table>
+            <table class="simple-table" id="session">
+
+                <tr>
+                    <td> If yes, specify   :</td>
+                    <td>
+                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> B. PELVIC EXAMINATION </strong>
+                </legend>
+                <table class="simple-table" id="adherence-1">
+
+                    <tr>
+                        <td>3) Is there inguinal node enlargement? :</td>
+
+
+                        <td>
+                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+
+                        <td>4) Is there abdominal tenderness? :</td>
+
+                        <td>
+                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>5) Are there any abdominal masses? :</td>
+
+                        <td>
+                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+
+                        <td>6) What was found on the external genital exam? :</td>
+
+                        <td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1065"/> Abnormal visible discharge at introitus<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Ulcers<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Child<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Excoriations<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Vesicles<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Oedema<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Papules<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Sores<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Normal<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Other (Specify)<br></br>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Other (specify) :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+
+                        <td>7) Where there any perineal warts on external genital exam? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>7a) If yes Size  :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+
+                        <td>7b) If yes Number of warts :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+                    </tr>
+                </table>
+                <table class="simple-table" id="session">
+
+                    <tr>
+                        <td>7c) If yes Location of warts :</td>
+                        <td><obs conceptId="164982" rows="4" cols="100" style="textarea" /></td>
+
+                    </tr>
+                </table>
+                <table class="simple-table" id="session">
+
+
+                    <tr>
+                        <td>8) Did the cervix appear abnormal on gross pelvic exam?  :</td>
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                        <td>8a) If yes, tick all that apply :? :</td>
+
+                        <td>
+                            <input type="checkbox" name="question-7" class="question-7" value="1065"/> Abnormal discharge<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Nabothian<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Child<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Nabothian<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Warts<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Bleeds easily on touch<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Blisters<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Leukoplakia<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Condylomata<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Ulcers<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Cervicitis<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> IUCD string<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Overt cervical cancer<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Fungating mass<br></br>
+                            <input type="checkbox" name="question-7" class="question-7" value="1066"/> Other (Specify)<br></br>
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>Other (Specify) :</td>
+
+                        <td>  <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                   id="session-number" />
+                        </td>
+                        <td>9) What was the colour of vaginal discharge on dry swab? :    </td>
+                        <td><select name="question-8" class="question-8">
+                            <option value="1066">Select</option>
+                            <option value="1090">Brown</option>
+                            <option value="159416">Lear</option>
+                            <option value="1385">White</option>
+                            <option value="1804">Yellow</option>
+                            <option value="1358">Other Specify</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Other specify</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+                        <td>10) Did you palpate the uterus) :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    </tr>
+
+                    <tr>
+                        <td>10a) If yes specify Estimated uterine size (cm) :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+                        <td>10b) If yes specify Was the uterus tender? :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    </tr>
+
+                    <tr>
+                        <td>10c) If yes specify Were there possible fibroids? :</td>
+                        <td><select name="question-8" class="question-8">
+                            <option value="1066">Select</option>
+                            <option value="1090">NO</option>
+                            <option value="159416">Yes</option>
+                            <option value="1385">Unknown</option>
+                        </select>
+                        </td>
+
+                        <td>11) Was there any adnexal tenderness? :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    </tr>
+
+                    <tr>
+                        <td><select name="question-8" class="question-8">
+                            <option value="1066">Select</option>
+                            <option value="1090">Both</option>
+                            <option value="159416">Left</option>
+                            <option value="1385">Right</option>
+                        </select>
+                        </td>
+                    </tr>
+
+                </table>
+                <br /><hr/><br />
+
+            </fieldset>
+
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> C VIA </strong>
+                </legend>
+                <table class="simple-table" id="adherence-1">
+
+                    <tr>
+                        <td>12)Did you fully visualize the squamocolumnar junction? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                        <td>13)Did you see aceto-white lesion? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>13a) if yes, specify color (tick one) :</td>
+                        <td><select name="question-8" class="question-8">
+                            <option value="1066">Select</option>
+                            <option value="1090">Cloud White</option>
+                            <option value="159416">Dull White</option>
+                            <option value="1385">Pale While</option>
+                            <option value="1385">Shinny While</option>
+                        </select>
+                        </td>
+
+                        <td>11) Was there any adnexal tenderness? :</td>
+                        <td><select name="question-8" class="question-8">
+                            <option value="1066">Select</option>
+                            <option value="1090">Clear Sharp</option>
+                            <option value="159416">Indistinct diffuse margin</option>
+                            <option value="1385">Irregular margins</option>
+                            <option value="1385">Raised Flat margins</option>
+                            <option value="1385">Regular margins</option>
+                        </select>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>13c) Was it close to the transformation zone? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                        <td>13d) Did it extend to the endocervical canal? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>13e) Did the lesion cover the whole transformation zone? :</td>
+
+
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                        <td>13f) Did the lesion cover the entire cervix? :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>13g) How many lesions did you see?  :</td>
+
+
+                        <td>  <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                   id="session-number" />
+                        </td>
+
+                        <td>13h) Estimate size of the largest lesion (cm)  :</td>
+
+                        <td>  <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                   id="session-number" />
+                        </td>
+
+                    </tr>
+                </table>
+
+                <table class="simple-table" id="session">
+
+                <tr>
+                    <td>
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="100" style="textarea" />
+                    </td>
+                </tr>
+                </table>
+
+            </fieldset>
+
+
+
+            <!--Review -->
+            <fieldset id="review">
+                <legend>
+                    D. DIAGNOSIS
+                </legend>
+                <table class="simple-table" id="review-questions">
+
+                    <tr>
+                        <td> 14) Normal exam :
+                        </td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+
+                        <td>15) Candidiasis :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>16)Cervicitis :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                        <td>17) Pelvic Inflammatory disease :</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                    </tr>
+                </table>
+                <table class="simple-table" id="session">
+                    <tr>
+                        <td>18) Vulva warts :</td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </fieldset>
+
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>
