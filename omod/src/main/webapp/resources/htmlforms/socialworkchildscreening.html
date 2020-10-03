@@ -1,0 +1,491 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border-spacing: 0;
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset class="contact_info-tab">
+            <legend>
+                <strong> Caregiver Residential and Telephone Contact Inform </strong>
+            </legend>
+            <table class="simple-table" id="contact_info-tbl">
+                <tr>
+                    <td> 1 Caregivers Telephone number? :</td>
+                    <td>
+                        <td>
+                            <obs conceptId="163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="client-phone-number" size="80" required="true"/>
+                        </td>
+                    </td>
+
+                    <td>2 Caregivers Altenative number :</td>
+                    <td>
+                        <td>
+                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number" required="true"/>
+                        </td>
+                    </td>
+
+                </tr>
+
+                    <tr>
+
+                    <td> 2a Caregivers relationship to child? </td>
+                        <td>
+                            <obs
+                                    id="relationship-phone-owner" conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                    answerConceptIds="975AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Aunt,Brother,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Social Worker,Uncle,Other"
+                            />
+
+                        </td>
+                        <td>Specify</td>
+                        <td>  <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                   id="session-number" size="80"/>
+                        </td>
+
+                </tr>
+                <tr>
+                    <td>3. Are both parents alive? (If Yes go to 4, if No go to 4a) :</td>
+                    <td><td><obs conceptId="160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+
+                    <td>4. Does the child live with both parents? :</td>
+                    <td><obs conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                </tr>
+
+                <tr>
+                    <td> 4a Who does the child live with ? : </td>
+                    <td><obs id="grandparent" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Grandparent" answerConceptId="973AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                    <td><obs id="other-family" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" Other family member" answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                    <td><obs id="Parents" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Mother" answerConceptId="1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /></td>
+                    <td><obs id="foster-parent" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Foster parent" answerConceptId="165155" style="checkbox" /><hr/>
+                     <td><obs id="Other" conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+
+                    </td>
+                    <td>Other (Specify) :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" size="80" />
+                    </td>
+                </tr>
+                <tr>
+
+                        <td> 5. Public Transport to the House: First Trip Type : </td>
+                        <td><obs id="transport-means-1-bus" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Bus" answerConceptId="162973AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                        <td><obs id="transport-means-1--truck" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Truck" answerConceptId="1376AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                        <td><obs id="transport-means-1--matatu" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Matatu" answerConceptId="1787AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /></td>
+                        <td><obs id="transport-means-1-foot" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Foot" answerConceptId="1613AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                        <td><obs id="transport-means-1-other" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other Forms of transport" answerConceptId="1378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+
+
+
+                    <td>Other (Specify) :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" size="80"/>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td> 5b.Route  Number :	 </td>
+                    <td>
+                        <obs conceptId="1559AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" size="80"/>
+                    </td>
+
+                    <td> 5b.Route  Name :	 </td>
+                    <td>
+                        <obs conceptId="1559AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" size="80"/>
+                    </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="adherence-1">
+
+                <td> General name of the area : </td>
+                <td><obs conceptId="1354AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="50" style="textarea" /></td>
+
+            </table>
+            <table class="simple-table" id="trip-tbl-1">
+
+                <tr>
+
+                    <td> 6a Second trip : Type :</td>
+                    <td><obs id="transport-means-1-bus" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Bus" answerConceptId="162973AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                    <td><obs id="transport-means-1--truck" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Truck" answerConceptId="1376AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                    <td><obs id="transport-means-1--matatu" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Matatu" answerConceptId="1787AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /></td>
+                    <td><obs id="transport-means-1-foot" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Foot" answerConceptId="1613AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+                    <td><obs id="transport-means-1-other" conceptId="1375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other Forms of transport" answerConceptId="1378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/></td>
+
+
+                    <td> Other (Specify) : </td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" size="80"/>
+                    </td>
+
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset class="section-two-tab">
+            <!--Enhance adherence screening-->
+            <fieldset id="enhanced-adherence-tab">
+                <legend>
+                    <strong> SECTION 2</strong>
+                </legend>
+                <table class="simple-table" id="section-two-tbl">
+
+                    <tr>
+
+                        <td> 7. What is the name of nearest health facility? : </td>
+                        <td>
+                            <obs conceptId="162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="session-number"  size="80"/>
+                        </td>
+
+                        <td> 8. Childs housing is :	 </td>
+                        <td>
+                            <obs conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="163468AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          159386AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Children Home,Permanent Owned,Temporary rented" /> <br /><br />
+                        </td>
+                        <td></td>
+
+                        <td>
+                            <td><obs conceptId="164942"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                        </td>
+
+                    </tr>
+
+
+                </table>
+                <br /><hr/><br />
+
+            </fieldset>
+
+
+
+            <!--Review -->
+            <fieldset id="review">
+                <legend>
+                   SECTION 3
+                </legend>
+                <table class="simple-table" id="review-questions">
+
+                    <tr>
+                        <td> 9a. Caregiver name (Last,First,Middle) :
+                        </td>
+                        <td><obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="treatment-supporter-name" size="80" /></td>
+
+
+                        <td>9b. Caregiver home address :</td>
+                        <td>
+                            <obs conceptId="160641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="treatment-supporter-address" size="80" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9c. How is the caregiver called or reffered to in the home (name):
+
+                           </td>
+                        <td>
+                            <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="caregiver-name" size="80" />
+                        </td>
+
+                        <td> 9d. Does the caregiver live in the same area as the child? :	</td>
+                        <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    </tr>
+
+                    <tr>
+                        <td> 9e. How long has the caregiver lived in the area in years? : </td>
+                        <td>
+                            <obs conceptId="1734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="area-year"  size="80"/>
+                        </td>
+                        <td>How long has the caregiver lived in the area in months?</td>
+                        <td>
+                            <obs conceptId="1074AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 id="duration-months" size="80" />
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>10. Has the child been disclosed his or her HIV status? ( if no, sent for disclosure session) :</td>
+                        <td><obs conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                        <td> 11. What is the childs caregiver occupation?(tick one) : </td>
+
+                        <td>
+                            <obs id="occupation-casual" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Casual Laborer" answerConceptId="159613AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                            <obs id="occupation-employed" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Employed" answerConceptId="5608AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-" conceptId="160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="House wife" answerConceptId="160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-selfemployed" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Self Employed" answerConceptId="161382AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-student" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Student" answerConceptId="159465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                            <obs id="occupation-student" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Student" answerConceptId="123801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>12. What is the family or caregivers source of income? :</td>
+
+                        <td>
+                            <obs
+                                 id="emergency-contact-relationship" conceptId="159740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                 answerConceptIds="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 164993,123801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165155,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Family Or support from others,Child lives in a children center,Parent or caregiver has a stable income,
+                                    Parent or caregiver has no stable income,Unknown"
+                            />
+
+                        </td>
+
+                        <td>Family or caregivers get support from other sources (specify) :</td>
+                        <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset id="referrals">
+                <legend>
+                    <strong> SECTION 4 </strong>
+                </legend>
+                <table class="simple-table" id="referrals-tab">
+
+                    <tr>
+                        <td>13. What is the childs highest level of education?(tick one) </td>
+                            <td>
+                                <obs id="education-level-primary" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Beyond primary" answerConceptId="163123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                                <obs id="education-level-five-to-eight" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Five to eight years of primary education" answerConceptId="163122AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                                <obs id="education-level-lower" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Lower primary education" answerConceptId="160290AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                                <obs id="education-level-none" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No education" answerConceptId="160294AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                                <obs id="education-level-special" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Special education" answerConceptId="160293AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                            </td>
+                        <td>14. Are there any significant concerns about the childs social situation/wellbeing? :</td>
+                        <td><obs conceptId="163466AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>15 Does the child require any special referrals? :</td>
+                        <td><obs conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                        <td>Referral Date :</td>
+                        <td>
+                            <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>15. If yes specify referrals(tick all that apply)? : </td>
+
+                        <td>
+                            <obs id="referral-social" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Socila work" answerConceptId="163096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="referral-counselling" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Counseling" answerConceptId="5490AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="referral-nutrition" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Nutrition" answerConceptId="160552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="referral-pediatric" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pediatric consultant" answerConceptId="5507AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                        </td>
+                    </tr>
+
+
+                </table>
+            </fieldset>
+        </fieldset>
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>

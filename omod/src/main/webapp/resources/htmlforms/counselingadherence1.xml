@@ -348,15 +348,12 @@
             <!--Enhance adherence screening-->
             <fieldset id="enhanced-adherence-tab">
                 <legend>
-                    <strong> Comments/Notes or summary assesment :</strong>
+                    <strong> Comments/Notes or summary assesment : </strong>
                 </legend>
                 <table class="simple-table" id="adherence-1">
-
                     <tr>
-
-                        <td><td><obs conceptId="164982" rows="4" cols="100" style="textarea" /></td></td>
+                        <td><td><obs conceptId="164982" rows="4" cols="10" style="textarea" /></td></td>
                     </tr>
-
                 </table>
             </fieldset>
 

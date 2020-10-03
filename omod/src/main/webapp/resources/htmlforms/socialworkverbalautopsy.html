@@ -173,93 +173,53 @@
     </div>
 
     <div class="ke-form-content">
-        <fieldset class="session-number">
+        <fieldset class="autopsy-tab">
             <legend>
-                <strong> Section A</strong>
+                <strong> Verbal Autopsy</strong>
             </legend>
-            <table class="simple-table" id="session">
-
-
+            <table class="simple-table" id="autopsy-tbl">
                 <tr>
-
-                    <td> 1. Type of client followed up </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">ART</option>
-                        <option value="159416">HEI</option>
-                        <option value="1385">PMTCT</option>
-                        <option value="1385">TB</option>
-                    </select>
-                    </td>
-                    <td>2. Reason for the visit? :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Ambulatory Service</option>
-                        <option value="159416">DVL Client</option>
-                        <option value="1385">Lost To Follow Up</option>
-                        <option value="1385">Other Specify</option>
-                    </select>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-            <tr>
-                    <td> Other Specify : </td>
-                    <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number"/>
-                    </td>
-                </tr>
-            </table>
-            <table class="simple-table" id="adherence-1">
-                <tr>
-                    <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
-
-                    <td>4. The visit is taking place at the clients  :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Central Market Shop Or Other Public Places</option>
-                        <option value="159416">Hospital due to clinics admission</option>
-                        <option value="1385">Place of residence</option>
-                        <option value="1385">Place of work or School</option>
-                    </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td> 5. For lost followup, Indicate the reasons? : </td>
-                    <td><input type="checkbox" name="question-7" class="question-7" value="1065"/><br> clinic elsewhere</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Sick and immobile</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/><br>Work related issues or travelled</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Financial challenges</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br> Stigma</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>RIP</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1066"/> <br>Others</br>
-                    </td>
-
-                    <td> Other Specify:</td>
-                    <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>6. Is the patient willing to come back? </td>
-                    <td><td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
-
-                    <td>6a. If yees, indicate the preferred appointment date. :</td>
+                    <td>Visit Date:</td>
                     <td>
                         <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
+
                     </td>
                 </tr>
             </table>
-
-            <table class="simple-table" id="session">
+            <table class="simple-table" id="autopsy-tbl2">
                 <tr>
-                    <td>Comments :</td>
-                    <td><obs conceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
+                    <td> 2. Did you talk to the patient or patients contact? : </td>
 
+                        <td><obs conceptId="162568AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Parent,Relative,Spouse,Other" /> <br /><br /></td>
+
+
+                    <td> Other Specify : </td>
+                    <td>
+                        <obs conceptId="165241"
+                             id="contact-other"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>2 What was the cause of death? </td>
+                    <td>
+
+                        <obs conceptId="162569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,121629AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          119180AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,116026AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,116023AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                          119481AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,117399AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,115835AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                          146221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,121849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113495AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                          1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio"
+                             answerLabels="Accicident,Anaemia,Blood cancer,Breast cancer,Cervical cancer,Diabetes,Hypertension,Prostaee cancer,
+                             Renal failure,TB,Unkown,Other " /> <br /><br /></td>
+
+
+                    <td> Other Specify : </td>
+                    <td>
+                        <obs conceptId="165145"
+                             id="other-specify"/>
+                    </td>
                 </tr>
 
 

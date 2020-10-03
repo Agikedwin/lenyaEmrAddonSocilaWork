@@ -173,60 +173,97 @@
     </div>
 
     <div class="ke-form-content">
-        <fieldset class="session-number">
+        <fieldset class="client-followup-tab">
             <legend>
-                <strong> Verbal Autopsy</strong>
+                <strong> Section A</strong>
             </legend>
-            <table class="simple-table" id="session">
+            <table class="simple-table" id="client-followup-tbl">
 
 
                 <tr>
-                    <td> 2. Did you talk to the patient or patients contact? : </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Parent</option>
-                        <option value="159416">Spouse</option>
-                        <option value="1385">Relative</option>
-                        <option value="1385">Others</option>
 
-                    </select>
+                    <td> 1. Type of client followed up </td>
+                    <td>
+                        <obs conceptId="161641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="160524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159937AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                  163532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="ART Client,HEI,PMTCT,TB" /> <br /><br />
                     </td>
-
+                    <td>2. Reason for the visit? :</td>
+                    <td>
+                        <obs conceptId="160288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1377AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164982,5240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                  5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Ambulatory Service,DVL Client ,Lost To Follow Up,Other specify" /> <br /><br />
+                    </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="client-followup-tbl1">
+            <tr>
                     <td> Other Specify : </td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number"/>
                     </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="adherence-1">
+                <tr>
+                    <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
+                    <td><td><obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
 
+                    <td>4. The visit is taking place at the clients  :</td>
+                    <td><select name="question-8" class="question-8">
+                        <option value="1066">Select</option>
+                        <option value="1090">Central Market Shop Or Other Public Places</option>
+                        <option value="159416">Hospital due to clinics admission</option>
+                        <option value="1385">Place of residence</option>
+                        <option value="1385">Place of work or School</option>
+                    </select>
+                        <obs conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="163468AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165014,1589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1536AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                  159928AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Central Market Shop Or Other Public Places,Hospital due to clinics admission,
+                  Place of residence,Place of work or School" /> <br /><br />
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Accident</option>
-                        <option value="159416">Anaemia</option>
-                        <option value="1385">Blood cancer</option>
-                        <option value="159416">Breast cancer</option>
-                        <option value="159416">Cervical cancer</option>
-                        <option value="159416">Diabetes</option>
-                        <option value="159416">Hypertension</option>
-                        <option value="159416">Meningits</option>
-                        <option value="159416">Prostaee cancer</option>
-                        <option value="159416">Renal failure</option>
-                        <option value="159416">Stomach cancer</option>
-                        <option value="159416">Stomach cancer</option>
-                        <option value="159416">TB</option>
-                        <option value="159416">Unknown</option>
-                        <option value="159416">Other specify</option>
-
-                    </select>
-                    </td>
-
-                    <td> Other Specify : </td>
+                    <td> 5. For lost followup, Indicate the reasons? : </td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number"/>
+                        <obs id="home-assessment-physical-mental" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="clinic else where" answerConceptId="159927AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="home-assessment-adult" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Sick and immobile" answerConceptId="163293AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="home-assessment-home-visit" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Work related issues or travelled" answerConceptId="150193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="home-assessment-disclosure" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma" answerConceptId="164997" style="checkbox" /><hr/>
+
+                        <obs id="home-assessment-testing" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RIP" answerConceptId="159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="home-assessment-testing" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Others" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
                     </td>
+
+                    <td> Other Specify:</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="followup-other" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>6. Is the patient willing to come back? </td>
+                    <td><td><obs conceptId="165063"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+
+                    <td>6a. If yees, indicate the preferred appointment date. :</td>
+                    <td>
+                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" labelText=" "  />
+                    </td>
+                </tr>
+            </table>
+
+            <table class="simple-table" id="tbl3">
+                <tr>
+                    <td>Comments :</td>
+                    <td><obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
+
                 </tr>
 
 

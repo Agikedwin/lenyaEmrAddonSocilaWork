@@ -1,0 +1,400 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset class="phone-contact-tab">
+            <legend>
+                <strong> Patient Phone Contact Form</strong>
+            </legend>
+            <table class="simple-table" id="phone-contact-tbl">
+
+
+                <tr>
+                    <td>1 Date of phone contact (DD MM YYYY) :</td>
+                    <td>
+                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
+                    </td>
+
+                    <td> 2. Did you talk to the patient or patients contact? : </td>
+                    <td>
+                    <obs conceptId="163089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="No(Go to 4),Yes,talk to patient Contact(Go to 3),Yes,talk to patient (Go to 4)" /> <br /><br />
+                    </td>
+                    <td>3. If talked to patients contact, who was the source of information</td>
+                    <td>
+                        <obs
+                                id="emergency-contact-relationship" conceptId="162568AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="162591AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165155,5618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+								163502AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161642AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Clinician,Employer,Friend,Parent,Neighbour,Spouse,Treatment supporter"
+                        />
+                    </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="specify-tbl">
+                <tr>
+                    <td> Other Specify : </td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="talked-to-specify"/>
+                    </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="phone-contact-tbl2">
+                <tr>
+                    <td>3a.Did the source of information have credible knowledge for whether the patient was alive or dead? :</td>
+                    <td><obs conceptId="1571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    <td>4. What was the reason for calling or contacting the patient or patients contact? : </td>
+                    <td>
+                        <obs
+                                id="emergency-contact-relationship" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="162191AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160521AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Patient missed an appointment (go to 5),Patient missed a pharmacy pickup (go to 6),Other"
+                        />
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> 5. Reasons for missed clinic appointment (tick all that apply) :</td>
+                    <td>
+                        <obs id="appointment-not-reached" conceptId="165354" answerLabel="NA, did not reach patient or patients contact" answerConceptId="164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="appointment-not-willing" conceptId="165354" answerLabel="No longer willing to attend" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="appointment-too-long" conceptId="165354" answerLabel="Wait time too long" answerConceptId="159971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="appointment-finance" conceptId="165354" answerLabel="Financial problems" answerConceptId="160063AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="appointment-relocated" conceptId="165354" answerLabel="Client moved or relocated" answerConceptId="160415AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="appointment-health" conceptId="165354" answerLabel="Unable to attend because of health problems" answerConceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="appointment-family" conceptId="165354" answerLabel="Family problems" answerConceptId="152465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="appointment-healer" conceptId="165354" answerLabel="Client will go to faith healer" answerConceptId="159550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="appointment-disclose" conceptId="165354" answerLabel="Unwilling to disclose" answerConceptId="160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="appointment-other" conceptId="165354" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                    </td>
+
+                    <td> Other Specify  :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="clinic-specify" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> 6. Reasons for missed pharmacy pick up (tick all that apply) :</td>
+                    <td>
+                        <obs id="pharmacy-not-reached" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="NA, did not reach patient or patients contact" answerConceptId="164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="pharmacy-not-willing" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No longer willing to attend" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="pharmacy-too-long" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wait time too long" answerConceptId="159971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="pharmacy-finance" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Financial problems" answerConceptId="160063AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="pharmacy-relocated" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client moved or relocated" answerConceptId="160415AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="pharmacy-health" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unable to attend because of health problems" answerConceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="pharmacy-family" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Family problems" answerConceptId="152465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="pharmacy-healer" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client will go to faith healer" answerConceptId="159550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="pharmacy-disclose" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unwilling to disclose" answerConceptId="160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="pharmacy-other" conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                    </td>
+
+                    <td> Other Specify  :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="pharmacy-specify" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>7 If talked to patient, did the patient wish to remain in the clinic? :</td>
+
+
+                        <obs
+                                id="clinic-patient" conceptId="164994" style="dropdown"
+                                answerConceptIds="112841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="NA, Did not talk to patient(Go to 9),No, Go to 8 and complete exit form,Yes , go to 7a"
+                        />
+                    </td>
+                    <td>7a. Did the patient schedule a clinic appointment? (If YES go to 7b, If NO go to 7d) :</td>
+                    <td><td><obs conceptId="164994"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>7b. If Yes, date of scheduled appointment( DD/MM/YYYY)  :</td>
+                    <td>
+                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" labelText=" "  />
+                    </td>
+
+
+                    <td>7c If NO, why did the patient not schedule an appointment (tick all that apply) </td>
+                    <td>
+                        <obs id="not-schedule-not-reached" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="NA, did not reach patient or patients contact" answerConceptId="164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="not-schedule-not-willing" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No longer willing to attend" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="not-schedule-too-long" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wait time too long" answerConceptId="159971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="not-schedule-finance" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Financial problems" answerConceptId="160063AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="not-schedule-relocated" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client moved or relocated" answerConceptId="160415AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="not-schedule-health" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unable to attend because of health problems" answerConceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="not-schedule-family" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Family problems" answerConceptId="152465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="not-schedule-healer" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client will go to faith healer" answerConceptId="159550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="not-schedule-disclose" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unwilling to disclose" answerConceptId="160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="not-schedule-other" conceptId="164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td> Other Specify  :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="not-schedule-specify" />
+                    </td>
+
+
+                    <td>7c If NO, why did the patient not schedule an appointment (tick all that apply) :</td>
+                    <td>
+
+                        <obs id="schedule-not-reached" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="NA, did not reach patient or patients contact" answerConceptId="164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="schedule-not-willing" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No longer willing to attend" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="schedule-too-long" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wait time too long" answerConceptId="159971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="schedule-finance" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Financial problems" answerConceptId="160063AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="schedule-relocated" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client moved or relocated" answerConceptId="160415AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="schedule-health" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unable to attend because of health problems" answerConceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="schedule-family" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Family problems" answerConceptId="152465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="schedule-healer" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client will go to faith healer" answerConceptId="159550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="schedule-disclose" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unwilling to disclose" answerConceptId="160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="schedule-other" conceptId="162182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td> Other Specify  :</td>
+                    <td>
+                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="schedule-specify" />
+                    </td>
+
+
+                    <td>9. Did you refer the client to any of the following ( Tick all that apply) :</td>
+
+                    <td>
+
+
+                        <obs id="refer-clinic" conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Clinic" answerConceptId="1574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="refer-counselor" conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Counselor" answerConceptId="159382AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="refer-nutritionist" conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Nutritionist" answerConceptId="160552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="refer-HBC" conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="HBC" answerConceptId="161642AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="refer-None" conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                    </td>
+                </tr>
+
+
+            </table>
+        </fieldset>
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>

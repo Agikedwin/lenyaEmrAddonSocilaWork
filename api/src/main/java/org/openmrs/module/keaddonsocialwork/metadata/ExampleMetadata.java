@@ -29,7 +29,6 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		// SOCIAL WORK
 		public static final String SOCIALWORKADULT = "d69dedbd-3933-4e44-8292-bea939ce980a";
 
-		public static final String SOCIALWORK = "56764aab-3727-46ec-96d2-18c652797609";
 
 		//childsocialworkscreening.xml
 		public static final String SOCIALWORKCHILD = "9e63e189-d4df-4cf4-81da-0b6ddf847cc2";
@@ -79,7 +78,6 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 	public static class _Form {
 		public static final String SOCIALWORKADULT = "b694b1bc-2086-47dd-a4ad-ba48f9471e4b";
 
-		public static final String SOCIALWORK = "1b6ee7e0-5194-4896-b2bd-a37ed91b7f41";
 
 		public static final String SOCIALWORKCHILD = "8635d6b6-d9d5-4bb9-a28d-cf3a90e1ba57";
 
@@ -130,10 +128,6 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		install(form("Adult Social Work Screening Form", null, _EncounterType.SOCIALWORKADULT, "1", _Form.SOCIALWORKADULT));
 
-
-		install(encounterType("Social encounter", "Just an example", _EncounterType.SOCIALWORK));
-
-		install(form("Social Work Form", null, _EncounterType.SOCIALWORK, "1", _Form.SOCIALWORK));
 
 		install(encounterType("Child Social Work Screening encounter", "Child Social Work Screening", _EncounterType.SOCIALWORKCHILD));
 
@@ -188,8 +182,7 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(form("Counselor Screening Child  ", null, _EncounterType.COUNSELLINGCHILD, "1", _Form.COUNSELLINGCHILD));
 
 		install(encounterType("Counselor Screening Adult encounter", "Counselor Screening Adult ", _EncounterType.COUNSELLINADULT));
-
-
+		install(form("Counselor Screening Adult form ", null, _EncounterType.COUNSELLINADULT, "1", _Form.COUNSELLINADULT));
 
 
 		install(encounterType("Child disclosure followup encounter", "Child disclosure followup ", _EncounterType.COUNSELLINGCHILDDISCLOSUREFU));
