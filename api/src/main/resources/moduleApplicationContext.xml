@@ -126,7 +126,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:nutritionscreening.xml" />
+		<property name="htmlform" value="keaddonexample:nutritionscreening.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.nutritionfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -138,7 +138,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:nutritionfollowup.xml" />
+		<property name="htmlform" value="keaddonexample:nutritionfollowup.html" />
 	</bean>
 
 	<!-- medicalfollow up forms -->

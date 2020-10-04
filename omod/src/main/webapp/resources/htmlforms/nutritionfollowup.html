@@ -1,0 +1,505 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset class="assessment-tab">
+            <legend>
+                <strong> 1 Anthropometric Assessment</strong>
+            </legend>
+            <table class="simple-table" id="nutrition-tbl">
+                <tr>
+                    <td> Weight  :</td>
+                    <td>
+                        <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-weight" />
+                    </td>
+
+                    <td>Height :</td>
+                    <td>  <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               id="nutrition-height" size="80" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> BMI  :</td>
+
+                    <td>
+                        <obs conceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-bmi"  size="80"/>
+                    </td>
+
+                    <td>Hip Circ :</td>
+                    <td>
+                        <obs conceptId="163081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-hip" size="80"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> Waist Circ.  :</td>
+                    <td>
+                        <obs conceptId="163080AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-waist"  size="80"/>
+                    </td>
+
+                    <td>Waist: Hip Ratio  :</td>
+                    <td>  <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               id="nutrition-ration" size="80" />
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td> MUAC :</td>
+                    <td>
+                        <obs conceptId="MID-UPPER ARM CIRCUMFERENCE"
+                             id="nutrition-muac" size="80" />
+                    </td>
+
+                    <td>Z-Score :</td>
+                    <td>
+                        <obs
+                                id="nutrition-z-score" conceptId="161140AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Less Or Equal -3.0,Less Or Equal -2.0,Greater Or Equal -1.0"
+                        />
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+
+        <fieldset id="followup-tab">
+            <legend>
+                <strong> 2 Medical </strong>
+            </legend>
+            <table class="simple-table" id="adherence-1">
+
+                <tr>
+                    <td>Nausea</td>
+
+
+                    <td>
+                        <obs conceptId="161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                    <td>Diarrhoea</td>
+
+                    <td>
+                        <obs conceptId="1848AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Weight Loss > 10% :</td>
+
+                    <td>
+                        <obs conceptId="164201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                    <td>Swallowing Difficulty :</td>
+
+                    <td>
+                        <obs conceptId="159356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Poor Appetite :</td>
+
+
+                    <td><obs conceptId="159402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Vomiting :</td>
+
+
+                    <td><obs conceptId="1429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Constipation :</td>
+                    <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Chewing / Teeth Problem :</td>
+                    <td><obs conceptId="138331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+                <tr>
+                    <td>Taste Changes :</td>
+
+
+                    <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Other Medical Conditions :</td>
+
+
+                    <td><obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Specify :</td>
+
+                    <td>  <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80"/>
+                    </td>
+                    <td>3 Is the client on food supplements? :</td>
+                        <td><obs conceptId="164804AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                </tr>
+
+                <tr>
+                    <td>3a If yes which type of food supplements :</td>
+
+                    <td>
+                        <obs id="relationship-others" conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
+                             answerConceptId="162545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162677AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160788AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" /><hr/>
+                    </td>
+
+                    <td>Specify :</td>
+
+                    <td>  <obs conceptId="161073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>3c If yes, what is the qualifying criteria? :</td>
+
+                    <td>
+                        <obs id="supplements-bmi" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI less  than 18.5" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements-pregnany" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                    </td>
+
+                    <td>Specify :</td>
+
+                    <td>  <obs conceptId="161583AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80" />
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>4 Is the client initiating food supplements today ? :</td>
+
+                    <td><obs conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                    <td>4a What is the qualfying criteria :</td>
+
+                    <td>
+                        <obs id="supplements-bmi" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI less  than 18.5" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements-pregnany" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4a Specify :</td>
+                    <td>  <obs conceptId="1248AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80"/>
+                    </td>
+                    <td>4b If yes, which type of food supplement is client initiating today? :</td>
+                     <td>
+                         <obs id="relationship-others" conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                              answerLabel="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
+                              answerConceptId="162545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162677AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160788AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                              style="checkbox" /><hr/>
+
+                     </td>
+
+
+                </tr>
+
+                <tr>
+                    <td>4a Specify :</td>
+                    <td>  <obs conceptId="161004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80" />
+                    </td>
+                    <td>4b If yes, which type of food supplement is client initiating today? :</td>
+                    <obs id="relationship-others" conceptId="162850AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         answerLabel="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
+                         answerConceptId="162545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162677AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160788AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         style="checkbox" /><hr/>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>4c If yes, has the patient been on food supplement before? </td>
+                    <td><select name="question-8" class="question-8">
+                    <option value="1066">Select</option>
+                    <option value="1090"> Readminssion </option>
+                    <option value="159416"> Relapse</option>
+                </select>
+
+                        <obs id="relationship-others" conceptId="163304AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Readminssion,Relapse"
+                             answerConceptId="162477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" /><hr/>
+                    </td>
+                    <td>5 Is the client exiting food supplement today? </td>
+                    <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                </tr>
+
+                <tr>
+                    <td>5a If yes, why? :</td>
+                    <td>
+                        <obs id="supplements-bmi" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI less  than 18.5" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements-pregnany" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                    </td>
+                    <td>  <obs conceptId="163761AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               size="80" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>6 Was the client given Vitamin A ? :	</td>
+                    <td><obs conceptId="163300AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                    <td>If the client is a child, does s/he need follow up on any of the following conditions</td>
+                     <td>
+                         <obs id="condition-marasmus" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Marasmus" answerConceptId="132636AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                         <obs id="condition-kwashiokor" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Kwashiokor" answerConceptId="116474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                         <obs id="condition-anemia" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Anemia" answerConceptId="121629AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                         <obs id="condition-underweight" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Underweight" answerConceptId="123814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                         <obs id="condition-faltering" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Faltering weight:" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                         <obs id="condition-none" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                         <obs id="condition-other" conceptId="162747AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                     </td>
+
+                </tr>
+
+            </table>
+            <br /><hr/><br />
+
+        </fieldset>
+
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>
