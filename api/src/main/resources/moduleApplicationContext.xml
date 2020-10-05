@@ -152,7 +152,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:mfuvisualinspectionaceticacid.xml" />
+		<property name="htmlform" value="keaddonexample:mfuvisualinspectionaceticacid.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.mfunurseform" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -164,7 +164,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:mfunurseform.xml" />
+		<property name="htmlform" value="keaddonexample:mfunurseform.html" />
 	</bean>
 
 	<!-- COUNSELLING FORMS -->
@@ -250,7 +250,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counsellingchilddisclosuresession.xml" />
+		<property name="htmlform" value="keaddonexample:counsellingchilddisclosuresession.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counselingadherence1" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -274,7 +274,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:cousellinggeneralsession.xml" />
+		<property name="htmlform" value="keaddonexample:cousellinggeneralsession.html" />
 	</bean>
 
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">

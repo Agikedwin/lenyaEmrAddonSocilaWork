@@ -175,30 +175,31 @@
     <div class="ke-form-content">
 
 
-        <fieldset class="adherence-screening">
+        <fieldset class="child-screening-tab">
             <!--Enhance adherence screening-->
             <legend>
                 <strong> Disclosure</strong>
             </legend>
-            <table class="simple-table" id="adherence-1">
+            <table class="simple-table" id="child-screening-tbl">
 
                 <tr>
-                    <td>1 Had disclosure take place? :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">No</option>
-                        <option value="159416">partial disclosure</option>
-                        <option value="1385">Full disclosure</option>
-
-                    </select>
+                    <td>1 Had disclosure taken place? :</td>
+                    <td>
+                        <obs
+                                id="nutrition-z-score" conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1167AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1048AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="No,Partial disclosure,Full disclosure"
+                        />
                     </td>
 
                     <td>2 Caregiver readiness for disclosure (Tick all that apply) :</td>
 
                     <td>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Caregiver expresses that he or she is ready to disclose<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>Caregiver is not ready to disclose <br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Caregiver has done a partial disclosure<br></br>
+
+                        <obs id="session-Other" conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Caregiver expresses that he or she is ready to disclose " answerConceptId="161638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="session-Other" conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Caregiver is not ready to disclose " answerConceptId="164260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="session-Other" conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Caregiver has done a partial disclosure " answerConceptId="162979AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
                     </td>
 
                 </tr>
@@ -206,21 +207,22 @@
                 <tr>
                     <td>1 Has disclosure taken place since the previous session? :</td>
                     <td>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Guilt,shame,regrets,grief or fear<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>When or if to tell extended family members <br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Potential isolation and rejection by family members and friends<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Parental disclosure of past behaviours e.g. sexual, substance abuse etc<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Caregiver struggling with unresolved issues with the child<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Poor communication skills between caregiver and child <br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Caregiver feels that child is too young or not ready<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
+
+                        <obs id="disclosure-shame" conceptId="164995" answerLabel="Guilt,shame,regrets,grief or fear " answerConceptId="163490AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-extended" conceptId="164995" answerLabel="When or if to tell extended family members  " answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-isolation" conceptId="164995" answerLabel="Potential isolation and rejection by family members and friends " answerConceptId="139299AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-struggling" conceptId="164995" answerLabel="Caregiver struggling with unresolved issues with the child " answerConceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-communication" conceptId="164995" answerLabel="Poor communication skills between caregiver and child " answerConceptId="159770AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-young" conceptId="164995" answerLabel="Caregiver feels that child is too young or not ready " answerConceptId="130225AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="disclosure-Other" conceptId="164995" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
                     </td>
 
                     <td>Specify:</td>
 
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
+                        <obs conceptId="162284AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
 
                     </td>
 
@@ -230,19 +232,22 @@
                 <tr>
                     <td>(b) Child Issues. (Tick all that apply) :</td>
                     <td>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>Age and cognitive development <br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>Child has poor or negative knowledge and understanding of HIV <br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child has a poor health status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child has a poor emotional status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child has a poor support system<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
+
+
+                        <obs id="child-issues-cognitive" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Age and cognitive development " answerConceptId="989AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-issues-negative" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child has poor or negative knowledge and understanding of HIV " answerConceptId="164983" style="checkbox" /><br></br><hr/>
+                        <obs id="child-issues-health" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child has a poor health status " answerConceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-issues-emotional" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child has a poor emotional status " answerConceptId="118668AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-issues-support" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child has a poor support system " answerConceptId="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-issues-Other" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
                     </td>
 
                     <td>Specify:</td>
 
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
+                        <obs conceptId="128461AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
 
                     </td>
 
@@ -251,36 +256,22 @@
                 <tr>
                     <td>4. Child readiness for disclosure (Tick all that apply) :</td>
                     <td>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child cognitive and develoment maturity<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br>The child has adequate coping skills</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has a stable emotional status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has an established support system<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has a stable health status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
+                        <obs id="child-readiness-cognitive" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child cognitive and develoment maturity " answerConceptId="160937AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-adequate" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="The child has adequate coping skills " answerConceptId="163318AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-emotional" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="The child has a stable emotional status " answerConceptId="1855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-established" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="The child has an established support system " answerConceptId="165225" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-stable" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="The child has a stable health status " answerConceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
                     </td>
                     <td>Specify:</td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
+                             size="80" />
 
                     </td>
 
                 </tr>
-                <tr>
-                    <td>3. Child readiness for disclosure (Tick all that apply) :</td>
-                    <td>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Child cognitive and development maturity<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> <br>The child has adequate coping skills</br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/>The child has a stable emotional status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has an established support system<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> The child has a stable health status<br></br>
-                        <input type="checkbox" name="question-7" class="question-7" value="1065"/> Other<br></br>
-                    </td>
-
-                    <td>Specify<td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
-                    </td></td>
 
                 </tr>
                 <tr>
@@ -288,19 +279,19 @@
                         5. Is the caregiver ready to disclose? :
                     </td>
                     <td>
-                        <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        <obs conceptId="159423AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                     </td>
 
                     <td>
                         5b. If No, when and how does the caregiver feel she or he will be ready to do disclosure? :
                     </td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Through routine care at hope center</option>
-                        <option value="159416">Within the 5 sessions of the model</option>
-                        <option value="1385">Unknown</option>
+                    <td>
 
-                    </select>
+                        <obs
+                                id="caregiver-feeling" conceptId="159425AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="161550AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162196AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Through routine care at hope center,Within the 5 sessions of the model,Unknown"
+                        />
                     </td>
 
                 </tr>
@@ -308,35 +299,34 @@
 
                     <td>5c. Where does the caregiver choose to do disclosure? :</td>
 
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">At home </option>
-                        <option value="159416">At clinic</option>
-                        <option value="1385">Other</option>
-
-                    </select>
+                    <td>
+                        <obs
+                                id="caregiver-feeling" conceptId="165189" style="dropdown"
+                                answerConceptIds="1536AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159372AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="At home,At clinic,Other"
+                        />
                     </td>
                     <td>Specify</td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="session-number" />
+                        <obs conceptId="165227"
+                             size="80" />
                     </td>
                 </tr>
 
 
             </table>
 
-            <table class="simple-table" id="adherence-1">
+            <table class="simple-table" id="child-screening-tbl2">
                 <tr>
                     6. What is the current emotional and psychological state of the child? :
-                    <td><td><obs conceptId="164982" rows="100" cols="100" style="textarea" /></td></td>
+                    <td><td><obs conceptId="160198AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="100" cols="100" style="textarea" /></td></td>
                 </tr>
             </table>
 
-            <table class="simple-table" id="adherence-1">
+            <table class="simple-table" id="child-screening-tbl3">
                 <tr>
                     7. What is the current emotional and psychological state of the parent/caregiver? :
-                    <td><td><obs conceptId="164982" rows="3" cols="100" style="textarea" /></td></td>
+                    <td><td><obs conceptId="112696AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="3" cols="100" style="textarea" /></td></td>
                 </tr>
             </table>
 
@@ -355,34 +345,31 @@
                         <td>8. Any adverse events? :</td>
 
                         <td>
-                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                            <obs conceptId="1891AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                         </td>
                         <td>If Yes, Specify :</td>
                         <td>
-                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 id="session-number" />
+                            <obs conceptId="163186AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 size="80" />
                         </td>
                     </tr>
 
                     <tr>
                         <td>9. Child reffered to psychologist/ psychiatrist? :</td>
                         <td>
-                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                            <obs conceptId="5619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                         </td>
 
-                        <td>14. Child reffered to psychologist/psychiatrist? :</td>
-                        <td>
-                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
+
                     </tr>
 
                     <tr>
                         <td>15. Has the child been counseled on treatment and care? :</td>
                         <td>
-                            <obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                            <obs conceptId="165070"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                         </td>
                         <td>Notes/Summary assesment. :</td>
-                        <td><td><obs conceptId="164982" rows="4" cols="50" style="textarea" /></td></td>
+                        <td><td><obs conceptId="163580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="50" style="textarea" /></td></td>
                     </tr>
 
                 </table>
