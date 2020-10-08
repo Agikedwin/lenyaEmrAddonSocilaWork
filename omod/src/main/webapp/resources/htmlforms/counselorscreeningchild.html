@@ -1,0 +1,625 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+
+
+        <fieldset class="disclosure-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Disclosure</strong>
+            </legend>
+            <table class="simple-table" id="disclosure-tab">
+
+                <tr>
+                    <td>1 Has the patient been disclosed her or his HIV status? :</td>
+
+                    <td>
+                        <obs
+                                id="nutrition-z-score" conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1167AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1048AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="No,Partial disclosure,Full disclosure"
+                        />
+                    </td>
+
+                    <td>2. Who has accompanied the child to the session today and what is their relationship to the child? :</td>
+                    <td>
+                        <obs
+                                id="relationship-phone-owner" conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="975AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Aunt,Brother,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Social Worker,Uncle,Other"
+                        />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Specify</td>
+                        <obs conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+
+                    <td>2a. Is the accompanier in the session willing to support the child in treatment?( yes 2b,no go to 2c :</td>
+                    <td>
+                        <obs conceptId="165302"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>2c. If no,who is living with the child and willing to support the child in treatment? :</td>
+                    <td>
+                        <obs
+                               conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="975AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Aunt,Brother,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Social Worker,Uncle,Other"
+                        />
+                    </td>
+
+                    <td>Specify<td>
+                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+                    </td></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        3. Does the patient live with his/her parents? :
+                    </td>
+                    <td>
+
+                        <obs
+                                conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="975AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Aunt,Brother,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Uncle,Nether"
+                        />
+                    </td>
+
+                    <td>
+                        3a.If neither, Why? :
+                    </td>
+                    <td>
+
+                        <obs
+                                conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="157899AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1058AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    161180AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,126729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Abandonment,Divorce,Nether,Separation,Other(Specify)"
+                        />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Specify<td>
+                        <obs conceptId="1056AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>Status</td>
+
+                    <td>
+                        <obs
+                                conceptId="5303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>4a.Mothers HIV Test result :</td>
+                    <td>
+
+                        <obs
+                                conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Positive,Negative,Not tested,Unknown"
+                        />
+                    </td>
+                    <td>Recieving HAART? :</td>
+                    <td>
+                        <obs
+                                conceptId="1085AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Is the mother receiving HAART ? :</td>
+                    <td>
+
+                        <obs
+                                conceptId="1396AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+
+                    <td>If yes hope ID<td>
+                        <obs conceptId="5325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td></td>
+                </tr>
+
+                <tr>
+                    <td>Unknown</td>
+                    <td>
+                        <obs  conceptId="1695AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" " answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+                    </td>
+                    <td>Name<td>
+                        <obs conceptId="1593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80"/>
+                    </td></td>
+                </tr>
+
+                <tr>
+                    <td>5 Is the patients father alive ? :</td>
+                    <td>
+
+                        <obs
+                                conceptId="1857AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+                    <td>Is the father receiving HAART ? :</td>
+                    <td>
+                        <obs
+                                conceptId="1743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5a. Describe HIV test results and HIV care for the patients father. Test Result. :</td>
+                    <td>
+                        <obs
+                                conceptId="1397AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Positive,Negative,Not tested,Unknown"
+                        />
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Father recieving HAART at Hope Clinic :</td>
+                    <td>
+                        <obs
+                                conceptId="1768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Unknown"
+                        />
+                    </td>
+                    <td>If yes, Hope ID :</td>
+                    <td>
+                        <obs conceptId="159634AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Unknown</td>
+                    <td>
+                        <obs conceptId="159871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                    </td>
+                    <td>Name<td>
+                        <obs conceptId="1526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td></td>
+                </tr>
+
+                <tr>
+                    <td>6 How many siblings does the child have?(If zero,skip to question 7) :</td>
+                    <td>
+                        <obs conceptId="5573AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+                    <td>6a If the patient has siblings, how many have tested for HIV?(If zero,skip to question 7) :</td>
+                    <td>
+                        <obs conceptId="159907AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>6b If any siblings have tested,how many tested HIV  ? :</td>
+                    <td>
+                        <obs conceptId="1186AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>6d If receiving care in Hope clinic, indicate the HopeIDs First HopeID :</td>
+                    <td>
+                        <obs conceptId="77566AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number" />
+                    </td>
+                    <td>Second HopeID :</td>
+                    <td>
+                        <obs conceptId="163084AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Third HopeID :</td>
+                    <td>
+                        <obs conceptId="164409AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+
+                    <td>Fourth HopeID :</td>
+                    <td>
+                        <obs conceptId="162582AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>7 Is the child on ARVs ? :</td>
+                    <td>
+                        <obs conceptId="165001"  answerConceptIds="1149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                    <td>8 Is anyone in the childs family on ARVs?(If No or Unknown, skip to question 9) :</td>
+                    <td>
+                        <obs conceptId="5587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>8a If yes, tick all that apply :</td>
+                    <td>>
+                        <obs id="child-readiness-Other" conceptId="164942" answerLabel="Mother " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+                        <obs id="child-readiness-Other" conceptId="164942" answerLabel="Father " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+                        <obs id="child-readiness-Other" conceptId="164942" answerLabel="Father " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="164942" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+                    </td>
+                    <td>Specify :</td>
+                    <td>
+                        <obs conceptId="160750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9 Has the patients serostatus been revealed to ? a Mother :</td>
+                    <td>
+                        <obs
+                                conceptId="1396AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Has no Mother"
+                        />
+                    </td>
+
+                    <td>b Father :</td>
+                    <td>
+                        <obs
+                                conceptId="5616AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Yes,No,Has no Father"
+                        />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>c. Siblings :</td>
+                    <td>
+                        <obs
+                                conceptId="163533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="All,None,some,Has no siblings"
+                        />
+                    </td>
+                    <td>g Current care giver :</td>
+                    <td>
+
+                        <obs
+                                conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="All,some,specify"
+                        />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Specify</td>
+                    <td>
+                        <obs conceptId="162284AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="80" />
+                    </td>
+
+                    <td>10 Has confirmatory test been done to the child :</td>
+                    <td>
+                        <obs conceptId="165237"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+        <fieldset class="disclosure-tab1">
+            <!--Enhance adherence screening-->
+                <legend>
+                    <strong> Assess HIV , Hygiene Knowledge and Risk factors</strong>
+                </legend>
+                <table class="simple-table" id="disclosure-tbl2">
+
+                    <tr>
+                        <td>11 Indicate that you have provided information on the HIV infection :</td>
+
+                        <td>
+                            <obs id="occupation-student" conceptId="165101" answerLabel="HIV (secondary) transmission" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-student" conceptId="165101" answerLabel="HIV (secondary) infection prevention" answerConceptId="164883AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-student" conceptId="165101" answerLabel="HIV care (treatment) for children" answerConceptId="159937AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+
+                        </td>
+                        <td>12 Indicate that you have provided information on Hygiene :</td>
+                        <td>
+                            <obs id="occupation-student" conceptId="1906AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Body Personal Hygene" answerConceptId="164874AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                            <obs id="occupation-student" conceptId="1906AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Food handling safety" answerConceptId="164871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                            <obs id="occupation-student" conceptId="1906AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Environmental hygene and safety at home" answerConceptId="163321AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>13. Is the patient currently being abused? (If No skip to question 14) :</td>
+
+                        <td>
+                            <obs
+                                    conceptId="165273" style="dropdown"
+                                    answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="No,Yes,Unknown"
+                            />
+                        </td>
+
+
+
+                        <td>13a. If yes, specify :</td>
+                        <td>
+                            <obs id="occupation-student" conceptId="165205" answerLabel="Sexually" answerConceptId="152370AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                            <obs id="occupation-student" conceptId="165205" answerLabel="Physically" answerConceptId="124824AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                            <obs id="occupation-student" conceptId="165205" answerLabel="Other (specify)" answerConceptId="117510AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>13b. If yes, does the respondent know who is abusing the child? (If yes, refer accordingly) : </td>
+                        <td>
+
+                            <obs
+                                    conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                    answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="No,Yes,Unknown"
+                            />
+                        </td>
+                    </tr>
+
+                </table>
+            </fieldset>
+
+
+
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>

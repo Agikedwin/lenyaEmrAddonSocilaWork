@@ -178,7 +178,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:adherencecounselling.xml" />
+		<property name="htmlform" value="keaddonexample:adherencecounselling.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counsellingchildcounsellingfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -190,7 +190,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counsellingchildcounsellingfollowup.xml" />
+		<property name="htmlform" value="keaddonexample:counsellingchildcounsellingfollowup.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counsellingfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -214,7 +214,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counselorscreeningchild.xml" />
+		<property name="htmlform" value="keaddonexample:counselorscreeningchild.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counselorscreeningadult" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -226,7 +226,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counselorscreeningadult.xml" />
+		<property name="htmlform" value="keaddonexample:counselorscreeningadult.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counsellingchilddisclosurefollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -238,7 +238,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:childdisclosurefollowup.xml" />
+		<property name="htmlform" value="keaddonexample:childdisclosurefollowup.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counsellingchilddisclosuresession" class="org.openmrs.module.kenyacore.form.FormDescriptor">
