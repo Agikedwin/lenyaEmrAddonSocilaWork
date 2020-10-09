@@ -202,7 +202,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counsellingfollowup.xml" />
+		<property name="htmlform" value="keaddonexample:counsellingfollowup.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counselorscreeningchild" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -262,7 +262,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counselingadherence1.xml" />
+		<property name="htmlform" value="keaddonexample:counselingadherence1.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.cousellinggeneralsession" class="org.openmrs.module.kenyacore.form.FormDescriptor">
