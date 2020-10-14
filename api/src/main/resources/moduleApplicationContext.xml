@@ -169,7 +169,7 @@
 
 	<!-- COUNSELLING FORMS -->
 
-	<bean id="keaddonexample.form.counsellingadherencecounselling" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+	<bean id="keaddonexample.form.adherencecounselling" class="org.openmrs.module.kenyacore.form.FormDescriptor">
 		<property name="targetUuid" value="bf0235d1-5caa-4957-89a1-ae2690c7cd15" />
 		<property name="apps">
 			<set>
@@ -181,7 +181,7 @@
 		<property name="htmlform" value="keaddonexample:adherencecounselling.html" />
 	</bean>
 
-	<bean id="keaddonexample.form.counsellingchildcounsellingfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+	<bean id="keaddonexample.form.childcounsellingfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
 		<property name="targetUuid" value="ed966600-ff06-11ea-adc1-0242ac120002" />
 		<property name="apps">
 			<set>
@@ -190,7 +190,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counsellingchildcounsellingfollowup.html" />
+		<property name="htmlform" value="keaddonexample:childcounsellingfollowup.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counsellingfollowup" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -238,10 +238,10 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:childdisclosurefollowup.html" />
+		<property name="htmlform" value="keaddonexample:counsellingchilddisclosurefollowup.html" />
 	</bean>
 
-	<bean id="keaddonexample.form.counsellingchilddisclosuresession" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+	<bean id="keaddonexample.form.cousellingchilddisclosuresession" class="org.openmrs.module.kenyacore.form.FormDescriptor">
 		<property name="targetUuid" value="74b77231-d53a-4726-ae2e-eed8b6dd6fc2" />
 		<property name="apps">
 			<set>
@@ -250,7 +250,7 @@
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:counsellingchilddisclosuresession.html" />
+		<property name="htmlform" value="keaddonexample:cousellingchilddisclosuresession.html" />
 	</bean>
 
 	<bean id="keaddonexample.form.counselingadherence1" class="org.openmrs.module.kenyacore.form.FormDescriptor">
@@ -293,13 +293,13 @@
 				<ref bean="keaddonexample.form.mfuvisualinspectionaceticacid" />
 				<ref bean="keaddonexample.form.mfunurseform" />
 				<!-- Counselling-->
-				<ref bean="keaddonexample.form.counsellingadherencecounselling" />
-				<ref bean="keaddonexample.form.counsellingchildcounsellingfollowup" />
+				<ref bean="keaddonexample.form.adherencecounselling" />
+				<ref bean="keaddonexample.form.childcounsellingfollowup" />
 				<ref bean="keaddonexample.form.counsellingfollowup" />
 				<ref bean="keaddonexample.form.counselorscreeningchild" />
 				<ref bean="keaddonexample.form.counselorscreeningadult" />
 				<ref bean="keaddonexample.form.counsellingchilddisclosurefollowup" />
-				<ref bean="keaddonexample.form.counsellingchilddisclosuresession" />
+				<ref bean="keaddonexample.form.cousellingchilddisclosuresession" />
 				<ref bean="keaddonexample.form.counselingadherence1" />
 				<ref bean="keaddonexample.form.cousellinggeneralsession" />
 			</set>
