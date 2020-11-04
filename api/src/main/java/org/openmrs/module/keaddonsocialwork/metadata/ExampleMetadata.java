@@ -26,6 +26,8 @@ import static org.openmrs.module.metadatadeploy.bundle.CoreConstructors.*;
 public class ExampleMetadata extends AbstractMetadataBundle {
 
 	public static class _EncounterType {
+		// VMMC
+		public   static  final  String EVMMCFORM ="70bbc9a1-e57c-4b0b-aa36-980918f3e85b";
 		// SOCIAL WORK
 		public static final String SOCIALWORKADULT = "d69dedbd-3933-4e44-8292-bea939ce980a";
 
@@ -76,6 +78,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 	}
 
 	public static class _Form {
+		// VMMC
+		public  static final   String EVMMCFORM ="97592ed8-7aba-4fdc-b82c-c4fd54bdc4c1";
+
+
 		public static final String SOCIALWORKADULT = "b694b1bc-2086-47dd-a4ad-ba48f9471e4b";
 
 
@@ -123,6 +129,13 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 	 */
 	@Override
 	public void install() {
+		// vmmc form
+
+		install(encounterType("VMMC Client Form Encounter", "VMMC Encounter", _EncounterType.EVMMCFORM));
+
+		install(form("VMMC Client Form", null, _EncounterType.EVMMCFORM, "1", _Form.EVMMCFORM));
+
+
 		// SOCIAL WORK
 		install(encounterType("Adult Social Work encounter", "Just an example", _EncounterType.SOCIALWORKADULT));
 
