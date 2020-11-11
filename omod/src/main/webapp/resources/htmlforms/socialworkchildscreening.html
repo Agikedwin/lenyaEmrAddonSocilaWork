@@ -16,126 +16,126 @@
     <script type="text/javascript">
         var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
         var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
-        jQuery(function ($) {
-            //Defaults
-            var adherenceResponses1 = jq('#adherence-1');
-            var adherenceResponses2 = jq('#adherence-2');
-            jq('#adherence-2').hide();
-            clearHiddenSections([adherenceResponses1, adherenceResponses2]);
-            jq("#adherence-1").change(adherenceAssessment);
-            //Process flow
-            jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
-            jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
-            jq("#session-number :input[type=text]").change(sessionNumberChange);
-            hasViralLoadResult();
-            hasHighViralLoadResult();
-            if (LATEST_SESSION == "") {
-                jq('#review').hide();
-                jq('#viral-load-tab').show();
-                jq('#adherence-barriers-tab').show();
-            } else {
-                jq('#review').show();
-                jq('#viral-load-tab').show();
-                jq('#adherence-barriers-tab').hide();
-            }
-            console.log("LATEST SESSION==>" + LATEST_SESSION);
-            console.log("LATEST SESSION START DATE==>" + LATEST_SESSION_START_DATE);
-            if (LATEST_SESSION & gt; 0) {
-            var formattedSessionStartDate = moment(moment(LATEST_SESSION_START_DATE, 'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
-            getField('session-startdate.value').val(formattedSessionStartDate);
-        }else {
-            getField('session-startdate.value').val("");
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
         }
-        beforeSubmit.push(function () {
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
         });
         });
         //Morisky assessment
-        var adherenceAssessment = function () {
-            var val = jq(this).val();
-            const YES_CONCEPT_ID = 1065;
-            const NO_CONCEPT_ID = 1066;
-            var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
-            var assessmentYesResponses = [];
-            var assessmentNoResponses = [];
-            //Fetch responses for the assessment questions
-            jq.each(assessmentRadios, function () {
-                //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
-                if (this.value == YES_CONCEPT_ID & amp;& amp; this.checked == true) {
-                assessmentYesResponses.push(this);
-            }
-            if (this.value == NO_CONCEPT_ID & amp;& amp; this.checked == true) {
-                assessmentNoResponses.push(this);
-            }
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
         });
         //If no responses have been recorded then prompt since this assessment is mandatory
-        if (assessmentYesResponses.length == 0 & amp;& amp; assessmentNoResponses.length == 0 ) {
-            //Prompt to complete assessment
-        }else {
-            if (assessmentYesResponses.length & gt; 0) {
-                jq('#adherence-2').show();
-            }
-            if (assessmentYesResponses.length == 0) {
-                jq("#arv-adherence input[value=159405]").prop("checked", true);
-                jq('#adherence-2').hide();
-            }
-            if (assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2) {
-                jq("#arv-adherence input[value=163794]").prop("checked", true);
-                jq('#adherence-2').show();
-            }
-            if (assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4) {
-                jq("#arv-adherence input[value=159407]").prop("checked", true);
-                jq('#adherence-2').show();
-            }
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
         }
         }
-        function sessionNumberChange() {
-            var val = getValue('session-number.value');
-            if (val == 1) {
-                getField('session-startdate.value').val("");
-                jq('#review').hide();
-                jq('#viral-load-tab').show();
-                jq('#adherence-barriers-tab').show();
-            } else {
-                jq('#review').show();
-                jq('#viral-load-tab').show();
-                jq('#adherence-barriers-tab').hide();
-            }
         }
-        function hasViralLoadResult() {
-            var val = getValue('has-vl.value');
-            if (val == 1065) {
-                jq('#vl-status').show();
-                jq('#vl-feeling').show();
-                jq('#vl-high').show();
-            } else {
-                jq('#vl-status').hide();
-                jq('#vl-feeling').hide();
-                jq('#vl-high').hide();
-            }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
         }
-        function hasHighViralLoadResult() {
-            var val = getValue('result-status.value');
-            if (val == 1066) {
-                jq('#vl-high-txt textarea').prop("disabled", false);
-            } else {
-                jq('#vl-high-txt textarea').prop("disabled", true);
-            }
         }
-        clearHiddenSections = function (parentObj) {
-            for (var i = 0; i & lt; parentObj.length; i++) {
-                parentObj[i].find('input[type=radio]').each(function () {
-                    this.checked = false;
-                });
-                parentObj[i].find('input[type=checkbox]').each(function () {
-                    this.checked = false;
-                });
-                parentObj[i].find('input[type=text]').each(function () {
-                    this.val("");
-                });
-                parentObj[i].find('select').each(function () {
-                    this.selectedIndex = 0;
-                });
-            }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
         }
     </script>
     <style>
@@ -185,7 +185,7 @@
                 <tr>
                     <td> 1 Caregivers Telephone number? :</td>
                     <td>
-                        <obs conceptId="163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="client-phone-number" size="80"
+                        <obs conceptId="163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="client-phone-number" size="30"
                             required="true" />
                     </td>
 
@@ -195,24 +195,25 @@
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" required="true" />
                     </td>
-                    </td>
+                    
                 </tr>
 
                 <tr>
                     <td> 2a Caregivers relationship to child? </td>
                     <td>
-                        <obs conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerConceptIds="1581AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            answerLabels="Aunt,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Social Worker,Uncle,Other" />
+                        <obs
+								conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+								answerConceptIds="1581AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+								160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+								160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+								answerLabels="Aunt,Cousin,Father,Grand Father,Grand Mother,Mother,Sister,Social Worker,Uncle,Other specify"
+						/>
 
                     </td>
                     <td>Specify</td>
                     <td>
-                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                 </tr>
@@ -222,13 +223,15 @@
                     <td>
                         <obs conceptId="160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                            style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
 
                     <td>4. Does the child live with both parents? :</td>
                     <td>
                         <obs conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                            style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
                 </tr>
 
                 <tr>
@@ -252,9 +255,9 @@
                         <obs id="foster-parent" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="Foster parent" answerConceptId="165155" style="checkbox" />
                         <hr />
+                    </td>
                     <td>
-                    <td>
-                        <obs id="Other" conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other"
+                        <obs id="Other" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other"
                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" />
                         <hr />
                     </td>
@@ -262,7 +265,7 @@
 
                     <td>Other (Specify) :</td>
                     <td>
-                        <obs conceptId="162729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="162729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
                 </tr>
 
@@ -302,7 +305,7 @@
 
                     <td>Other (Specify) :</td>
                     <td>
-                        <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
                 </tr>
 
@@ -310,12 +313,12 @@
 
                     <td> 5b.Route Number : </td>
                     <td>
-                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                     <td> 5b.Route Name : </td>
                     <td>
-                        <obs conceptId="161551AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="161551AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
                 </tr>
             </table>
@@ -366,7 +369,7 @@
 
                     <td> Other (Specify) : </td>
                     <td>
-                        <obs conceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="163398AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                 </tr>
@@ -383,7 +386,7 @@
 
                     <td> 7. What is the name of nearest health facility? : </td>
                     <td>
-                        <obs conceptId="162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="80" />
+                        <obs conceptId="162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                     <td> 8. Childs housing is : </td>
@@ -414,37 +417,38 @@
                 <tr>
                     <td> 9a. Caregiver name (Last,First,Middle) : </td>
                     <td>
-                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="treatment-supporter-name" size="80" />
+                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="treatment-supporter-name" size="30" />
                     </td>
 
 
                     <td>9b. Caregiver home address :</td>
                     <td>
                         <obs conceptId="160641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="treatment-supporter-address"
-                            size="80" />
+                            size="30" />
                     </td>
                 </tr>
                 <tr>
                     <td>9c. How is the caregiver called or reffered to in the home (name): </td>
                     <td>
-                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="caregiver-name" size="80" />
+                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="caregiver-name" size="30" />
                     </td>
 
                     <td> 9d. Does the caregiver live in the same area as the child? : </td>
                     <td>
                         <obs conceptId="165001"
                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                            style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
                 </tr>
 
                 <tr>
                     <td> 9e. How long has the caregiver lived in the area in years? : </td>
                     <td>
-                        <obs conceptId="162603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="area-year" size="80" />
+                        <obs conceptId="162603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="area-year" size="30" />
                     </td>
                     <td>How long has the caregiver lived in the area in months?</td>
                     <td>
-                        <obs conceptId="160984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="duration-months" size="80" />
+                        <obs conceptId="160984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="duration-months" size="30" />
                     </td>
 
                 </tr>
@@ -559,7 +563,7 @@
 
                     <td>Referral Date :</td>
                     <td>
-                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true"  />
+                        <obs conceptId="165144" allowFutureDates="true"  />
                     </td>
 
                 </tr>

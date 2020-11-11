@@ -42,7 +42,7 @@
 		<constructor-arg value="700" />
 	</bean>
 
-	<!-- Couselling app
+	<!-- Couselling app -->
 
 	<bean id="keaddonexample.app.cousellingapp" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
 		<constructor-arg value="keaddonexample.cousellingapp" />
@@ -50,19 +50,6 @@
 		<constructor-arg value="keaddonexample/example/home.page" />
 		<constructor-arg value="keaddonexample:apps/counselling.png" />
 		<constructor-arg value="700" />
-	</bean>
--->
-	<!-- VMMC -->
-	<bean id="keaddonexample.form.evmmcform" class="org.openmrs.module.kenyacore.form.FormDescriptor">
-		<property name="targetUuid" value="97592ed8-7aba-4fdc-b82c-c4fd54bdc4c1" />
-		<property name="apps">
-			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
-				<ref bean="kenyaemr.app.chart" />
-			</set>
-		</property>
-		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:evmmctrainingform.html" />
 	</bean>
 
 
@@ -187,7 +174,7 @@
 		<property name="targetUuid" value="bf0235d1-5caa-4957-89a1-ae2690c7cd15" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -199,7 +186,7 @@
 		<property name="targetUuid" value="ed966600-ff06-11ea-adc1-0242ac120002" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -211,7 +198,7 @@
 		<property name="targetUuid" value="050f7410-ad35-4a62-b509-2562da4b2ee4" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -223,7 +210,7 @@
 		<property name="targetUuid" value="6f9e453b-eaed-406e-8549-0d159c991f4f" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -235,7 +222,7 @@
 		<property name="targetUuid" value="12de1a31-2071-4402-9c84-43cbbb993227" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -247,7 +234,7 @@
 		<property name="targetUuid" value="7c45570a-fe4b-4d12-a6af-c8bfcdfd7ded" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -259,7 +246,7 @@
 		<property name="targetUuid" value="74b77231-d53a-4726-ae2e-eed8b6dd6fc2" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -271,7 +258,7 @@
 		<property name="targetUuid" value="c01ab09a-baf5-47c5-9b3f-02cdc27e9e8d" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
@@ -283,13 +270,15 @@
 		<property name="targetUuid" value="751c10ae-0e47-40b1-b1f9-ccdac5a1fc84" />
 		<property name="apps">
 			<set>
-				<ref bean="keaddonexample.app.socialworkapp" />
+				<ref bean="keaddonexample.app.cousellingapp" />
 				<ref bean="kenyaemr.app.chart" />
 			</set>
 		</property>
 		<property name="icon" value="keaddonexample:forms/example.png" />
 		<property name="htmlform" value="keaddonexample:cousellinggeneralsession.html" />
 	</bean>
+
+
 
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
 		<!-- Example of adding a form to the general visit form list -->
