@@ -161,3 +161,90 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+<%
+	ui.decorateWith("kenyaemr", "standardPage", [ patient: patient ])
+%>
+
+<div class="ke-page-content">
+	${ ui.decorate("kenyaui", "panel", [ heading: "Welcome" ], "This is an example page added by this module") }
+</div>
+
+
+<%
+	ui.decorateWith("kenyaemr", "standardPage", [ layout: "sidebar" ])
+
+	def menuItems = [
+			[ label: "View mUzima Queue", iconProvider: "kenyaemr", icon: "queue-icon.jpg", label: "View mUzima Queue", href: ui.pageLink("kenyaemr", "hivTesting/muzimaQueueHome") ]
+	]
+%>
+
+<div class="ke-page-sidebar">
+	${ ui.includeFragment("kenyaemr", "patient/patientSearchForm", [ defaultWhich: "all" ]) }
+	${ ui.includeFragment("kenyaui", "widget/panelMenu", [ heading: "mUzima Queue", items: menuItems ]) }
+</div>
+
+<div class="ke-page-content">
+	${ ui.includeFragment("kenyaemr", "patient/patientSearchResults", [ pageProvider: "keaddonexample", page: "example/swViewPatients" ]) }
+</div>
+
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery('input[name="query"]').focus();
+	});
+</script>
+
+
+
+
+
+
+
+
+<%
+	ui.decorateWith("kenyaemr", "standardPage", [ patient: currentPatient ])
+%>
+
+<div class="ke-page-content">
+
+	${ /*ui.includeFragment("kenyaui", "widget/tabMenu", [ items: [
+			[ label: "Overview", tabid: "overview" ],
+			[ label: "Lab Tests", tabid: "labtests" ],
+			[ label: "Prescriptions", tabid: "prescriptions" ]
+	] ])*/ "" }
+
+	<!--<div class="ke-tab" data-tabid="overview">-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td width="30%" valign="top">
+				${ ui.includeFragment("kenyaemr", "patient/patientSummary", [ patient: currentPatient ]) }
+				${ ui.includeFragment("kenyaemr", "patient/patientRelationships", [ patient: currentPatient ]) }
+				${ ui.includeFragment("kenyaemr", "program/programHistories", [ patient: currentPatient, showClinicalData: true ]) }
+			</td>
+			<td width="55%" valign="top" style="padding-left: 5px">
+				${ ui.includeFragment("kenyaemr", "visitMenu", [ patient: currentPatient, visit: activeVisit ]) }
+
+				${ ui.includeFragment("kenyaemr", "program/programCarePanels", [ patient: currentPatient, complete: false, activeOnly: true ]) }
+
+				<% if (activeVisit) { %>
+				${ ui.includeFragment("kenyaemr", "visitAvailableForms", [ visit: activeVisit ]) }
+				${ ui.includeFragment("kenyaemr", "visitCompletedForms", [ visit: activeVisit ]) }
+				<% } %>
+			</td>
+			<td width="15%" valign="top" style="padding-left: 5px">
+				${ ui.includeFragment("kenyaemr", "providerAction/providerActions") }
+			</td>
+		</tr>
+	</table>
+	<!--</div>-->
+
+</div>
+
+

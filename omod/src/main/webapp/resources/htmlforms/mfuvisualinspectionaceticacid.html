@@ -174,20 +174,18 @@
 
     <div class="ke-form-content">
         <fieldset class="physical-exam-tab">
-            <legend>
-                <strong> A. PHYSICAL EXAMINATION</strong>
-            </legend>
+
             <table class="simple-table" id="physical-exam-tbl">
                 <tr>
-                    <td> 1) Temperature (F)   :</td>
-                    <td>
-                        <obs conceptId="5088AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30" />
-                    </td>
-
-                    <td>2) Were there any abnormalities found on general physical exam?  :</td>
+                    <td>Did the cervix appear abnormal on gross pelvic exam? </td>
                     <td>
                         <obs conceptId="161074AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+
+                    </td>
+
+                    <td> If yes, Did you perform a VIA today?</td>
+                    <td>
+                        <obs conceptId="164401AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                     </td>
 
                 </tr>
@@ -195,356 +193,47 @@
             <table class="simple-table" id="physical-exam-tbl2">
 
                 <tr>
-                    <td> If yes, specify   :</td>
+                    <td> What was the result ?</td>
                     <td>
-                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30" />
+                        <obs conceptId="160108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             152384AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165232" style="radio"
+                             answerLabels="Negative,Positive,Suspicious,Inconclusive" /> <br /><br />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>If VIA is positive, was client eligible for thermocoagulation?</td>
+                    <td>
+                        <obs conceptId="165087"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+
+
+                    </td>
+
+
+                </tr>
+
+            </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+
+                <tr>
+
+                    <td>
+                        <obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" />
                     </td>
                 </tr>
 
             </table>
-        </fieldset>F
 
-            <fieldset id="pelvic-exam-tab">
-                <legend>
-                    <strong> B. PELVIC EXAMINATION </strong>
-                </legend>
-                <table class="simple-table" id="pelvic-exam-tbl">
-
-                    <tr>
-                        <td>3) Is there inguinal node enlargement? :</td>
-
-
-                        <td>
-                            <obs conceptId="160850AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                        <td>4) Is there abdominal tenderness? :</td>
-
-                        <td>
-                            <obs conceptId="160687AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>5) Are there any abdominal masses? :</td>
-
-                        <td>
-                            <obs conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                        <td>6) What was found on the external genital exam? :</td>
-
-                        <td>
-
-
-                            <obs id="genital-introitus" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Abnormal visible discharge at introitus" answerConceptId="1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-ulcers" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Ulcers" answerConceptId="145762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-child" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child" answerConceptId="1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-excoriations" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Excoriations" answerConceptId="140930AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-vesicles" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Vesicles" answerConceptId="123896AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-papules" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Papules" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-sores" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="128320AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="genital-normal" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Normal" answerConceptId="1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="genital-other" conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Other (specify) :</td>
-                        <td>
-                            <obs conceptId="160971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-
-                        <td>7) Where there any perineal warts on external genital exam? :</td>
-
-
-                        <td><obs conceptId="163743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>7a) If yes Size  :</td>
-                        <td>
-                            <obs conceptId="5195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-
-                        <td>7b) If yes Number of warts :</td>
-                        <td>
-                            <obs conceptId="164409AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                    </tr>
-                </table>
-                <table class="simple-table" id="pelvic-exam-tbl2">
-
-                    <tr>
-                        <td>7c) If yes Location of warts :</td>
-                        <td><obs conceptId="159483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
-
-                    </tr>
-                </table>
-                <table class="simple-table" id="pelvic-exam-tbl3">
-
-
-                    <tr>
-                        <td>8) Did the cervix appear abnormal on gross pelvic exam?  :</td>
-
-                        <td><obs conceptId="161022AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>8a) If yes, tick all that apply :? :</td>
-
-                        <td>
-
-                            <obs id="pelvic-exam-discharge" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Abnormal discharge" answerConceptId="1116AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-nabothian" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Nabothian" answerConceptId="133521AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-child" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child" answerConceptId="1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-blisters" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Blisters" answerConceptId="117963AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-touch" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Bleeds easily on touch" answerConceptId="103870AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-
-                            <obs id="pelvic-exam-Leukoplakia" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Leukoplakia" answerConceptId="135841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-Ulcers" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Ulcers" answerConceptId="123861AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-Cervicitis" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Cervicitis" answerConceptId="116995AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-IUCD" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="IUCD string" answerConceptId="5275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-Overt" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Overt cervical cancer" answerConceptId="165196" style="checkbox" /><hr/>
-
-                            <obs id="pelvic-exam-Fungating" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fungating mass" answerConceptId="85214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="pelvic-exam-other" conceptId="159800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-
-
-                        </td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>Other (Specify) :</td>
-
-                        <td>  <obs conceptId="160947AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-                        <td>9) What was the colour of vaginal discharge on dry swab? :    </td>
-                        <td>
-
-                            <obs id="discharge" conceptId="5994AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Brown,CLear,White,Yellow,Other Specify"
-                                 answerConceptIds="162100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,128469AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160910AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                             ,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 style="checkbox" /><hr/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Other specify</td>
-                        <td>
-                            <obs conceptId="160970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                        <td>10) Did you palpate the uterus) :</td>
-                        <td><obs conceptId="162737AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-                    </tr>
-
-                    <tr>
-                        <td>10a) If yes specify Estimated uterine size (cm) :</td>
-                        <td>
-                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                        <td>10b) If yes , Was the uterus tender? :</td>
-                        <td><obs conceptId="159367AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-                    </tr>
-
-                    <tr>
-                        <td>10c) If yes specify Were there possible fibroids? :</td>
-                        <td>
-
-                            <obs id="fibroids" conceptId="162864AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="NO,Yes,Unknown"
-                                 answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 style="dropdown" /><hr/>
-                        </td>
-
-                        <td>11) Was there any adnexal tenderness? :</td>
-                        <td><obs conceptId="160895AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-                    </tr>
-                                   
-
-
-                </table>
-                <br /><hr/><br />
-
-            </fieldset>
-
-            <!--Enhance adherence screening-->
-            <fieldset id="medical-followup-tab">
-                <legend>
-                    <strong> C VIA </strong>
-                </legend>
-                <table class="simple-table" id="medical-followup-tbl1">
-
-                    <tr>
-                        <td>12)Did you fully visualize the squamocolumnar junction? :</td>
-
-
-                        <td><obs conceptId="161502AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>13)Did you see aceto-white lesion? :</td>
-
-
-                        <td><obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>13a) if yes, specify color (tick one) :</td>
-                        <td>
-                            <obs id="color-aceto-white" conceptId="162311AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Cloud White,Dull White,Pale White,Shinny While"
-                                 answerConceptIds="1075AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,147096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                  162099AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" 
-                                 style="checkbox" /><hr/>
-                        </td>
-
-                        <td>11) Was there any adnexal tenderness? :</td>
-                        <td>
-
-                            <obs id="color-aceto-white" conceptId="160687AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabesls="Clear Sharp,Indistinct diffuse margin,Irregular margins,Raised Flat margins,Regular margins"
-                                 answerConceptIds="164838AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,157374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                  136814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,127746AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 style="checkbox" /><hr/>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>13c) Was it close to the transformation zone? :</td>
-
-
-                        <td><obs conceptId="161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>13d) Did it extend to the endocervical canal? :</td>
-
-
-                        <td><obs conceptId="162059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>13e) Did the lesion cover the whole transformation zone? :</td>
-
-
-                        <td><obs conceptId="164116AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>13f) Did the lesion cover the entire cervix? :</td>
-                        <td><obs conceptId="159966AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>13g) How many lesions did you see?  :</td>
-
-
-                        <td>  <obs conceptId="159516AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="8"/>
-                        </td>
-
-                        <td>13h) Estimate size of the largest lesion (cm)  :</td>
-
-                        <td>  <obs conceptId="162734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-
-                    </tr>
-                </table>
-
-                <table class="simple-table" id="notes-tbl">
-
-                <tr>
-                    <td>Notes:
-                        <obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="100" style="textarea" />
-                    </td>
-                </tr>
-                </table>
-
-            </fieldset>
-
-
-
-            <!--Review -->
-            <fieldset id="review">
-                <legend>
-                    D. DIAGNOSIS
-                </legend>
-                <table class="simple-table" id="review-questions">
-
-                    <tr>
-                        <td> 14) Normal exam :
-                        </td>
-                        <td>
-                            <obs conceptId="163049AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30"/>
-                        </td>
-
-                        <td>15) Candidiasis :</td>
-                        <td>
-                            <obs conceptId="165138"
-                                 size="30" />
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>16)Cervicitis :</td>
-                        <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>17) Pelvic Inflammatory disease :</td>
-                        <td><obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                    </tr>
-                </table>
-                <table class="simple-table" id="session">
-                    <tr>
-                        <td>18) Vulva warts :</td>
-                        <td>
-                            <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-
-
+        </fieldset>
 
     </div>
     <div class="ke-form-footer">

@@ -137,6 +137,7 @@
         });
         }
         }
+
     </script>
     <style>
         .simple-table {
@@ -161,13 +162,18 @@
         padding: 10px;
         text-shadow: 1px 1px 1px #fff;
         }
+
     </style>
 
     <div class="ke-form-header">
         <table width="100%">
             <tr>
-                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
-                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+                <td>Date:
+                    <encounterDate id="encounter-date" showTime="true"/>
+                </td>
+                <td>Location:
+                    <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete"/>
+                </td>
             </tr>
         </table>
     </div>
@@ -183,19 +189,43 @@
             <table class="simple-table" id="medication-adherence-tbl">
 
                 <tr>
-                    <td>1Is the patient currently taking any of the following medications?(if none, go to confirmatory test) :</td>
+                    <td>1 Is the patient currently taking any of the following medications?(if none, go to confirmatory
+                        test) :
+                    </td>
+
 
                     <td>
-                        <td>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Anti TB " answerConceptId="162309AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Dapsone " answerConceptId="74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="ART " answerConceptId="162703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Cotrimoxazole " answerConceptId="105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fluconazole " answerConceptId="76488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None of the above " answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Anti TB " answerConceptId="162309AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Dapsone " answerConceptId="74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="ART " answerConceptId="162703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Cotrimoxazole " answerConceptId="105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Fluconazole " answerConceptId="76488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="None of the above " answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
 
-
-                        </td>
 
                     </td>
 
@@ -233,31 +263,77 @@
                 <tr>
                     <td>1b. If poor or fair, indicate reasons (tick that apply) :</td>
                     <td>
-                        <td>
 
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Toxic-side effects " answerConceptId="130325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Felt better " answerConceptId="160586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Drug stock out " answerConceptId="1754AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Alchohol " answerConceptId="121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" Refused to take medications " answerConceptId="160018AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Share with others " answerConceptId="160583AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Too ill " answerConceptId="160585AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pill burden " answerConceptId="160588AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Depression " answerConceptId="119537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Forgot " answerConceptId="160587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma, disclosure or privacy issues " answerConceptId="164997" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient lost or ran out of pills " answerConceptId="160584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delivery or travel problems " answerConceptId="124153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                        </td>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Toxic-side effects "
+                             answerConceptId="130325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Felt better "
+                             answerConceptId="160586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Drug stock out "
+                             answerConceptId="1754AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Alchohol "
+                             answerConceptId="121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel=" Refused to take medications "
+                             answerConceptId="160018AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Share with others "
+                             answerConceptId="160583AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Too ill "
+                             answerConceptId="160585AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pill burden "
+                             answerConceptId="160588AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Depression "
+                             answerConceptId="119537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Forgot "
+                             answerConceptId="160587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Stigma, disclosure or privacy issues " answerConceptId="164997"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Patient lost or ran out of pills "
+                             answerConceptId="160584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delivery or travel problems "
+                             answerConceptId="124153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other"
+                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
 
                     </td>
 
-                    <td>Specify<td>
+
+                    <td>Specify
+                    </td>
+
+                    <td>
                         <obs conceptId="165002"
                              size="30"/>
-                    </td></td>
+                    </td>
 
                 </tr>
 
@@ -267,7 +343,10 @@
                 <tr>
                     <td>2. Has confirmatory test been done to the client :</td>
                     <td>
-                        <obs conceptId="165237"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        <obs conceptId="165237"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
                     </td>
                 </tr>
             </table>
@@ -285,7 +364,7 @@
                     </td>
                     <td>
                         <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30" />
+                             size="30"/>
                     </td>
 
 
@@ -368,189 +447,606 @@
                     </td>
                 </tr>
 
-
-
-
-
                 <tr>
 
                     <td>5a. Has the client informed this person of their serostatus :</td>
                     <td>
-                        <obs conceptId="163730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        <obs conceptId="163730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
 
                     </td>
 
                     <td>5a.i If not disclosed, why? (tick all that apply) :</td>
                     <td>
 
-                        <obs  conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma " answerConceptId="160589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                        <obs  conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Violence to self " answerConceptId="124824AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                        <obs  conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Dont know how to disclose " answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                        <obs  conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Abandonment " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other " answerConceptId="150387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma "
+                             answerConceptId="160589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Violence to self "
+                             answerConceptId="124824AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Dont know how to disclose "
+                             answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Abandonment "
+                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other "
+                             answerConceptId="150387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
 
 
                     </td>
-                    <td>Specify</td>
+
+
+                </tr>
+                <tr>
+                    <td>Specify :</td>
                     <td>
                         <obs conceptId="160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30" />
+                             size="50"/>
                     </td>
-
                 </tr>
 
             </table>
 
         </fieldset>
 
-            <!--Enhance adherence screening-->
-            <fieldset id="medication-adherence-tab3">
-                <legend>
-                    <strong> HIV Testing</strong>
-                </legend>
-                <table class="simple-table" id="medication-adherence-tbl4">
+        <!--Enhance adherence screening-->
+        <fieldset id="medication-adherence-tab3">
+            <legend>
+                <strong> HIV Testing</strong>
+            </legend>
+            <table class="simple-table" id="medication-adherence-tbl4">
 
-                    <tr>
-                        <td>6 Have you ever had sex? :</td>
-                        <td>
-                            <obs conceptId="165088"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
+                <tr>
+                    <td>6 Have you ever had sex? :</td>
+                    <td>
+                        <obs conceptId="165088"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
 
-                        <td>7 Is the patient sexually active? :</td>
-                        <td>
-                            <obs conceptId="160109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-                    </tr>
+                    <td>7 Is the patient sexually active? :</td>
+                    <td>
+                        <obs conceptId="160109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>7a. If yes, are they on any of these?(tick all that apply) :</td>
+                <tr>
+                    <td>7a. If yes, are they on any of these?(tick all that apply) :</td>
 
-                        <td>
+                    <td>
 
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" Multiple sexual partner" answerConceptId="5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Sex for money" answerConceptId="159710AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Sex without condom" answerConceptId="190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Sex when high on drugs" answerConceptId="118855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="MSM" answerConceptId="160578AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="FSW" answerConceptId="165083" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="PWID" answerConceptId="127100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not applicable" answerConceptId="1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel=" Multiple sexual partner"
+                             answerConceptId="5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Sex for money" answerConceptId="159710AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Sex without condom" answerConceptId="190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Sex when high on drugs" answerConceptId="118855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="MSM"
+                             answerConceptId="160578AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="FSW"
+                             answerConceptId="165083" style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="PWID"
+                             answerConceptId="127100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+                        <obs id="occupation-student" conceptId="159385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Not applicable" answerConceptId="1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
 
-                        </td>
-                        <td>8 Has any of your sexual partners been tested?(If yes go to 8b, if Has No partner go to 11) :</td>
-                        <td>
+                    </td>
+                    <td>8 Has any of your sexual partners been tested?(If yes go to 8b, if Has No partner go to 11) :
+                    </td>
+                    <td>
 
-                            <obs
-                                    conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                        <obs
+                                conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
                                     159524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="No,Yes,Has no sexual partner"
-                            />
-                        </td>
+                                answerLabels="No,Yes,Has no sexual partner"
+                        />
+                    </td>
 
-                    </tr>
+                </tr>
 
-                    <tr>
-                        <td>8a If not tested, indicate reason (go to 10) :</td>
+                <tr>
+                    <td>8a If not tested, indicate reason (go to 10) :</td>
 
-                        <td>
+                    <td>
 
-                            <obs  conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client has not disclosed HIV status " answerConceptId="164995" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Client has disclosed but partner not willing to get tested " answerConceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs  conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Others (specify) " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Client has not disclosed HIV status " answerConceptId="164995"
+                             style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Client has disclosed but partner not willing to get tested "
+                             answerConceptId="163524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
+                        <obs conceptId="161557AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Others (specify) "
+                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <br></br>
+                        <hr/>
 
-                        </td>
+                    </td>
 
 
-                        <td>specify :</td>
-                        <td>
-                            <obs conceptId="163761AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
+                    <td>specify :</td>
+                    <td>
+                        <obs conceptId="163761AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
 
-                    </tr>
+                </tr>
 
-                    <tr>
-                        <td>8b Describe HIV test results and HIV care for each sexual partner 1 Relationship :</td>
-                        <td>
-                            <obs
-                                    conceptId="165294" style="dropdown"
-                                    answerConceptIds="163565AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165028,
+                <tr>
+                    <td>8b Describe HIV test results and HIV care for each sexual partner 1 Relationship :</td>
+                    <td>
+                        <obs
+                                conceptId="165294" style="dropdown"
+                                answerConceptIds="163565AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165028,
                                     5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="Casual partner,Steady partner,Spouse"
-                            />
-                        </td>
+                                answerLabels="Casual partner,Steady partner,Spouse"
+                        />
+                    </td>
 
-                        <td>Test result :</td>
-                        <td>
+                    <td>Test result :</td>
+                    <td>
 
-                            <obs
-                                    conceptId="159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                        <obs
+                                conceptId="159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
                                     1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="Negative,Positive,Not tested,Unknown"
-                            />
-                        </td>
-                    </tr>
+                                answerLabels="Negative,Positive,Not tested,Unknown"
+                        />
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>Recieving HAART and or HIV care at Hope clinic? : </td>
-                        <td>
-                            <obs
-                                    conceptId="1768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                <tr>
+                    <td>Recieving HAART and or HIV care at Hope clinic? :</td>
+                    <td>
+                        <obs
+                                conceptId="1768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
                                     1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="NA,No,Yes,Unknown"
-                            />
-                        </td>
-                        <td>If receiving HIV care at Hope clinic. Spouse 1 HOPEID :</td>
-                        <td>
-                            <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30"/>
-                        </td>
-                    </tr>
+                                answerLabels="NA,No,Yes,Unknown"
+                        />
+                    </td>
+                    <td>If receiving HIV care at Hope clinic. Spouse 1 HOPEID :</td>
+                    <td>
+                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>If receiving HIV care at Hope clinic.Unknown Spouse 1 :</td>
-                        <td><input type="checkbox" name="question-7" class="question-7" value="1065"/> <br></br></td>
+                <tr>
+                    <td>If receiving HIV care at Hope clinic.Unknown Spouse 1 :</td>
+                    <td><input type="checkbox" name="question-7" class="question-7" value="1065"/></td>
 
-                        <td>2 Relationship Spouse 2 :</td>
-                        <td>
-                            <obs
-                                    conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="163565AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165028,
+                    <td>2 Relationship Spouse 2 :</td>
+                    <td>
+                        <obs
+                                conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="163565AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165028,
                                     5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="Casual partner,Steady partner,Spouse"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Test result Spouse 2 :</td>
-                        <td>
-                            <obs
-                                    conceptId="5563AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                answerLabels="Casual partner,Steady partner,Spouse"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Test result Spouse 2 :</td>
+                    <td>
+                        <obs
+                                conceptId="5563AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
                                     1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="Negative,Positive,Not tested,Unknown"
-                            />
-                        </td>
+                                answerLabels="Negative,Positive,Not tested,Unknown"
+                        />
+                    </td>
 
 
+                    <td>If unknown Spouse 2 :</td>
+                    <td>
+                        <obs conceptId="161135AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
 
-                        <td>If unknown Spouse 2 :</td>
-                        <td>
-                            <obs conceptId="161135AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30"/>
-                        </td>
+                </tr>
+                <!--New Updates start here-->
+                <tr>
+                    <td>If receiving HIV care at Hope Clinic Spouse 2 HOPEID :
+                    </td>
+                    <td>
+                        <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="30"/>
+                    </td>
+                    <td>
+                        If unkown Spouse 2 :
+                    </td>
+                    <td>
+                        <obs conceptId="165092"
+                             size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3 Relationship Spouse 3 :
+                    </td>
+                    <td>
+                        <obs
+                                conceptId="159928AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="163565AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165028,
+                                    5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Casual partner,Steady partner,Spouse"
+                        />
+                    </td>
+                    <td>
+                        Test result Spouse 3
+                    </td>
+                    <td>
+                        <obs
+                                conceptId="164460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Negative,Positive,Not tested,Unknown"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Recieving HAART or care at Hope? Spouse 3 :
+                    </td>
+                    <td>
+                        <obs
+                                conceptId="160488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="NA,No,Yes,Unknown"
+                        />
+                    </td>
+                    <td>
+                        Receiving HIV care at Hope clinic Spouse 3 :
+                    </td>
 
-                    </tr>
+                    <td>
+                        <obs conceptId="1710AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"
 
-                </table>
-            </fieldset>
+                        />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        If Uknown Spouse 3 ,HOPEID :
+                    </td>
+
+                    <td>
+                        <obs conceptId="165142"
+                             size="30"/>
+                    </td>
+                    <td>
+                        9 How many children less than 18 years does the client have or care for ?(if zero go to 10) :
+                    </td>
+                    <td>
+                        <obs conceptId="5570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        9a How many have been tested ? :
+                    </td>
+                    <td>
+                        <obs conceptId="159907AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                    <td>
+                        9ai How many are positive ? :
+                    </td>
+                    <td>
+                        <obs conceptId="163172AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        9aii How many are receiving HAART? :
+                    </td>
+
+                    <td>
+                        <obs conceptId="1186AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        10 Are you able to talk about using condoms with your sexual partner? :
+                    </td>
+                    <td>
+                        <obs conceptId="165286" answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          162570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No,Refused to answer"/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        10ai In the last 6 months how often did you use condoms? :
+                    </td>
+                    <td>
+                        <obs conceptId="165142"
+                             size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        11 Did you offer condoms? :
+                    </td>
+                    <td>
+                        <obs conceptId="165097"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        11a If yes did the patient pick condoms? :
+                    </td>
+                    <td>
+                        <obs conceptId="1357AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+                    <td>
+                        11ai If yes how many? :
+                    </td>
+                    <td>
+                        <obs conceptId="160601AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="30">
+
+                        </obs>
+
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+        <fieldset class="Alcohol and or Drug Abuse-tab">
+            <legend>
+                <strong> Alcohol and or Drug Abuse</strong>
+            </legend>
+            <table class="simple-table" id="session-tbl">
+                <tr>
+                    <td>
+                        12. Does the patient abuse substance? (If yes go to 12a, if no go to 13) :
+                    </td>
+                    <td>
+                        <obs conceptId="165263"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                        &nbsp;&nbsp;&nbsp;
+
+                    </td>
+                    <td>
+                        12a. If yes, which ones?(Tick all that apply)
+                    </td>
+                    <td>
+                        <obs id="drug-abuse-diazepam" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="drugs(diazepam,Tranquilizer"
+                             answerConceptId="113064AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+                        <obs id="drug-abuse-alcohol" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="drugs(diazepam,Tranquilizer"
+                             answerConceptId="121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+
+                        <obs id="drug-abuse-inhalants" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Inhalants(Glue,petrol)" answerConceptId="116945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="drug-abuse-miraa" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Miraa(khat)" answerConceptId="113064AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="drug-abuse-opiates" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Opiates(Heroine)izer" answerConceptId="114750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="drug-abuse-cannabis" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Cannabis(bhang)" answerConceptId="146504AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="drug-abuse-hallucinogens" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Hallucinogens" answerConceptId="117715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="drug-abuse-others" conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Others" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+
+                    </td>
+                </tr>
+            </table>
+
+        </fieldset>
+        <fieldset class="Social Support-tab">
+            <legend>
+                <strong> Social Support</strong>
+            </legend>
+            <table class="simple-table" id="session-tbl2">
+                <tr>
+                    <td>
+                        13. Has the patient been subjected to violence due to the HIV status(If yes refer Accordingly) :
+                    </td>
+                    <td>
+                        <obs conceptId="165204" answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
+                          162570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No,Refused to answer"/>
+                        <br/><br/>
+                    </td>
+                    <td>
+                        14 In the last 2 weeks, have you been
+                    </td>
+                    <td>
+                        14(i) Having little pleasure in doing things :
+                    </td>
+
+                    <td>
+                        <obs conceptId="164966"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    14(ii) Depressed/hopeless :
+
+                    <td>
+                        <obs conceptId="1863"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                    <td>
+                        14(iii) Feeling Down :
+                    </td>
+                    <td>
+                        <obs conceptId="164966"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        15.Is the client recommended for homecare?(If yes refer to HTC) :
+                    </td>
+                    <td>
+                        <obs conceptId="163000"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                    <td>
+                        16.1.Overview of HOPE Center Program and Services :
+                    </td>
+                    <td>
+                        <obs conceptId="159928"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.Importance of commitment to the program
+                    </td>
+                    <td>
+                        <obs conceptId="162276"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                    <td>
+                        4.Patients enrollment status in other programs or facilities :
+                    </td>
+                    <td>
+                        <obs conceptId="162055"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        5.Patients long term goals for health management at our program :
+                    </td>
+                    <td>
+                        <obs conceptId="159928"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                    <td>
+                        3 Policy for adherence and clinic attendance :
+                    </td>
+                    <td>
+                        <obs conceptId="164075"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+
+                    </td>
+                </tr>
+
+
+            </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+
+                <tr>
+
+                    <td>
+                        <obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea"/>
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
 
     </div>
     <div class="ke-form-footer">
-        <submit />
+        <submit/>
     </div>
 
 </htmlform>

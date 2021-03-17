@@ -197,7 +197,7 @@
                     <td>
                         <obs
                                 id="relationship-phone-owner" conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                style="radio"
+                                style="dropdown"
                                 answerConceptIds="1581, 163356,971,970,160273,160726,160730,1555,974,5622"
                                 answerLabels="Aunt,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Social Worker,Uncle,Other"
                         />
@@ -206,8 +206,10 @@
 
                 <tr>
                     <td>Specify</td>
+                    <td>
                         <obs conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
+                    </td>
 
                     <td>2a. Is the accompanier in the session willing to support the child in treatment?( yes 2b,no go to 2c :</td>
                     <td>
@@ -225,10 +227,12 @@
                         />
                     </td>
 
-                    <td>Specify<td>
+                    <td>Specify</td>
+
+                    <td>
                         <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number" />
-                    </td></td>
+                    </td>
 
                 </tr>
                 <tr>
@@ -259,10 +263,12 @@
 
                 </tr>
                 <tr>
-                    <td>Specify<td>
-                        <obs conceptId="163466AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    <td>Specify</td>
+                    <td>
+                        <obs conceptId="165298"
                              size="30" />
-                    </td>Status</td>
+                </td>
+                    <td>Status</td>
 
                     <td>
                         <obs
@@ -308,10 +314,12 @@
                         />
                     </td>
 
-                    <td>If yes hope ID<td>
+                    <td>If yes hope ID</td>
+
+                    <td>
                         <obs conceptId="5325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              size="30" />
-                    </td></td>
+                    </td>
                 </tr>
 
                 <tr>
@@ -320,10 +328,12 @@
                         <obs  conceptId="1695AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" " answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
 
                     </td>
-                    <td>Name<td>
-                        <obs conceptId="1593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30"/>
-                    </td></td>
+                    <td>Name</td>
+
+                    <td>
+                    <obs conceptId="1593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         size="30"/>
+                    </td>
                 </tr>
 
                 <tr>
@@ -382,12 +392,15 @@
                 <tr>
                     <td>Unknown</td>
                     <td>
-                        <obs conceptId="159871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs conceptId="159871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
                     </td>
-                    <td>Name<td>
-                        <obs conceptId="1526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30" />
-                    </td></td>
+                    <td>Name</td>
+
+                    <td>
+                    <obs conceptId="1526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         size="30" />
+
+                  </td>
                 </tr>
 
                 <tr>
@@ -452,10 +465,9 @@
 
                 <tr>
                     <td>8a If yes, tick all that apply :</td>
-                    <td>>
+                    <td>
                         <obs id="child-readiness-Other" conceptId="164942" answerLabel="Mother " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
 
-                        <obs id="child-readiness-Other" conceptId="164942" answerLabel="Father " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
 
                         <obs id="child-readiness-Other" conceptId="164942" answerLabel="Father " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
                         <obs id="child-readiness-Other" conceptId="164942" answerLabel="Other " answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
@@ -535,7 +547,7 @@
                 <legend>
                     <strong> Assess HIV , Hygiene Knowledge and Risk factors</strong>
                 </legend>
-                <table class="simple-table" id="disclosure-tbl2">
+                <table class="simple-table" id="Knowledge-tbl2">
 
                     <tr>
                         <td>11 Indicate that you have provided information on the HIV infection :</td>
@@ -595,10 +607,171 @@
                                     answerLabels="No,Yes,Unknown"
                             />
                         </td>
+                        <!-- NEW UPDATES STARTS HERE -->
+
+                        <td>
+                            13b1 If yes, who is abusing the child? (tick all that apply) :
+                        </td>
+                        <td>
+                               <obs
+                                    conceptId="1726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                    answerConceptIds="970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Mother,Father,Brother,Sister,Cousin"
+                            />
+                        </td>
                     </tr>
+                   
+                </table>
+            </fieldset>
+
+            <fieldset class="disclosure-tab1">
+            <!--Enhance adherence screening-->
+                <legend>
+                    <strong> Assess HIV , Hygiene Knowledge and Risk factors</strong>
+                </legend>
+                <table class="simple-table" id="disclosure-tbl2">
+
+                     <tr>
+                        <td>
+                            14.Who forms the patients closes social support :
+                        </td>
+                        <td>
+                             <obs
+                                    conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                    answerConceptIds="970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Mother,Father,Brother,Sister,Cousin"
+                            />
+                        </td>
+                         <td>Specify :</td>
+                    <td>
+                        <obs conceptId="160642AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            15.Does the patient feel neglected by anyone ? :
+                        </td>
+                        <td>
+                            <obs
+                                    conceptId="162728AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                    answerConceptIds="156278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Family,Friends,Healthcare,None,Other(specify)"
+                            />
+                        </td>
+                         <td>Specify :</td>
+                        <td>
+                            <obs conceptId="165092"
+                                 size="30"/>
+                        </td>
+                    </tr>
+                    <tr>
+                       
+                        <td>
+                            16b.Please inficate any anxiety symptoms obseved :
+                        </td>
+                        <td>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Restlessness" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Restless sleep" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Specific fears" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fear or dying" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Heart is racing" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Trouble breathing" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Irritable" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Nausea" answerConceptId="163475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wont leave caregivers side" answerConceptId="164830AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wont go to school or leave home" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="150381AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+                        </td>
+
+                        <td>
+                            16c.Indicate pschosis symptoms is any :
+                        </td>
+                        <td>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child having thought disorganization" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Disorganized behavior" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Hallusination" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Very poor hygiene" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delusional thoughts" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Age and cognitive development" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            16d.Other conditions - specify :
+                        </td>
+
+                    <td>
+                        <obs conceptId="165092"
+                             size="30"/>
+                    </td>
+
+                        <td>
+                      17a Counselor have explained on overview of Hope Center program and services :    
+                        </td>
+                        <td>
+                             <obs conceptId="160478"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            b. Counselor have explained on Policy for enrollment and clinic attendance :    
+                        </td>
+                         <td>
+                             <obs conceptId="163466"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+                        <td>
+                            c. Policy for pediatric treatment initiation and adherence :
+                        </td>
+                        <td>
+                            <obs conceptId="160316"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+                    </tr>
+
+
 
                 </table>
             </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summury/program:</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+                <tr>
+                    <td>
+                        d. Patients long term goals for healthe management in the program :
+                    </td>
+                    <td>
+                        <obs conceptId="164836"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+                </tr>
+
+
+                <tr>
+
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
+        </fieldset>
 
 
 

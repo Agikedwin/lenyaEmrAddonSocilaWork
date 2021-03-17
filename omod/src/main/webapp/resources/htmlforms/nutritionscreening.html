@@ -137,6 +137,7 @@
         });
         }
         }
+
     </script>
     <style>
         .simple-table {
@@ -161,13 +162,18 @@
         padding: 10px;
         text-shadow: 1px 1px 1px #fff;
         }
+
     </style>
 
     <div class="ke-form-header">
         <table width="100%">
             <tr>
-                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
-                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+                <td>Date:
+                    <encounterDate id="encounter-date" showTime="true"/>
+                </td>
+                <td>Location:
+                    <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete"/>
+                </td>
             </tr>
         </table>
     </div>
@@ -179,45 +185,47 @@
             </legend>
             <table class="simple-table" id="nutrition-tbl">
                 <tr>
-                    <td> Weight  :</td>
+                    <td> Weight :</td>
                     <td>
                         <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="nutrition-weight" />
+                             id="nutrition-weight"/>
                     </td>
 
                     <td>Height :</td>
-                    <td>  <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                               id="nutrition-height" size="30" />
+                    <td>
+                        <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-height" size="30"/>
                     </td>
 
                 </tr>
 
                 <tr>
-                    <td> BMI  :</td>
+                    <td> BMI :</td>
 
                     <td>
                         <obs conceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="nutrition-bmi"  size="30"/>
+                             id="nutrition-bmi" size="30"/>
                     </td>
 
                     <td>Hip Circ :</td>
                     <td>
-                    <obs conceptId="163081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                               id="nutrition-hip" size="30"/>
+                        <obs conceptId="163081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-hip" size="30"/>
                     </td>
 
                 </tr>
 
                 <tr>
-                    <td> Waist Circ.  :</td>
+                    <td> Waist Circ. :</td>
                     <td>
                         <obs conceptId="163080AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="nutrition-waist"  size="30"/>
+                             id="nutrition-waist" size="30"/>
                     </td>
 
-                    <td>Waist: Hip Ratio  :</td>
-                    <td>  <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                               id="nutrition-ration" size="30" />
+                    <td>Waist: Hip Ratio :</td>
+                    <td>
+                        <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="nutrition-ration" size="30"/>
                     </td>
 
                 </tr>
@@ -227,345 +235,513 @@
                     <td> MUAC :</td>
                     <td>
                         <obs conceptId="1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             id="nutrition-muac" size="30" />
+                             id="nutrition-muac" size="30"/>
                     </td>
 
                     <td>Z-Score :</td>
-                        <td>
-                            <obs
-                                    id="nutrition-z-score" conceptId="161140AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                    answerConceptIds="1097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                    answerLabels="Less Or Equal -3.0,Less Or Equal -2.0,Greater Or Equal -1.0"
-                            />
+                    <td>
+                        <obs
+                                id="nutrition-z-score" conceptId="161140AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
+                                answerConceptIds="1097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Less Or Equal -3.0,Less Or Equal -2.0,Greater Or Equal -1.0"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td> Nutrition diagnosis for today’s visit</td>
+
+                    <td>
+                        <obs
+                                id="nutrition-diagnosis" conceptId="161648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"
+                                answerConceptIds="1500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,114413AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,132626AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="Severe Case,Mild or Moderate,Normal,Overweight,Obese,"
+                        />
                     </td>
                 </tr>
 
             </table>
         </fieldset>
 
+
+        <fieldset id="nutrition-medical-tab">
+            <legend>
+                <strong> 2 Medical </strong>
+            </legend>
+            <table class="simple-table" id="nutrition-medical-tbl">
+
+                <tr>
+                    <td>Nausea</td>
+
+
+                    <td>
+                        <obs conceptId="161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+
+                    <td>Diarrhoea</td>
+
+                    <td>
+                        <obs conceptId="1848AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Weight Loss > 10% :</td>
+
+                    <td>
+                        <obs conceptId="164201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+
+                    <td>Swallowing Difficulty :</td>
+
+                    <td>
+                        <obs conceptId="159356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Poor Appetite :</td>
+
+
+                    <td>
+                        <obs conceptId="159402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Vomiting :</td>
+
+
+                    <td>
+                        <obs conceptId="1429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Constipation :</td>
+                    <td>
+                        <obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Chewing / Teeth Problem :</td>
+                    <td>
+                        <obs conceptId="6097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Taste Changes :</td>
+
+
+                    <td>
+                        <obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Other Medical Conditions :</td>
+
+
+                    <td>
+                        <obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Specify :</td>
+
+                    <td>
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                    <td>Medications? :</td>
+
+
+                    <td>
+                        <obs conceptId="159369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                </tr>
+            </table>
+            <table class="simple-table" id="nutrition-tbl3">
+
+                <tr>
+                    <td>Specify Medications :</td>
+
+                    <td>
+                        <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+
+                </tr>
+
+
+            </table>
+
+
+        </fieldset>
+
+        <!--Enhance adherence screening-->
+        <fieldset id="enhanced-adherence-tab">
+            <legend>
+                <strong> 3 Social History </strong>
+            </legend>
+            <table class="simple-table" id="adherence-1">
+
+                <tr>
+                    <td>Adequate Food :</td>
+
+
+                    <td>
+                        <obs conceptId="164214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Activity / Exercise :</td>
+
+
+                    <td>
+                        <obs conceptId="160895AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Smoking :</td>
+
+
+                    <td>
+                        <obs conceptId="163201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Specify smoking :</td>
+
+                    <td>
+                        <obs conceptId="160970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Alchohol :</td>
+
+
+                    <td>
+                        <obs conceptId="159453AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Specify alcohol :</td>
+
+                    <td>
+                        <obs conceptId="163104AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Drugs :</td>
+
+
+                    <td>
+                        <obs conceptId="165001"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+
+                    <td>Specify drugs :</td>
+
+                    <td>
+                        <obs conceptId="160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+
+            </table>
+            <br/>
+            <hr/>
+            <br/>
+
+        </fieldset>
+
+
+        <!--Review -->
+        <fieldset id="nutrition-tab2">
+            <legend>
+                5 Dietary History PROCEED
+            </legend>
+            <table class="simple-table" id="nutrition-tbl4">
+
+                <tr>
+                    <td> 5a Number of meals or snacks per day :
+                    </td>
+                    <td>
+                        <obs conceptId="164393AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                    <td>5b Times per week eat out :</td>
+                    <td>
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5c Who prepares food ? :</td>
+                    <td>
+
+                        <obs id="relationship-self" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Self"
+                             answerConceptId="978AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+
+                        <obs id="drelationship-spouse" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Spouse" answerConceptId="5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="relationship-child" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Child" answerConceptId="1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="relationship-neighbor" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Neighbor" answerConceptId="163502AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="relationship-relative" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Relative" answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+                        <obs id="relationship-others" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Others" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                    </td>
+
+                    <td> 5c Specify :</td>
+                    <td>
+                        <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5d Special or alternative diets :</td>
+                    <td>
+                        <obs conceptId="161005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td>5d Specify :</td>
+                    <td>
+                        <obs conceptId="163189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             id="session-number"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>5e Food Intolerances of allergies :</td>
+                    <td>
+                        <obs conceptId="5484AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td>5e Specify : :</td>
+                    <td>
+                        <obs conceptId="162151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>5f Food Likes :</td>
+                    <td>
+                        <obs conceptId="1380AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td>5f Specify :</td>
+                    <td>
+                        <obs conceptId="160960AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>5g Food dislikes :</td>
+                    <td>
+                        <obs conceptId="161073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td>5g Specify :</td>
+                    <td>
+                        <obs conceptId="160221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>6a Is the patient on food supplements? :</td>
+                    <td>
+                        <obs conceptId="164804AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td> 6a If yes, which type of food supplements?</td>
+
+                    <td>
+                        <obs id="relationship-others" conceptId="162708AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabels="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
+                             answerConceptIds="118108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162738AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,112323AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio"/>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>7 Is the client initiating supplements today? :</td>
+                    <td>
+                        <obs conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Yes,No"/>
+                        <br/><br/></td>
+
+                    <td>7a If yes why? :</td>
+
+                    <td>
+                        <obs id="supplements-bmi" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI18.5"
+                             answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+
+                        <obs id="supplements-pregnany" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox"/>
+                        <hr/>
+
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Breastfeeding Mother (MUAC-23)"
+                             answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+
+                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk"
+                             answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+                        <hr/>
+
+
+                    </td>
+
+                </tr>
+
+                <td> Supplements commodity </td>
+
+                <td>
+                    <obs id="supplements-bmi" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="First Food"
+                         answerConceptId="159597AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+
+                    <obs id="supplements-pregnany" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         answerLabel="Foundation" answerConceptId="162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         style="checkbox"/>
+
+                    <obs id="supplements" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         answerLabel="RUSF"
+                         answerConceptId="162709AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+
+                    <obs id="supplements" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Advantaged"
+                         answerConceptId="80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+
+                    <obs id="supplements" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUTF"
+                         answerConceptId="160552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+
+                    <obs id="supplements" conceptId="161534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="CSB"
+                         answerConceptId="154013AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
+
+                </td>
+
+            </table>
+        </fieldset>
+
         <fieldset class="adherence-screening">
             <!--Enhance adherence screening-->
-            <fieldset id="nutrition-medical-tab">
-                <legend>
-                    <strong> 2 Medical </strong>
-                </legend>
-                <table class="simple-table" id="nutrition-medical-tbl">
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
 
-                    <tr>
-                        <td>Nausea</td>
+                <tr>
 
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
 
-                            <td>
-                                <obs conceptId="161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                            </td>
+            </table>
 
-                        <td>Diarrhoea</td>
-
-                        <td>
-                            <obs conceptId="1848AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Weight Loss > 10% :</td>
-
-                        <td>
-                            <obs conceptId="164201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                        <td>Swallowing Difficulty :</td>
-
-                            <td>
-                                <obs conceptId="159356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                            </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Poor Appetite :</td>
-
-
-                            <td><obs conceptId="159402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Vomiting :</td>
-
-
-                            <td><obs conceptId="1429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>Constipation :</td>
-                            <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Chewing / Teeth Problem :</td>
-                            <td><obs conceptId="6097AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>Taste Changes :</td>
-
-
-                            <td><obs conceptId="159721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Other Medical Conditions :</td>
-
-
-                            <td><obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>Specify :</td>
-
-                        <td>  <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                  size="30"/>
-                        </td>
-                        <td>Medications? :</td>
-
-
-                            <td><obs conceptId="159369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-                </table>
-                <table class="simple-table" id="nutrition-tbl3">
-
-                    <tr>
-                        <td>Specify Medications :</td>
-
-                        <td>  <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-
-
-                    </tr>
-
-
-                </table>
-
-
-            </fieldset>
-
-            <!--Enhance adherence screening-->
-            <fieldset id="enhanced-adherence-tab">
-                <legend>
-                    <strong> 3 Social History </strong>
-                </legend>
-                <table class="simple-table" id="adherence-1">
-
-                    <tr>
-                        <td>Adequate Food :</td>
-
-
-                            <td><obs conceptId="164214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Activity / Exercise :</td>
-
-
-                            <td><obs conceptId="160895AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>Smoking :</td>
-
-
-                            <td><obs conceptId="163201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Specify smoking  :</td>
-
-                        <td>  <obs conceptId="160970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Alchohol :</td>
-
-
-                            <td><obs conceptId="159453AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Specify alcohol :</td>
-
-                        <td>  <obs conceptId="163104AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Drugs  :</td>
-
-
-                            <td><obs conceptId="165001"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>Specify drugs :</td>
-
-                        <td>  <obs conceptId="160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                   size="30" />
-                        </td>
-
-                    </tr>
-
-
-                </table>
-                <br /><hr/><br />
-
-            </fieldset>
-
-
-
-            <!--Review -->
-            <fieldset id="nutrition-tab2">
-                <legend>
-                    5 Dietary History PROCEED
-                </legend>
-                <table class="simple-table" id="nutrition-tbl4">
-
-                    <tr>
-                        <td> 5a Number of meals or snacks per day :
-                        </td>
-                        <td>
-                            <obs conceptId="164393AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-
-                        <td>5b Times per week eat out :</td>
-                        <td>
-                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5c Who prepares food ? : </td>
-                        <td>
-
-                            <obs id="relationship-self" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Self" answerConceptId="978AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="drelationship-spouse" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Spouse" answerConceptId="5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="relationship-child" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child" answerConceptId="1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="relationship-neighbor" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Neighbor" answerConceptId="163502AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="relationship-relative" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Relative" answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                            <obs id="relationship-others" conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Others" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                        </td>
-
-                        <td> 5c Specify :</td>
-                        <td>
-                            <obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>5d Special or alternative diets :</td>
-                        <td><obs conceptId="161005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>5d Specify :</td>
-                        <td>
-                            <obs conceptId="163189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 id="session-number" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>5e Food Intolerances of allergies :</td>
-                        <td><obs conceptId="5484AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>5e Specify : :</td>
-                        <td>
-                            <obs conceptId="162151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30"/>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>5f Food Likes :</td>
-                        <td><obs conceptId="1380AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>5f Specify :</td>
-                        <td>
-                            <obs conceptId="160960AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>5g Food dislikes :</td>
-                        <td><obs conceptId="161073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>5g Specify :</td>
-                        <td>
-                            <obs conceptId="160221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 size="30" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>6a Is the patient on food supplements? :</td>
-                        <td><obs conceptId="164804AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td> 6a If yes, which type of food supplements? </td>
-
-                        <td>
-                            <obs id="relationship-others" conceptId="162708AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
-                                 answerConceptIds="118108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162738AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,112323AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 style="radio" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>7 Is the client initiating supplements today? :</td>
-                        <td><obs conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-                        <td>7a If yes why? :</td>
-
-                        <td>
-                            <obs id="supplements-bmi" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI18.5" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="supplements-pregnany" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC-23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-                            <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-
-
-
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-
-    </fieldset>
+        </fieldset>
 
 
     </div>
     <div class="ke-form-footer">
-        <submit />
+        <submit/>
     </div>
 
 </htmlform>

@@ -1,3 +1,5 @@
+
+
 <%
 	ui.decorateWith("kenyaemr", "standardPage", [ patient: patient ])
 %>
@@ -29,3 +31,6 @@
 		jQuery('input[name="query"]').focus();
 	});
 </script>
+
+
+

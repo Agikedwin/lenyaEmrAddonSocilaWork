@@ -213,7 +213,7 @@
                     </td>
                     <td>Specify</td>
                     <td>
-                        <obs conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
+                        <obs conceptId="163229AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                 </tr>
@@ -221,7 +221,7 @@
                 <tr>
                     <td>3. Are both parents alive? (If Yes go to 4, if No go to 4a) :</td>
                     <td>
-                        <obs conceptId="160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs conceptId="5561AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="radio" answerLabels="Yes,No" /> <br /><br />
                         </td>
@@ -243,13 +243,13 @@
                     </td>
                     <td>
                         <obs id="other-family" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            answerLabel=" Other family member" answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                            answerLabel=" Other family member" answerConceptId="5620AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
                         <hr />
                     </td>
                     <td>
                         <obs id="Parents" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Mother"
-                            answerConceptId="1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" />
+                            answerConceptId="1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" />
                     </td>
                     <td>
                         <obs id="foster-parent" conceptId="159892AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -369,7 +369,7 @@
 
                     <td> Other (Specify) : </td>
                     <td>
-                        <obs conceptId="163398AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
+                        <obs conceptId="162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="session-number" size="30" />
                     </td>
 
                 </tr>
@@ -397,7 +397,7 @@
                     </td>
 
 
-                    <td>
+                    <td>9. Does the child have a caregiver?(if yes, go to 9a,if No go to 10) :
                         <obs conceptId="164942"
                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="radio" answerLabels="Yes,No" /> <br /><br />
@@ -472,7 +472,7 @@
                             style="checkbox" />
                         <hr />
 
-                        <obs id="occupation-" conceptId="160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="House wife"
+                        <obs id="occupation-" conceptId="165293" answerLabel="House wife"
                             answerConceptId="160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" />
                         <hr />
 
@@ -524,23 +524,23 @@
                 <tr>
                     <td>13. What is the childs highest level of education?(tick one) </td>
                     <td>
-                        <obs id="education-level-primary" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs id="education-level-primary" conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="Beyond primary" answerConceptId="163123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
-                        <obs id="education-level-five-to-eight" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs id="education-level-five-to-eight" conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="Five to eight years of primary education"
                             answerConceptId="163122AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" />
 
-                        <obs id="education-level-lower" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs id="education-level-lower" conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="Lower primary education" answerConceptId="160290AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
-                        <obs id="education-level-none" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs id="education-level-none" conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="No education" answerConceptId="160294AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
-                        <obs id="education-level-special" conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs id="education-level-special" conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             answerLabel="Special education" answerConceptId="160293AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
@@ -577,7 +577,7 @@
                             style="checkbox" />
 
                         <obs id="referral-counselling" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            answerLabel="Counseling" answerConceptId="5490AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                            answerLabel="Counseling" answerConceptId="5490AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
                         <obs id="referral-nutrition" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -585,7 +585,7 @@
                             style="checkbox" />
 
                         <obs id="referral-pediatric" conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            answerLabel="Pediatric consultant" answerConceptId="5507AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                            answerLabel="Pediatric consultant" answerConceptId="5507AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" />
 
                     </td>
@@ -593,6 +593,24 @@
 
             </table>
         </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+                <tr>
+
+                    <td><obs conceptId="162165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+
     </div>
     <div class="ke-form-footer">
         <submit />

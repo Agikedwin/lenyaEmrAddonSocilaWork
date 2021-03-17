@@ -54,6 +54,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public static final String MEDICALFOLLOWUPVISUAL = "53ef0dfb-06db-4ad2-b31e-b022dd92cb5b";
 		public static final String MEDICALFOLLOWUPNURSEFORM = "2fd2e6b6-c642-4918-9e3e-af16acb95116";
 
+		public static final String MEDICALFOLLOWUPADOLESCENTCHILDREN = "fc39e7ab-374f-49d0-b558-c46934bde158";
+		public static final String MEDICALFOLLOWUPPREGNANTWOMEN = "712d1e17-bd9b-4a8e-81a4-16c391588afd";
+
+
 		// COUSELLING
 		public static final String ADHERENCECOUNSELLING = "4e405cd3-76f5-4b00-9a23-8f5293abd6cd";
 		public static final String CHILDCOUNSELLINGFOLLOWUP = "f9924d10-feae-4c55-8b36-7ecaaffc8abc";
@@ -71,6 +75,14 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String COUNSELLINGADHRENCE1 ="ab7eff2a-fdab-484e-8a95-28522836c2a5";
 
 		public  static  final  String COUNSELLINGGENERALSESSION ="f737cc35-9473-408a-901f-75a559af10a5";
+
+		// HEI Phone Contact
+
+		public  static  final  String HEIPHONECONTACT ="5de9667f-4b17-4165-bc83-0da2801003fd";
+
+		//PREP Phone Contact
+		public  static  final  String PREPPHONECONTACT ="031f286b-5017-495b-b242-fdb7e7a813a3";
+
 
 
 
@@ -103,6 +115,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public static final String MEDICALFOLLOWUPVISUAL = "f46f75f7-e38d-4fd3-b01e-7911ca58aec4";
 		public static final String MEDICALFOLLOWUPNURSEFORM = "8df18cf0-3d49-4c2e-9f29-f7e650353b4e";
 
+		public static final String MEDICALFOLLOWUPADOLESCENTCHILDREN = "b2243a1a-9714-41d4-9386-9809eec5b6ae";
+		public static final String MEDICALFOLLOWUPPREGNANTWOMEN = "19ebc944-3ebb-427d-9c1c-41f877908bc4";
+
+
 		// COUSELLING
 		public static final String ADHERENCECOUNSELLING = "bf0235d1-5caa-4957-89a1-ae2690c7cd15";
 		public static final String CHILDCOUNSELLINGFOLLOWUP = "ed966600-ff06-11ea-adc1-0242ac120002";
@@ -120,6 +136,13 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String COUNSELLINGADHRENCE1 ="c01ab09a-baf5-47c5-9b3f-02cdc27e9e8d";
 
 		public  static  final  String COUNSELLINGGENERALSESSION ="751c10ae-0e47-40b1-b1f9-ccdac5a1fc84";
+
+		// HEI Phone Contact
+
+		public  static  final  String HEIPHONECONTACT ="dde66b50-974c-4b61-a109-cdc77498f914";
+
+		//PREP Phone Contact
+		public  static  final  String PREPPHONECONTACT ="7d39c9e9-0b52-4e9d-918c-4d6ec6f5f939";
 
 
 	}
@@ -169,18 +192,28 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		//MEDICAL FOLLOW UP
 
+
 		install(encounterType("Visual Inspection encounter", "Just an Nutrition follow up", _EncounterType.MEDICALFOLLOWUPVISUAL));
 
-		install(form("Visual Inspection Form", null, _EncounterType.MEDICALFOLLOWUPVISUAL, "1", _Form.MEDICALFOLLOWUPVISUAL));
+		install(form(" Medical Follow up Visual Inspection Form", null, _EncounterType.MEDICALFOLLOWUPVISUAL, "1", _Form.MEDICALFOLLOWUPVISUAL));
 
 		install(encounterType("Nurses  Follow up encounter", "Nurses Form follow up", _EncounterType.MEDICALFOLLOWUPNURSEFORM));
 
-		install(form("Nurses Form - Female patients only Form", null, _EncounterType.MEDICALFOLLOWUPNURSEFORM, "1", _Form.MEDICALFOLLOWUPNURSEFORM));
+		install(form(" Medical Follow up Nurses Form - Female patients only Form", null, _EncounterType.MEDICALFOLLOWUPNURSEFORM, "1", _Form.MEDICALFOLLOWUPNURSEFORM));
+
+
+		install(encounterType("Medical Follow up Adolescent and Children Enc", "Medical Follow up Adolescent and Children", _EncounterType.MEDICALFOLLOWUPADOLESCENTCHILDREN));
+
+		install(form("Medical Follow up Adolescent and Children Form", null, _EncounterType.MEDICALFOLLOWUPADOLESCENTCHILDREN, "1", _Form.MEDICALFOLLOWUPADOLESCENTCHILDREN));
+
+		install(encounterType("Medical Follow up Pregnant Women Enc ", "edical Follow up Pregnant Women", _EncounterType.MEDICALFOLLOWUPPREGNANTWOMEN));
+
+		install(form("Medical Follow up Pregnant Women Form  ", null, _EncounterType.MEDICALFOLLOWUPPREGNANTWOMEN, "1", _Form.MEDICALFOLLOWUPPREGNANTWOMEN));
 
 		//COUSELLING
 		install(encounterType("Adherence Form encounter", "Just an Nutrition follow up", _EncounterType.ADHERENCECOUNSELLING));
 
-		install(form("Adherence Form Form", null, _EncounterType.ADHERENCECOUNSELLING, "1", _Form.ADHERENCECOUNSELLING));
+		install(form(" Counselling Adherence Form ", null, _EncounterType.ADHERENCECOUNSELLING, "1", _Form.ADHERENCECOUNSELLING));
 
 		install(encounterType("Child Counseling Follow Up encounter", "Child Counseling ", _EncounterType.CHILDCOUNSELLINGFOLLOWUP));
 
@@ -199,21 +232,31 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 
 		install(encounterType("Child disclosure followup encounter", "Child disclosure followup ", _EncounterType.COUNSELLINGCHILDDISCLOSUREFU));
-		install(form("Child disclosure followup encounter ", null, _EncounterType.COUNSELLINGCHILDDISCLOSUREFU, "1", _Form.COUNSELLINGCHILDDISCLOSUREFU));
+		install(form("Counseling Child disclosure followup encounter ", null, _EncounterType.COUNSELLINGCHILDDISCLOSUREFU, "1", _Form.COUNSELLINGCHILDDISCLOSUREFU));
 
 
 		install(encounterType("Child disclosure session encounter", "Child disclosure session ", _EncounterType.COUNSELLINGCHILDDISCLOSRESESSION));
 
-		install(form("Child disclosure session ", null, _EncounterType.COUNSELLINGCHILDDISCLOSRESESSION, "1", _Form.COUNSELLINGCHILDDISCLOSRESESSION));
+		install(form("Counseling Child disclosure session ", null, _EncounterType.COUNSELLINGCHILDDISCLOSRESESSION, "1", _Form.COUNSELLINGCHILDDISCLOSRESESSION));
 
 		install(encounterType("Counseling adherence 1 encounter", "Counseling adherence 1", _EncounterType.COUNSELLINGADHRENCE1));
 
-		install(form("Counseling adherence 1 ", null, _EncounterType.COUNSELLINGADHRENCE1, "1", _Form.COUNSELLINGADHRENCE1));
+		install(form("Counseling  adherence 1 ", null, _EncounterType.COUNSELLINGADHRENCE1, "1", _Form.COUNSELLINGADHRENCE1));
 
 		install(encounterType("Couselling General Session encounter", "Couselling General Session ", _EncounterType.COUNSELLINGGENERALSESSION));
 
 		install(form("Couselling General Session ", null, _EncounterType.COUNSELLINGGENERALSESSION, "1", _Form.COUNSELLINGGENERALSESSION));
 
+    // HEI and PREP
+
+		install(encounterType("HEI Phone Contact ", "HEI Phone Contact Encounter ", _EncounterType.HEIPHONECONTACT));
+
+		install(form("HEI Phone Contact", null, _EncounterType.HEIPHONECONTACT, "1", _Form.HEIPHONECONTACT));
+
+
+		install(encounterType("PREP Phone Contact ", "PREP Phone Contact Encounter ", _EncounterType.PREPPHONECONTACT));
+
+		install(form("PREP Phone Contact ", null, _EncounterType.PREPPHONECONTACT, "1", _Form.PREPPHONECONTACT));
 
 
 	}

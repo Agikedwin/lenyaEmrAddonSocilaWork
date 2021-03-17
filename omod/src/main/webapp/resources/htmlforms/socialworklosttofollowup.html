@@ -200,7 +200,7 @@
             <tr>
                     <td> Other Specify : </td>
                     <td>
-                        <obs conceptId="1639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              id="session-number"/>
                     </td>
                 </tr>
@@ -208,16 +208,10 @@
             <table class="simple-table" id="adherence-1">
                 <tr>
                     <td>3. Did you meet client or caregiver during this visit? (If NO discontinue and if Yes continue) :</td>
-                    <td><td><obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+                   <td><obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
                     <td>4. The visit is taking place at the clients  :</td>
-                    <td><select name="question-8" class="question-8">
-                        <option value="1066">Select</option>
-                        <option value="1090">Central Market Shop Or Other Public Places</option>
-                        <option value="159416">Hospital due to clinics admission</option>
-                        <option value="1385">Place of residence</option>
-                        <option value="1385">Place of work or School</option>
-                    </select>
+                    <td>
                         <obs conceptId="160482AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                              answerConceptIds="163468AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,165014,1589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1536AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,
                   159928AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Central Market Shop Or Other Public Places,Hospital due to clinics admission,
@@ -250,7 +244,7 @@
                 </tr>
                 <tr>
                     <td>6. Is the patient willing to come back? </td>
-                    <td><td><obs conceptId="165063"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td></td>
+                    <td><obs conceptId="165063"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
                     <td>6a. If yees, indicate the preferred appointment date. :</td>
                     <td>
@@ -259,15 +253,23 @@
                 </tr>
             </table>
 
-            <table class="simple-table" id="tbl3">
-                <tr>
-                    <td>Comments :</td>
-                    <td><obs conceptId="161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="2" cols="40" style="textarea" /></td>
 
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+                <tr>
+
+                    <td><obs conceptId="162165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
                 </tr>
 
-
             </table>
+
         </fieldset>
 
     </div>

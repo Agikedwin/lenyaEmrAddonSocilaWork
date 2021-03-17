@@ -173,9 +173,21 @@
     </div>
 
     <div class="ke-form-content">
+        <fieldset class="adherence-screening">
+            <table class="simple-table" id="Checklist-tbl1">
+        <tr>
+            <td>Enter Adherence Assesment Number:</td>
+            <td>
+                <obs conceptId="165002"  size="40">
+                </obs>
+            </td>
+        </tr>
+            </table>
+        </fieldset>
 
 
         <fieldset class="adherence-screening">
+
             <!--Enhance adherence screening-->
             <fieldset id="Checklist-tab">
                 <legend>
@@ -242,13 +254,13 @@
 
         </fieldset>
 
-        <fieldset class="adherence-screening">
             <!--Enhance adherence screening-->
             <fieldset id="Assesment-tab">
                 <legend>
                     <strong> SECTION 2 Adherence Assesment</strong>
                 </legend>
                 <table class="simple-table" id="Assesment-tbl">
+
 
                     <tr>
                         <td>1. Do you ever forget to take your medicine? :</td>
@@ -261,7 +273,7 @@
                         <td>2. Are you careless at time about taking your medicine? :</td>
 
                         <td>
-                            <obs conceptId="164989"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                            <obs conceptId="1417AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                         </td>
 
                     </tr>
@@ -274,7 +286,11 @@
                         </td>
 
                         <td>4.When you feel better do you sometimes stop taking your medicine? :</td>
-                        <obs conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        <td>
+                            <obs conceptId="1820AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+
+
+                        </td>
 
 
                     </tr>
@@ -349,7 +365,7 @@
 
                         <td>c) Engage treatment supporter or DOT :</td>
                         <td>
-                            <obs  conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma " answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="160640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
                         </td>
                     </tr>
 
@@ -368,6 +384,22 @@
                 </table>
 
             </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+
+                <tr>
+
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
         </fieldset>
 
 

@@ -360,7 +360,6 @@
                         <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
                         <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                        <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
                         <obs id="supplements" conceptId="986AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
@@ -391,7 +390,6 @@
                         <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
                         <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                        <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
                         <obs id="supplements" conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
@@ -414,22 +412,7 @@
 
                 </tr>
 
-                <tr>
-                    <td>4a Specify :</td>
-                    <td>  <obs conceptId="160945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                               size="30" />
-                    </td>
-                    <td>4b If yes, which type of food supplement is client initiating today? :</td>
-                    <td>
-                        <obs id="relationship-others" conceptId="159854AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabels="First Food,Foundation,RUSF,Advantaged,RUTF,CSB"
-                             answerConceptIds="118108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162480AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                             ,80762AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162738AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,112323AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" />
-                    </td>
 
-
-                </tr>
 
 
                 <tr>
@@ -438,7 +421,7 @@
 
                    <td>
                        <obs id="relationship-others" conceptId="163304AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                            answerLabela="Readminssion,Relapse"
+                            answerLabela="Readmission,Relapse"
                             answerConceptIds="162477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                             style="checkbox" /><hr/>
                    </td>
@@ -448,16 +431,21 @@
                 </tr>
 
                 <tr>
-                    <td>5a If yes, why? :</td>
+                    <td>5a If yes, why? :</td> Refused Nutritional Support
                     <td>
-                        <obs id="supplements-bmi" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI less  than 18.5" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements-bmi" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="BMI Greater than 20" answerConceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
-                        <obs id="supplements-pregnany" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pregnant (MUAC-23)" answerConceptId="129227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements-pregnany" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Defaulter" answerConceptId="160031AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
-                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Breastfeeding Mother (MUAC less than 23)" answerConceptId="159882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Non recoveries" answerConceptId="162680AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
-                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="At Risk" answerConceptId="135569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
-                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="RUSF" answerConceptId="113047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Recovered" answerConceptId="156750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Transfer" answerConceptId="159104AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Refused Nutritional Support" answerConceptId="161649AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                        <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="MUAC greater than 23" answerConceptId="163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
 
                         <obs id="supplements" conceptId="6098AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
 
@@ -489,7 +477,23 @@
                 </tr>
 
             </table>
-            <br /><hr/><br />
+
+
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+                <tr>
+
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
 
         </fieldset>
 

@@ -1,0 +1,439 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
+        jQuery(function($) {
+        //Defaults
+        var adherenceResponses1=jq('#adherence-1');
+        var adherenceResponses2=jq('#adherence-2');
+        jq('#adherence-2').hide();
+        clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+        jq("#adherence-1").change(adherenceAssessment);
+        //Process flow
+        jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+        jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+        jq("#session-number :input[type=text]").change(sessionNumberChange);
+        hasViralLoadResult();
+        hasHighViralLoadResult();
+        if(LATEST_SESSION == "") {
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        console.log("LATEST SESSION==>"+LATEST_SESSION);
+        console.log("LATEST SESSION START DATE==>"+LATEST_SESSION_START_DATE);
+        if(LATEST_SESSION &gt; 0) {
+        var formattedSessionStartDate =moment(moment(LATEST_SESSION_START_DATE,'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+        getField('session-startdate.value').val(formattedSessionStartDate);
+        }else{
+        getField('session-startdate.value').val("");
+        }
+        beforeSubmit.push(function() {
+        });
+        });
+        //Morisky assessment
+        var adherenceAssessment  = function () {
+        var val = jq(this).val();
+        const YES_CONCEPT_ID = 1065;
+        const NO_CONCEPT_ID = 1066;
+        var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+        var assessmentYesResponses = [];
+        var assessmentNoResponses = [];
+        //Fetch responses for the assessment questions
+        jq.each(assessmentRadios, function(){
+        //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+        if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentYesResponses.push(this);
+        }
+        if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+        assessmentNoResponses.push(this);
+        }
+        });
+        //If no responses have been recorded then prompt since this assessment is mandatory
+        if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0 ) {
+        //Prompt to complete assessment
+        }else{
+        if(assessmentYesResponses.length &gt; 0) {
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 0) {
+        jq("#arv-adherence input[value=159405]").prop("checked", true);
+        jq('#adherence-2').hide();
+        }
+        if(assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2 ) {
+        jq("#arv-adherence input[value=163794]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        if(assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4 ) {
+        jq("#arv-adherence input[value=159407]").prop("checked", true);
+        jq('#adherence-2').show();
+        }
+        }
+        }
+        function sessionNumberChange(){
+        var val = getValue('session-number.value');
+        if(val == 1) {
+        getField('session-startdate.value').val("");
+        jq('#review').hide();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').show();
+        }else{
+        jq('#review').show();
+        jq('#viral-load-tab').show();
+        jq('#adherence-barriers-tab').hide();
+        }
+        }
+        function hasViralLoadResult(){
+        var val = getValue('has-vl.value');
+        if(val == 1065) {
+        jq('#vl-status').show();
+        jq('#vl-feeling').show();
+        jq('#vl-high').show();
+        }else{
+        jq('#vl-status').hide();
+        jq('#vl-feeling').hide();
+        jq('#vl-high').hide();
+        }
+        }
+        function hasHighViralLoadResult(){
+        var val = getValue('result-status.value');
+        if(val == 1066) {
+        jq('#vl-high-txt textarea').prop("disabled", false);
+        }else{
+        jq('#vl-high-txt textarea').prop("disabled", true);
+        }
+        }
+        clearHiddenSections = function(parentObj) {
+        for(var i=0; i &lt; parentObj.length; i++){
+        parentObj[i].find('input[type=radio]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=checkbox]').each(function() {
+        this.checked = false;
+        });
+        parentObj[i].find('input[type=text]').each(function() {
+        this.val("");
+        });
+        parentObj[i].find('select').each(function() {
+        this.selectedIndex =0;
+        });
+        }
+        }
+    </script>
+    <style>
+        .simple-table {
+        border: solid 1px #DDEEEE;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+        background-color: #DDEFEF;
+        border: solid 1px #DDEEEE;
+        color: #336B6B;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+
+
+        <fieldset class="mfuadolescent-tab">
+            <!--Enhance adherence screening-->
+                <legend>
+                    <strong> Developmental milestones for children
+                    </strong>
+                </legend>
+                <table class="simple-table" id="mfuadolescent-tbl">
+
+                    <tr>
+                        <td>Has child achieved 3 month developmental milestones ? </td>
+
+                        <td>
+                            <obs conceptId="163517AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                        </td>
+
+                        <td>Has child achieved 12 month developmental milestones ? :</td>
+
+                        <td>
+                            <obs conceptId="1200AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Has child achieved 24 month developmental milestones ? :</td>
+                        <td><obs conceptId="1189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                        <td>Is the child in need of any vaccination ? :	</td>
+                        <td><obs conceptId="159801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    </tr>
+                </table>
+
+                    <table class="simple-table" id="vaccination-tbl">
+
+                    <tr>
+                        <td>Please indicate vaccination the child requires :
+                        </td>
+                        <td><obs conceptId="164134AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="1570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                 ,163034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159702AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,83533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                 ,162265AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,82215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,82215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 122759AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ,86339AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159805AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 style="checkbox"
+                                 answerLabels="BCG, OPV 1, OPV 2, OPV 3,MMR,Rota Virus, Pentavalent 1,Pentavalent 2,
+                                 Pneumococal vaccine,Yellow fever,Vitamin A, Others" /> <br /><br />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        <fieldset class="adolescents-tab">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Children and adolescents </strong>
+            </legend>
+            <table class="simple-table" id="adolescents-tbl">
+                <tr>
+                    <td>
+                        Disclosure status for 6-19 years:
+                    </td>
+                    <td>
+                        <obs id="disclosure-status" conceptId="159425AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Parent Aware of Status?"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" /><hr/>
+
+                    </td>
+                    <td>
+
+                        <obs id="abuse-status" conceptId="165264"
+                             answerLabel="Does the patient abuse any substance:?"
+                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" /><hr/>
+
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        12a If yes, which ones? (Tick all that apply) :
+                    </td>
+                    <td>
+                        <obs conceptId="112603AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabels="Medical Drugs (diazepam, tranquilizer),
+                                Alchohol (Changaa, busaa, beer, wine),
+                                Nicotine or Tobacco,
+                                Miraa (khat),
+                                Cannabis (bhang),
+                                Inhalants (glue, petrol),
+                                Opialates (heroine),
+                                Hallucinogens,
+                                Others "
+                             answerConceptIds="161191AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             114751AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159779AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             121249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,116945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             114750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,117715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><hr/>
+
+                    </td>
+                    <td>Is the patient in school / college :</td>
+                    <td>
+
+                        <obs conceptId="159928AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerLabel="Boarding School or College,Day School,Not in school(dropped out), Not in school(Finished)"
+                             answerConceptIds="163123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160290AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             164212AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 1267AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" /><hr/>
+
+
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+
+        <fieldset class="mfuadolescent-tab">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Mental Status assessment - Indicate Yes or No
+
+                </strong>
+            </legend>
+            <table class="simple-table" id="assessment-tbl">
+
+                <tr>
+                    <td>Sleep disturbance</td>
+
+                    <td>
+                        <obs conceptId="165241"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+
+                    <td>Interest / pleasure reduction</td>
+
+                    <td>
+                        <obs conceptId="165065"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Guilt feelings or thoughts of worthlessness :	</td>
+                    <td><obs conceptId="165123"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Energy changes / fatigue	</td>
+                    <td><obs conceptId="165241"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Concentration / attention impairment :		</td>
+                    <td><obs conceptId="161427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Appetite / weight changes :		</td>
+                    <td><obs conceptId="165139"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>Psychomotor disturbances :		</td>
+                    <td><obs conceptId="162820AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>Suicidal thoughts and depressed mood :		</td>
+                    <td><obs conceptId="159469AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>If stable (0-14 years) is the child on PAMA DC? :	</td>
+                    <td><obs conceptId="165293"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>If No why ? :</td>
+                    <td><obs conceptId="160302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="136295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Caregiver stable,Upaired,Other" /> <br /><br /></td>
+
+
+                </tr>
+
+                <tr>
+                    <td>specify reasons :</td>
+                    <td><obs conceptId="163761AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  /> <br /><br /></td>
+
+
+                    <td>
+                        If the child has been on the current regimen for greater than or equal to 12 months, tick all apply :</td>
+                    <td><obs conceptId="162328AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="165246,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160136AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             149411AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164950,158204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160523AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" answerLabels="Most recent VL less than 1000 copies,
+                                No active OIs (including TB) in the past 6 months,
+                                Adherent to scheduled clinic visits forte past 6 months,
+                                Has completed 6 moths of IPT,
+                                BMI Z scoreor WA Zscore greater than or equal to 2SD,
+                                Health care team doesnt have concerns about providing longer follow up intervals for the patient" /> <br /><br /></td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        Is This Patient Stable ? :
+                    </td>
+                    <td><obs conceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                </tr>
+
+                <tr>
+                    <td>Is the CALHIV enrolled in the OVC program?  </td>
+                    <td><obs conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+
+                    <td>If yes, Which service did they receive from the OVC program? Tick all that apply</td>
+                    <td>
+                        <obs conceptId="160478AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164833AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                             163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162717AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                             ,161597AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="School support,Sanitary towels,Home visit,Food package,Support groups services,
+                             Financial support,Child protection services,Other " /> <br /><br />
+                    </td>
+
+
+                </tr>
+            </table>
+
+
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+                <tr>
+
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+
+
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
+
+</htmlform>

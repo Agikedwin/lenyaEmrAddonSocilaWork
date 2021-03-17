@@ -175,67 +175,66 @@
     <div class="ke-form-content">
 
 
-        <fieldset class="female-patients-tav">
+        <fieldset class="mfupregnantwomen-tab">
             <!--Enhance adherence screening-->
                 <legend>
-                    <strong> Nurses form - Female Patients Only </strong>
+                    <strong> Developmental milestones for children
+                    </strong>
                 </legend>
-                <table class="simple-table" id="female-patients-tbl">
+                <table class="simple-table" id="mfupregnantwomen-tbl">
 
                     <tr>
-                        <td>1: Is the patient being referred for Cervical Cancer screening ? :</td>
+                        <td>Is this the first visit to the clinic for this pregnancy? :	 </td>
 
                         <td>
-                            <obs conceptId="165196"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                            <obs conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No,Not Applicable" /> <br /><br />
                         </td>
 
-                        <td>2: Why has the patient NOT been refered for Cervical Cancer Screening ? :</td>
+                        <td>Has child achieved 12 month developmental milestones ? :</td>
 
                         <td>
-
-                            <obs id="screening-sexually" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has never been sexually active" answerConceptId="163291AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-hysterectomy" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has had total hysterectomy, LEEP or cryotherapy" answerConceptId="159837AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-available" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No service available at this time" answerConceptId="165225" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-test" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient had screening test in last year" answerConceptId="161504AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-
+                            <obs conceptId="1086AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
 
                         </td>
 
                     </tr>
 
                     <tr>
-                        <td>3:Has the patient delivered in the past 18 months ? :</td>
-                        <td><obs conceptId="1573AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                        <td>Does the patient have obstetric problems? :	</td>
+                        <td><obs conceptId="1669AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="1116AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163606AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 129214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,123396AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,122983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 style="dropdown" answerLabels="Abnormal discharge,Burning with urination,Premature labor,Virginal bleeding ,Vomiting,None" /> <br /><br /></td>
 
 
-                        <td>4 Is the patient currently breastfeeding ? :</td>
-                        <td><obs conceptId="161543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+                        <td>If preganant which couseling services were given ? :
+                        </td>
+                        <td><obs conceptId="164481AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="159775AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1572AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                 161650AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163158AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 style="checkbox" answerLabels="Mode of delivery,Place of delivery,Mode of feeding,FP" /> <br /><br /></td>
 
 
                     </tr>
-
                     <tr>
-                        <td>5:Is this the first time the patient has returned to hope center since delivery? :	</td>
-                        <td><obs conceptId="1724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>6:If this this is the first time the client is returning please select baby enrollment :</td>
+                        <td>How many deliveries has the patient had ?</td>
                         <td>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in HEI Clinic" answerConceptId="1017AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in Paeds CCC Program" answerConceptId="162050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="160601AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="30">
 
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not enrolled" answerConceptId="1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            </obs>
 
+                        </td>
+
+                        <td>Number of pregnancies including current one ? :	</td>
+                        <td>
+                            <obs  conceptId="160080AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="30">
+
+                            </obs>
 
                         </td>
                     </tr>
                 </table>
-
-
-
             </fieldset>
 
         <fieldset class="adherence-screening">
@@ -253,10 +252,6 @@
             </table>
 
         </fieldset>
-
-
-
-
     </div>
     <div class="ke-form-footer">
         <submit />

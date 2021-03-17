@@ -264,62 +264,179 @@
 
                     <td>If yes, state the Viral Load copies/ML. :</td>
                     <td>
-                        <obs conceptId="856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        <obs conceptId="165142"
                              size="30"/>
                     </td>
 
                 </tr>
+                <!-- New updates start here-->
+                <tr>
+                    <td>
+                        4. Who has accompanied the child to the session today and what is their relationship to the child? :
+                    </td>
+                     <td>
+                            <obs  conceptId="165284" answerLabel="Aunt" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Cousin" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Father" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Grandparents" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Mother" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Other(specify)" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Siblings" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            <obs  conceptId="165284" answerLabel="Uncle" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                            
+
+                        </td>
+                         <td>Specify :</td>
+                    <td>
+                        <obs conceptId="165092"
+                             size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        4a. Is the accompanier in the session willing to sup the child in treatment?( if yes 4b, no skip 4c) :
+                    </td>
+                    <td>
+                         <obs conceptId="163466"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
+                    </td>
+                    <td>
+                        4c If no, who is living with the child and willing to support the child in treatment? :
+                    </td>
+                     <td>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Aunt" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Cousin" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Father" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Grandparents" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                             <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Mother" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other(specify)" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Siblings" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            <obs  conceptId="1530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Uncle" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /><br></br><hr/>
+                            
+
+                        </td>
+                        <td>Specify :</td>
+                    <td>
+                        <obs conceptId="165092"
+                             size="30"/>
+                    </td>
+                </tr>
 
             </table>
         </fieldset>
-
-        <!--Enhance adherence screening-->
-        <fieldset id="adherence-tab">
-            <legend>
-                <strong> Medical Adherence</strong>
-            </legend>
-            <table class="simple-table" id="adherence-tbl">
-
+        <fieldset id="Asses HIV Knowledge And Knowledge on Hygiene">
+            <table>
                 <tr>
-                    <td>4 Is the patient currently taking any of the following medications ? :</td>
+                    <td>
+                        5.What does the caregiver/child know about HIV infection? Provide information on the following: 
+                    </td>
+                    <td>
+                          <obs
+                                    conceptId="162728AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"
+                                    answerConceptIds="156278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    5618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="HIV (secondary) transmission,HIV (secondary) infection prevention,HIV care (treatment) for children"
+                            />
+                    </td>
+                    <td>
+                        6. Provide information on the following: 
+                    </td>
+                    <td>
+                         <obs
+                                    conceptId="165295" style="checkbox"
+                                    answerConceptIds="156278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    161164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                    answerLabels="Body or personal hygiene,Food handling and safety,Environmental hygiene and safety at home and school"
+                            />
+                    </td>
+                    
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <fieldset id="risk-factor-tab">
+            <legend>
+                <strong> Assess Risk Factors</strong>
+            </legend>
+            <table class="simple-table" id="risk-factor-tbl">
+                <tr>
+                    <td>7 Is the patient currently being abused? ( If No skip to question 8) :</td>
 
                     <td>
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Anti TB" answerConceptId="162309AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
-                       
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Dapsone" answerConceptId="74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="ART" answerConceptId="162703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Cotrimoxazole" answerConceptId="105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Fluconazole" answerConceptId="76488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
-                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="None of the above " answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="checkbox"/>
+                        <obs
+                                conceptId="165273" style="dropdown"
+                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                answerLabels="No,Yes,Unknown"
+                        />
+                    </td>
+
+
+                    <td>7a If Yes, specify :</td>
+                    <td>
+                        <obs conceptId="163049AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             size="30" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>7b1 If yes, who is abusing the child (tick all that apply) (If yes, refer accordingly) :</td>
+
+                    <td>
+                        <obs
+                                conceptId="163176AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio"
+                                answerConceptIds="1581,163356,971,970,160273,160726,160730,974,5622"
+                                answerLabels="Aunt,Cousin,Father,Mother,Grand Father,Grand Mother,Sister,Other"
+                        />
 
 
                     </td>
 
-                    <td>4a How is patients adherence to ART ? :</td>
+                    <td>Specify:</td>
+                    <td>
+                        <obs conceptId="160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        />
+                    </td>
+
+                </tr>
+            </table>
+        </fieldset>
+
+        <!--Enhance adherence screening-->
+        <fieldset id="enhanced-adherence-tab">
+            <legend>
+                <strong> Medication Adherence</strong>
+            </legend>
+            <table class="simple-table" id="adherence-1">
+
+                <tr>
+                    <td>8. Is the patient currently taking any of the following medications?(If none, go to 9) :</td>
 
                     <td>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Anti TB " answerConceptId="162309AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Dapsone " answerConceptId="74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="ART " answerConceptId="162703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Cotrimoxazole " answerConceptId="105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fluconazole " answerConceptId="76488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs id="child-readiness-Other" conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None of the above " answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
 
+
+
+                    </td>
+                    <td>8a How is patients adherence since the last clinic visit? on ART :</td>
+
+                    <td>
                         <obs
                                 conceptId="164075AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
                                 answerConceptIds="159406AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159405AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                 answerLabels="Fair,Good,Poor"
                         />
+
                     </td>
+
                 </tr>
                 <tr>
-                    <td>How is patients adherence to CTX ? :</td>
+                    <td>On CTX :</td>
 
                     <td>
                         <obs
@@ -328,7 +445,8 @@
                                 answerLabels="Fair,Good,Poor"
                         />
                     </td>
-                    <td>How is patients adherence to Anti-TB Medication ? :</td>
+
+                    <td>On Anti-TB :</td>
 
                     <td>
                         <obs
@@ -340,307 +458,174 @@
 
                 </tr>
                 <tr>
-                    <td>4b. Adherence Assessment: 1.Do you ever forget to take your medicine? :</td>
-                    <td>
-                        <obs conceptId="159369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No"/>
-                        </td>
+                    <td>8b.1. Do you ever forget to take your medicine? :</td>
 
-                    <td>2. Are you careless at times about taking your medicine? :</td>
-                    <td>
-                        <obs conceptId="165124"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No"/>
-                        </td>
+                    <td><obs conceptId="159369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                    <td>8b.2. Are you careles at times about taking your medicine? :</td>
+
+                    <td><obs conceptId="165124"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
 
                 </tr>
 
                 <tr>
-                    <td>3. Sometimes if you feel worse when you take the medicine, do you stop taking it? :</td>
-                    <td>
-                        <obs conceptId="1262AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No"/>
-                        </td>
+                    <td>8b.3. Sometimes if you feel worse when you take the medicine, do you stop taking it? :</td>
 
-                    <td>4. When you feel better do you sometimes stop taking your medicine?</td>
-                    <td>
-                        <obs conceptId="1252AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No"/>
-                        </td>
+                    <td><obs conceptId="1262AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                    <td>8b.4. When you feel better do you sometimes stop taking your medicine? :</td>
+
+                    <td><obs conceptId="1252AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
 
                 </tr>
+
                 <tr>
-                    <td>Total Score(Sum of all Items) Scores: Yes=1, No=2. Rating score: 0=good, 1-2 inadequate, 3-4
-                        poor :
-                    </td>
+                    <td>Total Score(Sum of all Items) Score:Yes=1,No=0.Rating score:0=good,1-2 inadequate,3-4 poor. :</td>
                     <td>
-                        <obs conceptId="159516AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30"/>
+                        <obs conceptId="165058"
+                             size="30" />
                     </td>
-                    <td>4c Indicate reasons for poor or fair adherence(tick all that apply)</td>
+
+                    <td>8c. If poor or fair, Indicate reasons(tick all that apply) :</td>
+
                     <td>
 
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Toxic-side effects "
-                             answerConceptId="130325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Felt better "
-                             answerConceptId="160586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Drug stock out "
-                             answerConceptId="1754AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Alchohol "
-                             answerConceptId="121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel=" Refused to take medications "
-                             answerConceptId="160018AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Share with others "
-                             answerConceptId="160583AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Too ill "
-                             answerConceptId="160585AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pill burden "
-                             answerConceptId="160588AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Depression "
-                             answerConceptId="119537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Forgot "
-                             answerConceptId="160587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Stigma, disclosure or privacy issues " answerConceptId="164997"
-                             style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerLabel="Patient lost or ran out of pills "
-                             answerConceptId="160584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delivery or travel problems "
-                             answerConceptId="124153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
-                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other"
-                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Toxic-side effects " answerConceptId="130325AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Felt better " answerConceptId="160586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Drug stock out " answerConceptId="1754AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Alchohol " answerConceptId="121725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" Refused to take medications " answerConceptId="160018AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Share with others " answerConceptId="160583AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Too ill " answerConceptId="160585AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Pill burden " answerConceptId="160588AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Depression " answerConceptId="119537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Forgot " answerConceptId="160587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma, disclosure or privacy issues " answerConceptId="164997" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient lost or ran out of pills " answerConceptId="160584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delivery or travel problems " answerConceptId="124153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other" answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
 
                     </td>
 
                 </tr>
 
-            </table>
-
-            <table class="simple-table" id="adherence-tbl3">
                 <tr>
                     <td>Specify</td>
                     <td>
                         <obs conceptId="165002"
                              size="30"/>
                     </td>
-                </tr>
-            </table>
 
+                    <td>9 Psychological Symptoms Assessment 9a Depression :</td>
+
+                    <td>
+
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Often sad, Irritable, Angry or Hopeless" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stops pleasurable activities" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Weight loss or Weight gain" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not sleeping or over sleeping" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fatigue" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Energy Loss" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Poor Concentration" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel=" Low self esteem" answerConceptId="163475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Very Self-Critical" answerConceptId="164830AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Withdrawn" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="161366AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Sudden change in school performance" answerConceptId="150381AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+                    </td>
+
+                </tr>
+
+
+            </table>
+            <table class="simple-table" id="anxiety-tab">
+
+                <tr>
+                    <td>9b. Anxiety :</td>
+                    <td>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Restlessness" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Restless sleep" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Specific fears" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fear or dying" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Heart is racing" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Trouble breathing" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Irritable" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Nausea" answerConceptId="163475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wont leave caregivers side" answerConceptId="164830AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Wont go to school or leave home" answerConceptId="163474AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="150381AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+                    </td>
+                </tr>
+
+            </table>
         </fieldset>
 
-        <fieldset id="enhanced-adherence-tab">
+
+
+        <fieldset id="enhanced-adherence-tab2">
             <legend>
                 <strong> Disclosure</strong>
             </legend>
-            <table class="simple-table" id="adherence-1">
+            <table class="simple-table" id="adherence-2">
                 <tr>
-                    <td>5 How many sexual partners does the client have ?( if 0 go to 6) :</td>
                     <td>
-                        <obs conceptId="5570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        9c.Indicate pschosis symptoms is any :
+                    </td>
+                    <td>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Child having thought disorganization" answerConceptId="119539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Disorganized behavior" answerConceptId="159221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Hallusination" answerConceptId="832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Very poor hygiene" answerConceptId="113057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Delusional thoughts" answerConceptId="140501AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Age and cognitive development" answerConceptId="136174AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+                        <obs  conceptId="163577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="None" answerConceptId="152782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+
+
+
+                    </td>
+                    <td>
+                        9d.Other conditions - specify :
+                    </td>
+                    <td>Specify :</td>
+                    <td>
+                        <obs conceptId="165092"
                              size="30"/>
                     </td>
-                    <td>5a Have you changed Sexual partners since your last clinic visit ? :</td>
-                    <td>
-                        <obs conceptId="163568AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No"/>
-                        </td>
-
-                </tr>
-
-                <tr>
-                    <td>6a Has the client revealed their serostatus Spouse(s) or steady partner(s) :</td>
-                    <td>
-
-                        <obs
-                                conceptId="5617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has spouse,Has no spouse,Some"
-                        />
-                    </td>
-
-                    <td>6b Has the client revealed their serostatus Casual or non-casual partner(s) :</td>
-                    <td>
-                        <obs
-                                conceptId="159423AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has partner,Has no partner,Some"
-                        />
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>6c Has the client revealed their serostatus to Parents? :</td>
-
-                    <td>
-                        <obs
-                                conceptId="159425AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has Parents,Has no Parents,Some"
-                        />
-                    </td>
-
-                    <td>6d Has the client revealed their serostatus to siblings? :</td>
-                    <td>
-                        <obs
-                                conceptId="5587AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has siblings,Has no siblings,Some"
-                        />
-
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>6f Has the client revealed their serostatus to friends? :</td>
-
-                    <td>
-
-                        <obs
-                                conceptId="159424AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has friends,Has no friends,Some"
-                        />
-                    </td>
-
-                    <td>6e Has the client revealed their serostatus to their Children ? :</td>
-                    <td>
-
-                        <obs
-                                conceptId="159481AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 163007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has Children,Has no Children,Some"
-                        />
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>6g Has the client revealed their serostatus to others? :</td>
-
-                    <td>
-                        <obs
-                                conceptId="159424AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-                                answerConceptIds="1163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                answerLabels="All,Has no one else,None,Some,Others"
-                        />
-                    </td>
-
-
-                </tr>
-
-                <tr>
-                    <td>6i Has disclosure to any of your sexual partners happened since the last clinic visit? :</td>
-
-                    <td>
-                        <obs conceptId="165294"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No,NA"/>
-
-
-                    </td>
-
-                    <td>7 Who forms the clients closest social support (tick one) :</td>
-                    <td>
-                        <obs
-								conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown"
-								answerConceptIds="1581AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,971AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-								160273AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160726AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-								160730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                 974AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-								answerLabels="Aunt,Cousin,Father,Grand Father,Grand Mother,Mother,Sister,Social Worker,Uncle,Other specify"
-						/>
-                    </td>
 
                 </tr>
                 <tr>
-                    <td>Specify</td>
                     <td>
-                        <obs conceptId="164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30"/>
+                        10 Counselor have explained on overview of Hope Center program and services :
                     </td>
-                    <td>8a Has the client informed this person of their serostatus :</td>
                     <td>
-                        <obs conceptId="163730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="Yes,No,NA"/>
-
-
+                        <obs conceptId="160478"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
                     </td>
-                </tr>
 
-                <tr>
-                    <td>8ai If not disclosed, why? (tick all that apply) :</td>
-                    <td>
-
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Stigma "
-                             answerConceptId="160589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Violence to self "
-                             answerConceptId="124824AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Dont know how to disclose "
-                             answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Abandonment "
-                             answerConceptId="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-                        <br></br>
-                        <obs conceptId="163525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Other "
-                             answerConceptId="150387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox"/>
-
-
-
-                    </td>
-                    <td>Specify</td>
-                    <td>
-                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             size="30"/>
-                    </td>
                 </tr>
 
             </table>
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Notes/Summary :</strong>
+            </legend>
+            <table class="simple-table" id="summary-1">
+
+
+                <tr>
+
+                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
         </fieldset>
     </div>
 
