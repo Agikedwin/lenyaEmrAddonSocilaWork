@@ -173,89 +173,69 @@
     </div>
 
     <div class="ke-form-content">
+        <fieldset class="autopsy-tab">
+            <legend>
+                <strong> Verbal Autopsy</strong>
+            </legend>
+            <table class="simple-table" id="autopsy-tbl">
+                <tr>
+                    <td>Date investigation completed::</td>
+                    <td>
+                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
 
+                    </td>
+                </tr>
+            </table>
 
-        <fieldset class="female-patients-tav">
-            <!--Enhance adherence screening-->
-                <legend>
-                    <strong> Nurses form - Female Patients Only </strong>
-                </legend>
-                <table class="simple-table" id="female-patients-tbl">
-
-                    <tr>
-                        <td>1: Is the patient being referred for Cervical Cancer screening ? :</td>
-
-                        <td>
-                            <obs conceptId="165196"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                        <td>2: Why has the patient NOT been refered for Cervical Cancer Screening ? :</td>
-
-                        <td>
-
-                            <obs id="screening-sexually" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has never been sexually active" answerConceptId="163291AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-hysterectomy" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has had total hysterectomy, LEEP or cryotherapy" answerConceptId="159837AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-available" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No service available at this time" answerConceptId="165225" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-test" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient had screening test in last year" answerConceptId="161504AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>3:Has the patient delivered in the past 18 months ? :</td>
-                        <td><obs conceptId="1573AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>4 Is the patient currently breastfeeding ? :</td>
-                        <td><obs conceptId="161543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>5:Is this the first time the patient has returned to hope center since delivery? :	</td>
-                        <td><obs conceptId="1724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                        <td>6:If this this is the first time the client is returning please select baby enrollment :</td>
-                        <td>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in HEI Clinic" answerConceptId="1017AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in Paeds CCC Program" answerConceptId="162050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not enrolled" answerConceptId="1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-
-                        </td>
-                    </tr>
-                </table>
-
-
-
-            </fieldset>
+        </fieldset>
 
         <fieldset class="adherence-screening">
             <!--Enhance adherence screening-->
             <legend>
-                <strong> Notes/Summary :</strong>
+                <strong> Summary of Adverse Event that led to this investigation :</strong>
             </legend>
-            <table class="simple-table" id="summary-1">
+            <table class="simple-table" >
 
                 <tr>
 
-                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                    <td><obs conceptId="162165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
                 </tr>
 
             </table>
 
         </fieldset>
 
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> brief summary of the findings of the investigations :</strong>
+            </legend>
+            <table class="simple-table" >
 
+                <tr>
 
+                    <td><obs conceptId="165142" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Corrective actions taken:</strong>
+            </legend>
+            <table class="simple-table" >
+
+                <tr>
+
+                    <td><obs conceptId="164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
+
+            </table>
+
+        </fieldset>
 
     </div>
     <div class="ke-form-footer">

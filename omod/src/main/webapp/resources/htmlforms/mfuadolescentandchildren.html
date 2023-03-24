@@ -245,10 +245,11 @@
                              answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" /><hr/>
 
                     </td>
+                    <td>Does the patient abuse any substance:?</td>
                     <td>
 
                         <obs id="abuse-status" conceptId="165264"
-                             answerLabel="Does the patient abuse any substance:?"
+                             answerLabel=""
                              answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" /><hr/>
 
 
@@ -389,26 +390,44 @@
 
                 </tr>
 
+
+            </table>
+
+
+        </fieldset>
+
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> For Girls only (10-14 yrs) :</strong>
+            </legend>
+            <table class="simple-table" id="forgirls">
+
                 <tr>
-                    <td>Is the CALHIV enrolled in the OVC program?  </td>
-                    <td><obs conceptId="163766AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
-
-
-                    <td>If yes, Which service did they receive from the OVC program? Tick all that apply</td>
                     <td>
-                        <obs conceptId="160478AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             answerConceptIds="163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164833AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                             164090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                             163108AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162717AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                             ,161597AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                             style="radio" answerLabels="School support,Sanitary towels,Home visit,Food package,Support groups services,
-                             Financial support,Child protection services,Other " /> <br /><br />
+                        Has the child been vaccinated for HPV?
                     </td>
+                    <td><obs conceptId="159859AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
 
+                </tr>
+
+                <tr>
+                    <td>
+                        Has the child been vaccinated for HPV?
+                    </td>
+                    <td><obs conceptId="159859AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        If Yes, kindly specify:
+                    </td>
+                    <td><obs conceptId="165211"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio" answerLabels="Partially vaccinated,Fully vaccinated" /> <br /><br /></td>
 
                 </tr>
             </table>
-
 
         </fieldset>
 

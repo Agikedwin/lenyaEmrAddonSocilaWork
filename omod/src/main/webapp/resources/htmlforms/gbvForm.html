@@ -12,8 +12,8 @@
   ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
   -->
 <htmlform>
-    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
-    <script type="text/javascript">
+  <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+  <script type="text/javascript">
         var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
         var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
         jQuery(function($) {
@@ -138,7 +138,7 @@
         }
         }
     </script>
-    <style>
+  <style>
         .simple-table {
         border: solid 1px #DDEEEE;
         border-collapse: collapse;
@@ -163,103 +163,184 @@
         }
     </style>
 
-    <div class="ke-form-header">
-        <table width="100%">
-            <tr>
-                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
-                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
-            </tr>
-        </table>
-    </div>
+  <div class="ke-form-header">
+    <table width="100%">
+      <tr>
+        <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+        <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+      </tr>
+    </table>
+  </div>
 
-    <div class="ke-form-content">
+  <div class="ke-form-content">
+    <fieldset class="autopsy-tab">
+      <legend>
+        <strong>Gbv</strong>
+      </legend>
+      <table class="simple-table" id="autopsy-tbl">
+        <tr>
+          <td> Incident Date:</td>
+          <td>
+            <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false" labelText=" "  />
+          </td>
+        </tr>
+      </table>
+      <table class="simple-table" id="autopsy-tbl2">
+        <tr>
+          <td> 1.Type of violence (Tick the appropriate option)? </td>
 
-
-        <fieldset class="female-patients-tav">
-            <!--Enhance adherence screening-->
-                <legend>
-                    <strong> Nurses form - Female Patients Only </strong>
-                </legend>
-                <table class="simple-table" id="female-patients-tbl">
-
-                    <tr>
-                        <td>1: Is the patient being referred for Cervical Cancer screening ? :</td>
-
-                        <td>
-                            <obs conceptId="165196"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br />
-                        </td>
-
-                        <td>2: Why has the patient NOT been refered for Cervical Cancer Screening ? :</td>
-
-                        <td>
-
-                            <obs id="screening-sexually" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has never been sexually active" answerConceptId="163291AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-hysterectomy" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient has had total hysterectomy, LEEP or cryotherapy" answerConceptId="159837AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-available" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No service available at this time" answerConceptId="165225" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-test" conceptId="163589AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Patient had screening test in last year" answerConceptId="161504AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
+          <td>
+            <obs conceptId="165205"  answerConceptId="118668AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "
+                   style="checkbox" answerLabel="Emotional" /> <br /><br />
+            <obs conceptId="165205"  answerConceptId="152292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "
+                 style="checkbox" answerLabel="Physical" /> <br /><br />
+          </td>
 
 
+        </tr>
+      </table>
+    </fieldset>
 
-                        </td>
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong> 2.Referred from :</strong>
+      </legend>
+      <table class="simple-table" >
+        <tr>
+          <td>
 
-                    </tr>
+            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="159372AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 answerLabels="CC"   style="radio" /> <br /><br />
+          </td>
+          <td>
+            Indicate CCC number: <obs conceptId="162165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
+          </td>
+        </tr>
 
-                    <tr>
-                        <td>3:Has the patient delivered in the past 18 months ? :</td>
-                        <td><obs conceptId="1573AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+        <tr>
+          <td>
 
+            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="160542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="OPD" /> <br /><br />
+          </td>
+          <td>
+            Indicate Medical Records Number: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
+          </td>
+        </tr>
 
-                        <td>4 Is the patient currently breastfeeding ? :</td>
-                        <td><obs conceptId="161543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+        <tr>
+          <td>
 
+            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="IPD" /> <br /><br />
+          </td>
+          <td>
+            Indicate Medical Records Number: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
+          </td>
+        </tr>
 
-                    </tr>
+        <tr>
+          <td>
 
-                    <tr>
-                        <td>5:Is this the first time the patient has returned to hope center since delivery? :	</td>
-                        <td><obs conceptId="1724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="radio" answerLabels="Yes,No" /> <br /><br /></td>
+            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Other" /> <br /><br />
+          </td>
+          <td>
+            Specify: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
+          </td>
+        </tr>
 
+      </table>
 
-                        <td>6:If this this is the first time the client is returning please select baby enrollment :</td>
-                        <td>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in HEI Clinic" answerConceptId="1017AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Enrolled in Paeds CCC Program" answerConceptId="162050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-                            <obs id="screening-test" conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not enrolled" answerConceptId="1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" /><br></br><hr/>
-
-
-                        </td>
-                    </tr>
-                </table>
-
-
-
-            </fieldset>
-
-        <fieldset class="adherence-screening">
-            <!--Enhance adherence screening-->
-            <legend>
-                <strong> Notes/Summary :</strong>
-            </legend>
-            <table class="simple-table" id="summary-1">
-
-                <tr>
-
-                    <td><obs conceptId="160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
-                </tr>
-
-            </table>
-
-        </fieldset>
+    </fieldset>
 
 
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong> 3.HIV test Results? :</strong>
+      </legend>
+      <table class="simple-table" >
+        <tr>
+          <td>
 
+            <obs conceptId="159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Negative,Positive, Known Positive, Not done " /> <br /><br />
+          </td>
 
-    </div>
-    <div class="ke-form-footer">
-        <submit />
-    </div>
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong>4.who are the perpetrators?:</strong>
+      </legend>
+      <table class="simple-table" >
+        <tr>
+          <td>
+
+            <obs conceptId="165229"
+                 answerConceptIds="166051AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Known,Unknown " /> <br /><br />
+          </td>
+
+        </tr>
+
+        <tr>
+          <td>Age of perpetrator :</td>
+          <td>
+            <obs conceptId = "163541AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 answerConceptIds="163563AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163562AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                                    1734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163328AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Less than 18 yrs,18-24 yrs, 25-34,35-49 yrs, 50 yrs and above"   />
+          </td>
+        </tr>
+
+        <tr>
+          <td>6.Gender of the perpetrator?</td>
+          <td>
+            <obs conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 answerConceptIds="1534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Male,Female " /> <br /><br />
+          </td>
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong> Notes :</strong>
+      </legend>
+      <table class="simple-table" >
+
+        <tr>
+
+          <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+  </div>
+  <div class="ke-form-footer">
+    <submit />
+  </div>
 
 </htmlform>

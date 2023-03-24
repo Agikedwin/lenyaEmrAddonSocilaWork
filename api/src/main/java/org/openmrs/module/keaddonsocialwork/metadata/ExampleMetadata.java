@@ -12,6 +12,7 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
 
+
 package org.openmrs.module.keaddonexample.metadata;
 
 import org.openmrs.module.metadatadeploy.bundle.AbstractMetadataBundle;
@@ -84,6 +85,29 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String PREPPHONECONTACT ="031f286b-5017-495b-b242-fdb7e7a813a3";
 
 
+		// Index Testing Adverse Event Investigation
+
+		public  static  final  String ADVERSEEVENT ="0e89f480-e714-46ef-be9e-663907195b0e";
+
+
+		// DEPRESSION SCREENING FORM
+		public  static  final  String DEPRESSIONSCREENING ="1298e39b-a810-4b2b-8144-483863e1054d";
+
+		// CANCER TREAMENT FORM
+		public  static  final  String CANCERTREATMENTFORM ="5ae026d7-14e6-42ba-be48-c3b79443e081";
+		public  static  final  String UDABCANCERTREATMENTFORM ="0555888f-63a9-449e-89f7-7625f867265b";
+
+		// GBV
+		public  static  final  String GBVFORM = "2c6da7fb-421c-45a1-9954-902a871d1ad6";
+
+		public static  final String SGBVFORM = "4b800d02-b0f6-4cf1-8f98-5a137f9bac72";
+
+		// HTS
+		public  static  final  String HTSFORM  = "f9042a21-4a8e-4c7f-a3a8-eebe03908d1b";
+
+
+
+
 
 
 
@@ -144,6 +168,25 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		//PREP Phone Contact
 		public  static  final  String PREPPHONECONTACT ="7d39c9e9-0b52-4e9d-918c-4d6ec6f5f939";
 
+		// Index Testing Adverse Event Investigation Form
+
+		public  static  final  String ADVERSEEVENT ="39dcd7a3-c8ac-4fc3-aad1-baec136f2577";
+
+
+	// DEPRESSION SCREENING FORM
+		public  static  final  String DEPRESSIONSCREENING ="cf4f915a-b607-40c1-871a-608b26f603b0";
+
+		// CANCER TREAMENT FORM
+		public  static  final  String CANCERTREATMENTFORM ="010461c9-0102-42aa-b3e1-030b3682b8f9";
+		public  static  final  String UDABCANCERTREATMENTFORM ="b69580d3-c242-4f2f-ae49-283f8e719b55";
+
+		// GBV
+		public  static  final  String GBVFORM = "8d056a0b-9f8e-4a47-84c0-47bcd5f34534";
+
+		public static  final String SGBVFORM = "5f48c23d-a859-4446-86c7-4282b0516559";
+
+		// HTS
+		public  static  final  String HTSFORM  = "304d1b97-0481-4d3a-87d2-5c95c45ebc39";
 
 	}
 
@@ -258,6 +301,41 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		install(form("PREP Phone Contact ", null, _EncounterType.PREPPHONECONTACT, "1", _Form.PREPPHONECONTACT));
 
+		// OTHERS DEPRESSION SCREENING FORM Depression Screening Form
+
+		install(encounterType("Depression Screening Encounter", "Depression Screening Encounter Coptic ", _EncounterType.DEPRESSIONSCREENING));
+
+		install(form("Depression Screening Form", null, _EncounterType.DEPRESSIONSCREENING, "1", _Form.DEPRESSIONSCREENING));
+
+
+		install(encounterType("Adverse Event Investigation  ", "Adverse Event Investigation Coptic", _EncounterType.ADVERSEEVENT));
+
+		install(form("Adverse Event Investigation", null, _EncounterType.ADVERSEEVENT, "1", _Form.ADVERSEEVENT));
+
+
+		install(encounterType("Cancer Treatment   ", "Cancer Treatment Form Coptic", _EncounterType.CANCERTREATMENTFORM));
+
+		install(form("Cancer Treatment Form", null, _EncounterType.CANCERTREATMENTFORM, "1", _Form.CANCERTREATMENTFORM));
+
+
+		// GBV
+		install(encounterType("GBV Screening   ", "GBV Coptic Form", _EncounterType.GBVFORM));
+
+		install(form("GBV Screening ", null, _EncounterType.GBVFORM, "1", _Form.GBVFORM));
+
+		install(encounterType("SGBV Screening   ", "SGBV Coptic Form", _EncounterType.SGBVFORM));
+
+		install(form("SGBV Follow up  ", null, _EncounterType.SGBVFORM, "1", _Form.SGBVFORM));
+
+		// HTS
+		install(encounterType("HTS  Self Testing   ", "HTS  Self Testing ", _EncounterType.HTSFORM));
+
+		install(form("HTS Self Testing  Results ", null, _EncounterType.HTSFORM, "1", _Form.HTSFORM));
+
+		//SDAB
+		install(encounterType("Tree Cancer Screening   ", "Cancer Treatment Form Tree", _EncounterType.UDABCANCERTREATMENTFORM));
+
+		install(form("Tree Cancer Screening", null, _EncounterType.CANCERTREATMENTFORM, "1", _Form.UDABCANCERTREATMENTFORM));
 
 	}
 }
