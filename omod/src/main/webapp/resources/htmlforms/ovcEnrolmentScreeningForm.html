@@ -12,8 +12,8 @@
   ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
   -->
 <htmlform>
-  <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
-  <script type="text/javascript">
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
         var LATEST_SESSION = "<lookup expression="fn.latestObs(1639).valueNumeric"/>"
         var LATEST_SESSION_START_DATE = "<lookup expression="fn.earliestObs(1639).getObsDatetime()"/>"
         jQuery(function($) {
@@ -138,7 +138,7 @@
         }
         }
     </script>
-  <style>
+    <style>
         .simple-table {
         border: solid 1px #DDEEEE;
         border-collapse: collapse;
@@ -163,186 +163,124 @@
         }
     </style>
 
-  <div class="ke-form-header">
-    <table width="100%">
-      <tr>
-        <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
-        <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
-      </tr>
-    </table>
-  </div>
+    <div class="ke-form-header">
+        <table width="100%">
+            <tr>
+                <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+                <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+            </tr>
+        </table>
+    </div>
 
-  <div class="ke-form-content">
-    <fieldset class="autopsy-tab">
-      <legend>
-        <strong>Gbv</strong>
-      </legend>
-      <table class="simple-table" id="autopsy-tbl">
-        <tr>
-          <td> Incident Date:</td>
-          <td>
-            <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="false"  required="true" labelText=" "  />
-          </td>
-        </tr>
-      </table>
-      <table class="simple-table" id="autopsy-tbl2">
-        <tr>
-          <td> 1.Type of violence (Tick the appropriate option)? </td>
+    <div class="ke-form-content">
+        <fieldset class="autopsy-tab">
+            <legend>
+                <strong> OVC Enrolment</strong>
+            </legend>
+            <table class="simple-table" id="autopsy-tbl">
+                <tr>
+                    <td> Date of screening for OVC Enrolment </td>
+                    <td>
+                        <obs conceptId="165349" allowFutureDates="false" labelText=" "  />
+                    </td>
+                </tr>
+            </table>
+            <table class="simple-table" id="autopsy-tbl2">
+                <tr>
+                    <td> Eligibility reason, Client is ? </td>
+                    <td>
 
-          <td>
-            <obs conceptId="165205"  answerConceptId="118668AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "
-                   style="checkbox" answerLabel="Emotional" /> <br /><br />
-            <obs conceptId="165205"  answerConceptId="152292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "
-                 style="checkbox" answerLabel="Physical" /> <br /><br />
-          </td>
+                        <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="152292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" answerLabel="HIV Exposed Infant" /> <br /><br />
+                        <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="127910AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" answerLabel="Child/Adolescent Living with HIV" /> <br /><br />
+                        <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="140790AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="checkbox" answerLabel="Survivor of Gender based violence " /> <br /><br />
 
+                    </td>
+                </tr>
 
-        </tr>
-      </table>
-    </fieldset>
-
-    <fieldset class="adherence-screening">
-      <!--Enhance adherence screening-->
-      <legend>
-        <strong> 2.Referred from :</strong>
-      </legend>
-      <table class="simple-table" >
-        <tr>
-          <td>
-
-            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 answerConceptIds="159372AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 answerLabels="CC"   style="radio" /> <br /><br />
-          </td>
-          <td>
-            Indicate CCC number: <obs conceptId="162165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-
-            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="160542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="OPD" /> <br /><br />
-          </td>
-          <td>
-            Indicate Medical Records Number: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-
-            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="IPD" /> <br /><br />
-          </td>
-          <td>
-            Indicate Medical Records Number: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-
-            <obs conceptId="163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptIds="5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="Other" /> <br /><br />
-          </td>
-          <td>
-            Specify: <obs conceptId="163530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  style="text" />
-          </td>
-        </tr>
-
-      </table>
-
-    </fieldset>
+            </table>
+        </fieldset>
 
 
-    <fieldset class="adherence-screening">
-      <!--Enhance adherence screening-->
-      <legend>
-        <strong> 3.HIV test Results? :</strong>
-      </legend>
-      <table class="simple-table" >
-        <tr>
-          <td>
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> Screening outcomes :</strong>
+            </legend>
+            <table class="simple-table" >
+                <tr>
+                    <td>
 
-            <obs conceptId="159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" required="true"
-                 answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                 1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="Negative,Positive, Known Positive, Not done " /> <br /><br />
-          </td>
+                        <obs conceptId="160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                 1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             style="radio"
+                             answerLabels="Declined to Enrol,Accepted to Enroll, No OVC Program in county of residence, Already in OVC program " /> <br /><br />
+                    </td>
 
-        </tr>
+                </tr>
 
-      </table>
+            </table>
 
-    </fieldset>
+        </fieldset>
 
-    <fieldset class="adherence-screening">
-      <!--Enhance adherence screening-->
-      <legend>
-        <strong>4.who are the perpetrators?:</strong>
-      </legend>
-      <table class="simple-table" >
-        <tr>
-          <td>
 
-            <obs conceptId="165229" required="true"
-                 answerConceptIds="166051AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="Known,Unknown " /> <br /><br />
-          </td>
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong> If declined, kindly give reasons :</strong>
+            </legend>
+            <table class="simple-table" >
 
-        </tr>
+                <tr>
 
-        <tr>
-          <td>Age of perpetrator :</td>
-          <td>
-            <obs conceptId = "163541AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" required="true"
-                 answerConceptIds="163563AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163562AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
-                                    1734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163328AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="Less than 18 yrs,18-24 yrs, 25-34,35-49 yrs, 50 yrs and above"   />
-          </td>
-        </tr>
+                    <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
+                </tr>
 
-        <tr>
-          <td>6.Gender of the perpetrator?</td>
-          <td>
-            <obs conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" required="true"
-                 answerConceptIds="1534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                 style="radio"
-                 answerLabels="Male,Female " /> <br /><br />
-          </td>
-        </tr>
+            </table>
 
-      </table>
+        </fieldset>
 
-    </fieldset>
 
-    <fieldset class="adherence-screening">
-      <!--Enhance adherence screening-->
-      <legend>
-        <strong> Notes :</strong>
-      </legend>
-      <table class="simple-table" >
 
-        <tr>
+        <fieldset class="adherence-screening">
+            <!--Enhance adherence screening-->
+            <legend>
+                <strong></strong>
+            </legend>
+            <table class="simple-table" >
 
-          <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="4" cols="100" style="textarea" /></td>
-        </tr>
 
-      </table>
+                <tr>
+                    <td>Name of OVC program reffered to:</td>
+                    <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+                </tr>
 
-    </fieldset>
+                <tr>
+                    <td>Date client prefers to enrol for OVC</td>
+                    <td>
+                        <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  allowFutureDates="false"/> <br /><br />
+                    </td>
+                </tr>
 
-  </div>
-  <div class="ke-form-footer">
-    <submit />
-  </div>
+                <tr>
+                    <td>Date confirmed linkage to OVC Program</td>
+                    <td>
+                        <obs conceptId="165144"  allowFutureDates="false"/> <br /><br />
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+
+
+    </div>
+    <div class="ke-form-footer">
+        <submit />
+    </div>
 
 </htmlform>

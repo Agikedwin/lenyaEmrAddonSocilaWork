@@ -447,6 +447,60 @@
 		<property name="htmlform" value="keaddonexample:udabCancerForm.html" />
 	</bean>
 
+	<!--  DREAMS  -->
+	<bean id="keaddonexample.form.screeningforenrollment" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="51281515-9b8c-4d5e-977f-430ec6fc3178" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:screeningforenrollment.html" />
+	</bean>
+
+	<!-- OVC -->
+	<bean id="keaddonexample.form.ovcEnrolmentScreeningForm" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="3515e5ea-6758-4266-8ddd-6848f0b55587" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:ovcEnrolmentScreeningForm.html" />
+	</bean>
+
+	<bean id="keaddonexample.form.snsForm" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="4e8a44e1-333d-415e-932f-97fed7715164" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:snsForm.html" />
+	</bean>
+
+	<bean id="keaddonexample.form.formutou" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="e1b67a74-45b9-43cc-bd54-67a3a2b34f0f" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:formutou.html" />
+	</bean>
+
 
 
 
@@ -494,6 +548,17 @@
 				<ref bean="keaddonexample.form.htsSelfTesting" />
 				<!-- UDAB -->
 				<ref bean="keaddonexample.form.udabCancerForm" />
+
+				<!-- DREAMS -->
+				<ref bean="keaddonexample.form.screeningforenrollment" />
+				<!-- OVC -->
+				<ref bean="keaddonexample.form.ovcEnrolmentScreeningForm" />
+
+				<!-- SNS -->
+				<ref bean="keaddonexample.form.snsForm" />
+
+				<!-- U to U -->
+				<ref bean="keaddonexample.form.formutou" />
 
 
 

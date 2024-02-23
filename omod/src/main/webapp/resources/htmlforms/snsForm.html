@@ -1,0 +1,269 @@
+<htmlform>
+    <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+    <script type="text/javascript">
+        var LATEST_SESSION = "<lookup expression="
+        fn.latestObs(1639).valueNumeric
+        "/>"
+        var LATEST_SESSION_START_DATE = "<lookup expression="
+        fn.earliestObs(1639).getObsDatetime()
+        "/>"
+        jQuery(function ($) {
+            //Defaults
+            var adherenceResponses1 = jq('#adherence-1');
+            var adherenceResponses2 = jq('#adherence-2');
+            jq('#adherence-2').hide();
+            clearHiddenSections([adherenceResponses1, adherenceResponses2]);
+            jq("#adherence-1").change(adherenceAssessment);
+            //Process flow
+            jq("#has-vl :input[type=radio]").change(hasViralLoadResult);
+            jq("#result-status :input[type=radio]").change(hasHighViralLoadResult);
+            jq("#session-number :input[type=text]").change(sessionNumberChange);
+            hasViralLoadResult();
+            hasHighViralLoadResult();
+            if (LATEST_SESSION == "") {
+                jq('#review').hide();
+                jq('#viral-load-tab').show();
+                jq('#adherence-barriers-tab').show();
+            } else {
+                jq('#review').show();
+                jq('#viral-load-tab').show();
+                jq('#adherence-barriers-tab').hide();
+            }
+            console.log("LATEST SESSION==>" + LATEST_SESSION);
+            console.log("LATEST SESSION START DATE==>" + LATEST_SESSION_START_DATE);
+            if (LATEST_SESSION &gt; 0) {
+                var formattedSessionStartDate = moment(moment(LATEST_SESSION_START_DATE, 'DD/MMM/YYYY').toDate()).format("DD-MMM-YYYY");
+                getField('session-startdate.value').val(formattedSessionStartDate);
+            } else {
+                getField('session-startdate.value').val("");
+            }
+            beforeSubmit.push(function () {
+            });
+        });
+        //Morisky assessment
+        var adherenceAssessment = function () {
+            var val = jq(this).val();
+            const YES_CONCEPT_ID = 1065;
+            const NO_CONCEPT_ID = 1066;
+            var assessmentRadios = jq('#adherence-1').find('input[type=radio]');
+            var assessmentYesResponses = [];
+            var assessmentNoResponses = [];
+            //Fetch responses for the assessment questions
+            jq.each(assessmentRadios, function () {
+                //Push any responses to the respective assessmentYesResponses and assessmentNoResponses array
+                if (this.value == YES_CONCEPT_ID &amp;&amp; this.checked == true) {
+                    assessmentYesResponses.push(this);
+                }
+                if (this.value == NO_CONCEPT_ID &amp;&amp; this.checked == true) {
+                    assessmentNoResponses.push(this);
+                }
+            });
+            //If no responses have been recorded then prompt since this assessment is mandatory
+            if (assessmentYesResponses.length == 0 &amp;&amp; assessmentNoResponses.length == 0) {
+                //Prompt to complete assessment
+            } else {
+                if (assessmentYesResponses.length &gt; 0) {
+                    jq('#adherence-2').show();
+                }
+                if (assessmentYesResponses.length == 0) {
+                    jq("#arv-adherence input[value=159405]").prop("checked", true);
+                    jq('#adherence-2').hide();
+                }
+                if (assessmentYesResponses.length == 1 || assessmentYesResponses.length == 2) {
+                    jq("#arv-adherence input[value=163794]").prop("checked", true);
+                    jq('#adherence-2').show();
+                }
+                if (assessmentYesResponses.length == 3 || assessmentYesResponses.length == 4) {
+                    jq("#arv-adherence input[value=159407]").prop("checked", true);
+                    jq('#adherence-2').show();
+                }
+            }
+        }
+
+        function sessionNumberChange() {
+            var val = getValue('session-number.value');
+            if (val == 1) {
+                getField('session-startdate.value').val("");
+                jq('#review').hide();
+                jq('#viral-load-tab').show();
+                jq('#adherence-barriers-tab').show();
+            } else {
+                jq('#review').show();
+                jq('#viral-load-tab').show();
+                jq('#adherence-barriers-tab').hide();
+            }
+        }
+
+        function hasViralLoadResult() {
+            var val = getValue('has-vl.value');
+            if (val == 1065) {
+                jq('#vl-status').show();
+                jq('#vl-feeling').show();
+                jq('#vl-high').show();
+            } else {
+                jq('#vl-status').hide();
+                jq('#vl-feeling').hide();
+                jq('#vl-high').hide();
+            }
+        }
+
+        function hasHighViralLoadResult() {
+            var val = getValue('result-status.value');
+            if (val == 1066) {
+                jq('#vl-high-txt textarea').prop("disabled", false);
+            } else {
+                jq('#vl-high-txt textarea').prop("disabled", true);
+            }
+        }
+
+        clearHiddenSections = function (parentObj) {
+            for (var i = 0; i &lt; parentObj.length; i++) {
+                parentObj[i].find('input[type=radio]').each(function () {
+                    this.checked = false;
+                });
+                parentObj[i].find('input[type=checkbox]').each(function () {
+                    this.checked = false;
+                });
+                parentObj[i].find('input[type=text]').each(function () {
+                    this.val("");
+                });
+                parentObj[i].find('select').each(function () {
+                    this.selectedIndex = 0;
+                });
+            }
+        }
+    </script>
+    <style>
+        .simple-table {
+            border: solid 1px #DDEEEE;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font: normal 13px Arial, sans-serif;
+        }
+
+        .simple-table thead th {
+            background-color: #DDEFEF;
+            border: solid 1px #DDEEEE;
+            color: #336B6B;
+            padding: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 1px #fff;
+        }
+
+        .simple-table td {
+            border: solid 1px #DDEEEE;
+            color: #333;
+            padding: 10px;
+            text-shadow: 1px 1px 1px #fff;
+        }
+    </style>
+<div class="ke-form-header">
+    <table width="100%">
+        <tr>
+            <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+            <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+        </tr>
+    </table>
+</div>
+
+<div class="ke-form-content">
+
+
+    <fieldset class="sns-recruiter-type">
+        <legend>
+            <strong> 1. Recruiter Type? (The data element indicates the HIV status of the seed/recruiter) :</strong>
+        </legend>
+        <table class="simple-table" >
+            <tr>
+                <td>
+
+                    <obs conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                         138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                 692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                         style="radio"
+                         answerLabels="NN (New Negative), NP (New Positive),KP (Known Positive),KN (Known Negative)" /> <br /><br />
+                </td>
+
+            </tr>
+
+        </table>
+
+    </fieldset>
+
+
+    <fieldset class="sns-ccc">
+        <!--Enhance adherence screening-->
+        <legend>
+            <strong> If KP kindly indicate CCC number of the client:</strong>
+        </legend>
+        <table class="simple-table" >
+
+            <tr>
+
+                <td><obs conceptId="167158AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="40" style="textarea" /></td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+
+
+
+    <fieldset class="sns-id">
+        <!--Enhance adherence screening-->
+        <legend>
+            <strong>Coupon ID given:(The data element indicates the serial numbers of the coupons issued to
+                the seed client)</strong>
+        </legend>
+        <table class="simple-table" >
+
+
+            <tr>
+                <td><obs conceptId="1646AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+            </tr>
+
+            <tr>
+                <td><obs conceptId="163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+            </tr>
+
+            <tr>
+                <td><obs conceptId="163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+            </tr>
+            <tr>
+                <td><obs conceptId="162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+            </tr>
+            <tr>
+                <td><obs conceptId="163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+            </tr>
+
+
+        </table>
+
+    </fieldset>
+
+
+    <fieldset class="sns-description">
+        <!--Enhance adherence screening-->
+        <legend>
+            <strong> Comments: </strong>
+        </legend>
+        <table class="simple-table" >
+
+            <tr>
+
+                <td><obs conceptId="160716AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="5" cols="100" style="textarea" /></td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+
+
+
+</div>
+<div class="ke-form-footer">
+    <submit />
+</div>
+
+</htmlform>

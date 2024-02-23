@@ -105,6 +105,19 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		// HTS
 		public  static  final  String HTSFORM  = "f9042a21-4a8e-4c7f-a3a8-eebe03908d1b";
 
+		//Screening for DREAMS Enrolment (10-24 girls)
+		public  static  final  String DREAMSENROLMENT = "0af7d9d4-2d1d-4ade-bb8b-a0e89161ce6c";
+
+		// OVC Enrolment Screening form (0-17 Yrs)
+		public  static  final String OVCENROLMENT = "426bf989-54fa-422d-b62b-292a2909a53a";
+
+
+		//SNS Customized Form
+		public  static  final  String SNSCUSTOMIZED = "3ffdf1d5-2b15-4887-80a1-7afdb6f60c10";
+
+		//SNS Customized Form
+		public  static  final  String UTOUFORM = "fde711b8-3af4-41bf-8967-ba1fb04f6e0a";
+
 
 
 
@@ -187,6 +200,19 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		// HTS
 		public  static  final  String HTSFORM  = "304d1b97-0481-4d3a-87d2-5c95c45ebc39";
+
+		//Screening for DREAMS Enrolment (10-24 girls)
+		public  static  final  String DREAMSENROLMENTFORM = "51281515-9b8c-4d5e-977f-430ec6fc3178";
+
+		// OVC Enrolment Screening form (0-17 Yrs)
+		public  static  final String OVCENROLMENTFROM = "3515e5ea-6758-4266-8ddd-6848f0b55587";
+
+
+		//SNS Customized Form
+		public  static  final  String SNSCUSTOMIZEDFORM = "4e8a44e1-333d-415e-932f-97fed7715164";
+
+		//UTOUForm
+		public  static  final  String UTOU = "e1b67a74-45b9-43cc-bd54-67a3a2b34f0f";
 
 	}
 
@@ -336,6 +362,27 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(encounterType("Tree Cancer Screening   ", "Cancer Treatment Form Tree", _EncounterType.UDABCANCERTREATMENTFORM));
 
 		install(form("Tree Cancer Screening", null, _EncounterType.CANCERTREATMENTFORM, "1", _Form.UDABCANCERTREATMENTFORM));
+
+		// Dreams
+		install(encounterType("Screening for DREAMS  10-26 yrs (girls)   ", "Screening for DREAMS Enrolment 10-26 girls ", _EncounterType.DREAMSENROLMENT));
+
+		install(form("Screening for DREAMS  10-26 girls", null, _EncounterType.DREAMSENROLMENT, "1", _Form.DREAMSENROLMENTFORM));
+
+		//Ovc
+		install(encounterType("OVC Enrolment Screening 0-17 yrs   ", "OVC Enrolment Screening form  0-17 yrs", _EncounterType.OVCENROLMENT));
+
+		install(form("OVC Enrolment Screening form  0-17 yrs", null, _EncounterType.OVCENROLMENT, "1", _Form.OVCENROLMENTFROM));
+
+		//SNS
+		install(encounterType("SNS      ", "SNS ", _EncounterType.SNSCUSTOMIZED));
+
+		install(form("SNS  ", null, _EncounterType.SNSCUSTOMIZED, "1", _Form.SNSCUSTOMIZEDFORM));
+
+		//UTOU
+		install(encounterType("U = U     ", "U = U", _EncounterType.UTOUFORM));
+
+		install(form("U = U", null, _EncounterType.UTOUFORM, "1", _Form.UTOU));
+
 
 	}
 }
