@@ -12,7 +12,7 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
 
-package org.openmrs.module.keaddonexample.calculation;
+package org.openmrs.module.keaddonsocialwork.calculation;
 
 import org.openmrs.calculation.BaseCalculation;
 import org.openmrs.calculation.patient.PatientCalculation;

@@ -20,7 +20,8 @@ import org.junit.Test;
 import org.openmrs.api.context.Context;
 import org.openmrs.calculation.patient.PatientCalculationService;
 import org.openmrs.calculation.result.CalculationResultMap;
-import org.openmrs.module.keaddonexample.metadata.ExampleMetadata;
+import org.openmrs.module.keaddonsocialwork.calculation.EligibleForExampleProgramCalculation;
+import org.openmrs.module.keaddonsocialwork.metadata.ExampleMetadata;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.springframework.beans.factory.annotation.Autowired;
 

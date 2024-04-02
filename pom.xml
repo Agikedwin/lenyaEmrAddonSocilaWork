@@ -33,7 +33,7 @@
 		<kenyauiVersion>2.1.2</kenyauiVersion>
 		<metadatadeployVersion>1.1</metadatadeployVersion>
 		<metadatasharingVersion>1.1.8</metadatasharingVersion>
-		<reportingVersion>0.8.1</reportingVersion>
+		<reportingVersion>1.25.0</reportingVersion>
 		<serializationxstreamVersion>0.2.7</serializationxstreamVersion>
 		<uiframeworkVersion>3.1</uiframeworkVersion>
 

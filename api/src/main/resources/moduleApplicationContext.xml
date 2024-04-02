@@ -13,47 +13,6 @@
 		<constructor-arg value="700" />
 	</bean>
 
-<!--  SO
-	<bean id="keaddonexample.app.socialworkapp" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
-		<constructor-arg value="keaddonexample.socialworkapp" />
-		<constructor-arg value="Social Work" />
-		<constructor-arg value="keaddonexample/example/home.page" />
-		<constructor-arg value="keaddonexample:apps/socialwork.png" />
-		<constructor-arg value="700" />
-	</bean>
--->
-	<!-- Nutrition App
-
-	<bean id="keaddonexample.app.nutritionapp" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
-		<constructor-arg value="keaddonexample.nutritionapp" />
-		<constructor-arg value="Nutrition" />
-		<constructor-arg value="keaddonexample/example/home.page" />
-		<constructor-arg value="keaddonexample:apps/nutrition.png" />
-		<constructor-arg value="700" />
-	</bean>
--->
-	<!-- Medical follow up App
-
-	<bean id="keaddonexample.app.medicalfollowupapp" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
-		<constructor-arg value="keaddonexample.medicalfollowupapp" />
-		<constructor-arg value="Medical Follow Up" />
-		<constructor-arg value="keaddonexample/example/home.page" />
-		<constructor-arg value="keaddonexample:apps/medical.png" />
-		<constructor-arg value="700" />
-	</bean>
--->
-	<!-- Couselling app
-
-	<bean id="keaddonexample.app.cousellingapp" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
-		<constructor-arg value="keaddonexample.cousellingapp" />
-		<constructor-arg value="Counselling" />
-		<constructor-arg value="keaddonexample/example/home.page" />
-		<constructor-arg value="keaddonexample:apps/counselling.png" />
-		<constructor-arg value="700" />
-	</bean>
- -->
-
-	<!-- Social work Forms -->
 
 	<bean id="keaddonexample.form.socialworkadultscreening" class="org.openmrs.module.kenyacore.form.FormDescriptor">
 		<property name="targetUuid" value="b694b1bc-2086-47dd-a4ad-ba48f9471e4b" />
@@ -107,21 +66,7 @@
 		<property name="icon" value="keaddonexample:forms/example.png" />
 		<property name="htmlform" value="keaddonexample:socialworkphonecontact.html" />
 	</bean>
-<!--
-	<bean id="keaddonexample.form.socialworkverbalautopsy" class="org.openmrs.module.kenyacore.form.FormDescriptor">
-		<property name="targetUuid" value="6f65a8ae-03b2-44ad-8873-43e6be628c37" />
-		<property name="apps">
-			<set>
-				<ref bean="keaddonexample.app.example" />
-				<ref bean="kenyaemr.app.chart" />
-				<ref bean="kenyaemr.app.clinician" />
-			</set>
-		</property>
-		<property name="icon" value="keaddonexample:forms/example.png" />
-		<property name="htmlform" value="keaddonexample:socialworkverbalautopsy.html" />
-	</bean>
--->
-	<!-- Nutrition Forms -->
+
 
 	<bean id="keaddonexample.form.nutritionscreening" class="org.openmrs.module.kenyacore.form.FormDescriptor">
 		<property name="targetUuid" value="daaa10c4-e971-4830-8e23-6c1c735e93da" />
@@ -501,6 +446,19 @@
 		<property name="htmlform" value="keaddonexample:formutou.html" />
 	</bean>
 
+	<bean id="keaddonexample.form.pmtctovcintegration" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="a7bc1eaf-ddbf-4ca4-b213-0694a2f3b01f" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:pmtctovcintegration.html" />
+	</bean>
+
 
 
 
@@ -560,6 +518,9 @@
 				<!-- U to U -->
 				<ref bean="keaddonexample.form.formutou" />
 
+				<!--PMTCT- OVC Integration -->
+				<ref bean="keaddonexample.form.pmtctovcintegration" />
+
 
 
 
@@ -582,5 +543,121 @@
 			</set>
 		</property>
 	</bean>
-	
+
+	<!-- Report Begins -->
+    <!-- Program begins Here 	-->
+	<bean id="coptic.module.program" class="org.openmrs.module.kenyacore.program.ProgramDescriptor">
+		<property name="targetUuid" value="1d63ef6d-431b-45c8-9989-eac2e534ae55" />
+		<property name="reports">
+			<set>
+				<ref bean="kenyaemr.coptic.module.report.utou" />
+				<ref bean="kenyaemr.coptic.module.report.sgbv" />
+
+				<ref bean="kenyaemr.coptic.module.report.mfnurse" />
+				<ref bean="kenyaemr.coptic.module.report.gbv" />
+				<ref bean="kenyaemr.coptic.module.report.ovc" />
+				<ref bean="kenyaemr.coptic.module.report.udab" />
+			</set>
+		</property>
+	</bean>
+
+
+
+	<!--  U To U Report -->
+
+	<bean id="kenyaemr.coptic.module.report.utou" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="c3aabb6c-1845-407a-9777-9193c71ce8c9" />
+		<property name="name" value="U = U" />
+		<property name="description" value="Undetectable equal Untranslatable " />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:utoureport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:utou" />
+	</bean>
+
+
+
+	<!--  SGBV Report -->
+
+	<bean id="kenyaemr.coptic.module.report.sgbv" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="abc61ad7-404c-4e38-80fb-9ef689e3ed0f"/>
+		<property name="name" value="Sexual Gender Base Violence " />
+		<property name="description" value="Sexual Gender Based Violence" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:sqbvreport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:sgbv" />
+	</bean>
+
+
+	<!--  Medical FU Nurse Report -->
+
+	<bean id="kenyaemr.coptic.module.report.mfnurse" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="98f307d8-195e-4a53-9c81-c58ec4611603"/>
+		<property name="name" value="Medical Follow uo Nurse Report" />
+		<property name="description" value="Medical Follow uo Nurse Report" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:funursereport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:mfnurse" />
+	</bean>
+
+
+	<!--  GBV Report -->
+
+	<bean id="kenyaemr.coptic.module.report.gbv" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="f94a5d29-7e9f-45a8-849f-0a481a32fd02"/>
+		<property name="name" value="Gender Based Violence Report" />
+		<property name="description" value="Gender Based Violence Report" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:qbvreport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:gbv" />
+	</bean>
+
+
+	<!--  OVC ENROLMENT Report -->
+
+	<bean id="kenyaemr.coptic.module.report.ovc" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="72a7c769-fb50-46a1-bb00-958eb94fb6dd"/>
+		<property name="name" value="OVC Enrolment Report" />
+		<property name="description" value="OVC Enrolment Report" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:ovcreport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:ovc" />
+	</bean>
+
+
+	<!--  UDAB STUDY Report -->
+
+	<bean id="kenyaemr.coptic.module.report.udab" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="29b2f375-c8e6-45ae-9811-36f629446ddf"/>
+		<property name="name" value="UDAB Study Report" />
+		<property name="description" value="UDAB Study Report " />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:udabreport.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:udab" />
+	</bean>
+
+
 </beans>

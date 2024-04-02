@@ -1,0 +1,197 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+  <script type="text/javascript" src="../moduleResources/kenyaemr/scripts/moment.js"></script>
+  <script type="text/javascript">
+
+  </script>
+  <style>
+    .simple-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    }
+
+    .simple-table thead th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    }
+
+    .simple-table td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    }
+  </style>
+
+  <div class="ke-form-header">
+    <table width="100%">
+      <tr>
+        <td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+        <td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="ke-form-content">
+
+    <fieldset class="breastfeeding">
+      <legend>
+        <strong>OVC Enrolment</strong>
+      </legend>
+      <table class="simple-table" id="autopsy-tbl">
+        <tr>
+          <td> Date of screening for OVC Enrolment </td>
+          <td>
+            <obs conceptId="165349" allowFutureDates="false" labelText=" "  />
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <fieldset class="client-type">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong> Select Type of Client :</strong>
+      </legend>
+      <table class="simple-table" >
+        <tr>
+          <td>
+
+            <obs conceptId="160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="HIV positive pregnant adolescents,
+                 HIV positive pregnant with VL &gt;50 copies/ml,
+                 HIV positive breastfeeding mothers and their exposed infants (mother-baby pair) including adolescent mothers.
+                  " /> <br /><br />
+          </td>
+
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>
+        <strong>If HIV positive breastfeeding mothers and their exposed infants (mother-baby pair) including
+          adolescent mothers</strong>
+      </legend>
+
+      <table class="simple-table" >
+
+
+        <tr>
+          <td> HEI No of the client:</td>
+          <td><obs conceptId="162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="text" /></td>
+        </tr>
+
+      </table>
+    </fieldset>
+
+    <fieldset>
+      <table class="simple-table" id="autopsy-tbl2">
+        <tr>
+          <td>3. Eligibility reason, Client is </td>
+
+          <td>
+
+            <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="152292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="checkbox" answerLabel="HIV positive Pregnant Adolescents. Including OVC" /> <br /><br />
+            <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="127910AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="checkbox" answerLabel="Clients with detectable VL&gt;50 copies/ml" /> <br /><br />
+            <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="140790AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="checkbox" answerLabel="Those who drop off ART i.e defaulters/interruption in treatment" /> <br /><br />
+            <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="138447AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="checkbox" answerLabel="Clients with stigma, declining treatment, poor adherence" /> <br /><br />
+            <obs conceptId="162699AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="126302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="checkbox" answerLabel="Client with active comorbidities - DM, OIs, malnourished (low MUAC), mental health etc." /> <br /><br />
+
+          </td>
+        </tr>
+
+      </table>
+    </fieldset>
+
+
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong> Screening outcomes :</strong>
+      </legend>
+      <table class="simple-table" >
+        <tr>
+          <td>
+
+            <obs conceptId="165286"
+                 answerConceptIds="664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,
+                 1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                 style="radio"
+                 answerLabels="Declined to Enrol,Accepted to Enroll,No OVC Program in county of residence, Already in OVC program " /> <br /><br />
+          </td>
+
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+
+
+    <fieldset class="adherence-screening">
+      <!--Enhance adherence screening-->
+      <legend>
+        <strong>If declined, kindly give reasons</strong>
+      </legend>
+      <table class="simple-table" >
+
+
+        <tr>
+          <td>Name of OVC program referred to::</td>
+          <td><obs conceptId="162166AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rows="1" cols="30" style="textarea" /></td>
+        </tr>
+
+        <tr>
+          <td>Date Enrolled</td>
+          <td>
+            <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  allowFutureDates="false"/> <br /><br />
+          </td>
+        </tr>
+
+        <tr>
+          <td>OVC Enrollment no</td>
+          <td>
+            <obs conceptId="1000531"   style="text"/> <br /><br />
+          </td>
+        </tr>
+
+      </table>
+
+    </fieldset>
+
+
+
+  </div>
+  <div class="ke-form-footer">
+    <submit />
+  </div>
+
+</htmlform>

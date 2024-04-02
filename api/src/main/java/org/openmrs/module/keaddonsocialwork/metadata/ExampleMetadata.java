@@ -13,7 +13,7 @@
  */
 
 
-package org.openmrs.module.keaddonexample.metadata;
+package org.openmrs.module.keaddonsocialwork.metadata;
 
 import org.openmrs.module.metadatadeploy.bundle.AbstractMetadataBundle;
 import org.springframework.stereotype.Component;
@@ -118,6 +118,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		//SNS Customized Form
 		public  static  final  String UTOUFORM = "fde711b8-3af4-41bf-8967-ba1fb04f6e0a";
 
+		//PMTCT- OVC Integration
+		public  static  final  String PMTCTOVCINTEGRATION = "df2ade89-3753-4262-a1b6-9e70f7cc5383";
+
+
 
 
 
@@ -213,6 +217,29 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		//UTOUForm
 		public  static  final  String UTOU = "e1b67a74-45b9-43cc-bd54-67a3a2b34f0f";
+
+		// PMTCT OVC INTEGRATION Form
+
+		public  static  final  String PMTCTOVCINTEGRATION = "a7bc1eaf-ddbf-4ca4-b213-0694a2f3b01f";
+
+	}
+	public static final class _Program {
+
+		public static final String COPTICMODULE = "1d63ef6d-431b-45c8-9989-eac2e534ae55";
+	}
+	public static final class _Concept {
+
+		public static final String COPTICMODULE = "165645AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+		public static final String SGBVCONCEPT = "162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+		public static final String MEDICALFUNURSE = "160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+		public static final String OVCENROLMENT = "160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+		public static final String GBV = "160955AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+		public static final String UDABSTUDY = "160945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
 
 	}
 
@@ -382,6 +409,29 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(encounterType("U = U     ", "U = U", _EncounterType.UTOUFORM));
 
 		install(form("U = U", null, _EncounterType.UTOUFORM, "1", _Form.UTOU));
+
+		//UTOU
+		install(encounterType("PMTCT OVC Integration ", "PMTCT OVC Integration", _EncounterType.PMTCTOVCINTEGRATION));
+
+		install(form("PMTCT OVC Integration", null, _EncounterType.PMTCTOVCINTEGRATION, "1", _Form.PMTCTOVCINTEGRATION));
+
+
+		//Installing program
+		install(program("Coptic Reports", "Coptic Module Customized Reports", _Concept.COPTICMODULE, _Program.COPTICMODULE));
+
+		install(program("Coptic Reports", "Sexual Gender Based Violence", _Concept.SGBVCONCEPT, _Program.COPTICMODULE));
+
+
+		install(program("Coptic Reports", "Medical Follow up Nurse Report", _Concept.MEDICALFUNURSE, _Program.COPTICMODULE));
+
+		install(program("Coptic Reports", "GBV Report", _Concept.GBV, _Program.COPTICMODULE));
+
+
+		install(program("Coptic Reports", "OVC ENROLMENT Reports", _Concept.OVCENROLMENT, _Program.COPTICMODULE));
+
+		install(program("Coptic Reports", "UDAB Study Report", _Concept.UDABSTUDY, _Program.COPTICMODULE));
+
+
 
 
 	}
