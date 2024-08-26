@@ -459,10 +459,32 @@
 		<property name="htmlform" value="keaddonexample:pmtctovcintegration.html" />
 	</bean>
 
+	<bean id="keaddonexample.form.digitalXRay" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="a298d515-e3cb-47e7-a5be-288cb603576c" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:digitalXRay.html" />
+	</bean>
+
+
+
+
 
 
 
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
+		<property name="commonPatientForms">
+			<set>
+
+				<!--<ref bean="kenyaemr.common.form.medicalAndSurgicalHistory" />-->
+			</set>
+		</property>
 		<!-- Example of adding a form to the general visit form list -->
 		<property name="commonVisitForms">
 			<set>
@@ -489,7 +511,6 @@
 				<ref bean="keaddonexample.form.cousellingchilddisclosuresession" />
 				<ref bean="keaddonexample.form.counselingadherence1" />
 				<ref bean="keaddonexample.form.cousellinggeneralsession" />
-
 				<!-- Hei and prep-->
 				<ref bean="keaddonexample.form.heiphonecontact" />
 				<ref bean="keaddonexample.form.prepphonecontact" />
@@ -521,6 +542,11 @@
 				<!--PMTCT- OVC Integration -->
 				<ref bean="keaddonexample.form.pmtctovcintegration" />
 
+				<!-- DIGITAL X Ray -->
+				<ref bean="keaddonexample.form.digitalXRay" />
+
+
+
 
 
 
@@ -544,26 +570,31 @@
 		</property>
 	</bean>
 
-	<!-- Report Begins -->
-    <!-- Program begins Here 	-->
+	<!--  REPORTS -->
+
+
 	<bean id="coptic.module.program" class="org.openmrs.module.kenyacore.program.ProgramDescriptor">
 		<property name="targetUuid" value="1d63ef6d-431b-45c8-9989-eac2e534ae55" />
+		<property name="eligibilityCalculation" value="org.openmrs.module.keaddonsocialwork.calculation.EligibleForExampleProgramCalculation" />
+		<property name="defaultEnrollmentForm" ref="keaddonexample.form.snsForm"  />
+		<property name="defaultCompletionForm" ref="keaddonexample.form.formutou" />
 		<property name="reports">
 			<set>
 				<ref bean="kenyaemr.coptic.module.report.utou" />
 				<ref bean="kenyaemr.coptic.module.report.sgbv" />
 
-				<ref bean="kenyaemr.coptic.module.report.mfnurse" />
+				<!-- <ref bean="kenyaemr.coptic.module.report.mfnurse" /> -->
 				<ref bean="kenyaemr.coptic.module.report.gbv" />
 				<ref bean="kenyaemr.coptic.module.report.ovc" />
+				<ref bean="kenyaemr.coptic.module.report.sns" />
 				<ref bean="kenyaemr.coptic.module.report.udab" />
+				<ref bean="kenyaemr.coptic.module.report.dreamsOvc" />
+				<ref bean="kenyaemr.coptic.module.report.digitalXRay" />
 			</set>
 		</property>
 	</bean>
 
 
-
-	<!--  U To U Report -->
 
 	<bean id="kenyaemr.coptic.module.report.utou" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="c3aabb6c-1845-407a-9777-9193c71ce8c9" />
@@ -578,10 +609,6 @@
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:utou" />
 	</bean>
 
-
-
-	<!--  SGBV Report -->
-
 	<bean id="kenyaemr.coptic.module.report.sgbv" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="abc61ad7-404c-4e38-80fb-9ef689e3ed0f"/>
 		<property name="name" value="Sexual Gender Base Violence " />
@@ -594,9 +621,6 @@
 		<property name="template" value="keaddonexample:sqbvreport.xls" />
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:sgbv" />
 	</bean>
-
-
-	<!--  Medical FU Nurse Report -->
 
 	<bean id="kenyaemr.coptic.module.report.mfnurse" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="98f307d8-195e-4a53-9c81-c58ec4611603"/>
@@ -611,9 +635,6 @@
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:mfnurse" />
 	</bean>
 
-
-	<!--  GBV Report -->
-
 	<bean id="kenyaemr.coptic.module.report.gbv" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="f94a5d29-7e9f-45a8-849f-0a481a32fd02"/>
 		<property name="name" value="Gender Based Violence Report" />
@@ -623,12 +644,9 @@
 				<ref bean="kenyaemr.app.reports" />
 			</set>
 		</property>
-		<property name="template" value="keaddonexample:qbvreport.xls" />
+		<property name="template" value="keaddonexample:gbv.xls" />
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:gbv" />
 	</bean>
-
-
-	<!--  OVC ENROLMENT Report -->
 
 	<bean id="kenyaemr.coptic.module.report.ovc" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="72a7c769-fb50-46a1-bb00-958eb94fb6dd"/>
@@ -643,9 +661,6 @@
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:ovc" />
 	</bean>
 
-
-	<!--  UDAB STUDY Report -->
-
 	<bean id="kenyaemr.coptic.module.report.udab" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="29b2f375-c8e6-45ae-9811-36f629446ddf"/>
 		<property name="name" value="UDAB Study Report" />
@@ -657,6 +672,74 @@
 		</property>
 		<property name="template" value="keaddonexample:udabreport.xls" />
 		<property name="repeatingSection" value="sheet:1,row:2,dataset:udab" />
+	</bean>
+
+
+
+	<bean id="kenyaemr.coptic.module.report.digitalxray" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="95fcc2df-ed3b-44d4-a829-f16e68934bc4"/>
+		<property name="name" value="Digital X-RAY Report" />
+		<property name="description" value="Chest Only" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:digitalxray.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:digitalxray" />
+	</bean>
+
+	<bean id="kenyaemr.coptic.module.report.sns" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="298c54a5-5b9b-4431-a38a-859930c8cb3d"/>
+		<property name="name" value="SNS" />
+		<property name="description" value="SNS Report" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:sns.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:sns" />
+	</bean>
+
+	<bean id="kenyaemr.coptic.module.report.pmtcovc" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="19878b85-a883-4641-bbbc-4a04bd80d04c"/>
+		<property name="name" value="PMCT OVC Integration" />
+		<property name="description" value="PMCT OVC Integration Report " />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:pmtctovcint.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:pmtctovcint" />
+	</bean>
+
+
+	<bean id="kenyaemr.coptic.module.report.digitalXRay" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="bfd5a804-4423-43c9-8ce6-295c4bf8a6b0"/>
+		<property name="name" value="Coptic Digital X-Ray" />
+		<property name="description" value="Coptic Digital X-Ray For Coptic Clients Only" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:digitalXRay.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:digitalXRay" />
+	</bean>
+
+	<bean id="kenyaemr.coptic.module.report.dreamsOvc" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
+		<property name="targetUuid" value="fe85df9f-8d5d-4060-ba90-a81cb109db66"/>
+		<property name="name" value="OVC DREAM GIRLS 10-24" />
+		<property name="description" value="OVC DREAMS GIRLS 10-24 Report" />
+		<property name="apps">
+			<set>
+				<ref bean="kenyaemr.app.reports" />
+			</set>
+		</property>
+		<property name="template" value="keaddonexample:dreamsOvc.xls" />
+		<property name="repeatingSection" value="sheet:1,row:2,dataset:dreamsOvc" />
 	</bean>
 
 

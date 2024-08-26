@@ -84,7 +84,7 @@ public class UdabCancerReportBuilder extends  AbstractReportBuilder {
                 "\t) f on f.form_id=e.form_id\n" +
                 "\tleft outer join openmrs.obs o on o.encounter_id=e.encounter_id and o.voided=0\n" +
                 "\t and o.concept_id in (160288,164181,162816,163589,163589,164934,164934,164934,164934,164934,165266,165267,887)\n" +
-                "where e.voided=0 \n" +
+                "where e.encounter_datetime between date(:startDate) and date(:endDate) and e.voided=0 \n" +
                 "group by e.patient_id, e.encounter_id;");
 
         return dsd;

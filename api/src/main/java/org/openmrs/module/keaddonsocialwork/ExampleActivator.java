@@ -29,41 +29,41 @@ public class ExampleActivator implements ModuleActivator {
 	 * @see ModuleActivator#willRefreshContext()
 	 */
 	public void willRefreshContext() {
-		log.info("Refreshing KenyaEMR Add-on Example Module");
+		log.info("Refreshing KenyaEMR Add-on Coptic  Module : Agik");
 	}
 	
 	/**
 	 * @see ModuleActivator#contextRefreshed()
 	 */
 	public void contextRefreshed() {
-		log.info("KenyaEMR Add-on Example Module refreshed");
+		log.info("KenyaEMR Add-on Coptic Module refreshed: Agik");
 	}
 	
 	/**
 	 * @see ModuleActivator#willStart()
 	 */
 	public void willStart() {
-		log.info("Starting KenyaEMR Add-on Example Module");
+		log.info("Starting KenyaEMR Add-on Coptic Module: Agik");
 	}
 	
 	/**
 	 * @see ModuleActivator#started()
 	 */
 	public void started() {
-		log.info("KenyaEMR Add-on Example Module started");
+		log.info("KenyaEMR Add-on Coptic Module started: Agik");
 	}
 	
 	/**
 	 * @see ModuleActivator#willStop()
 	 */
 	public void willStop() {
-		log.info("Stopping KenyaEMR Add-on Example Module");
+		log.info("Stopping KenyaEMR Add-on Coptic Module: Agik");
 	}
 	
 	/**
 	 * @see ModuleActivator#stopped()
 	 */
 	public void stopped() {
-		log.info("KenyaEMR Add-on Example Module stopped");
+		log.info("KenyaEMR Add-on Coptic Module stopped: Agik");
 	}
 }

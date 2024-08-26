@@ -73,7 +73,7 @@ public class FUNurseFormReportBuilder extends  AbstractReportBuilder {
                 "\t) f on f.form_id=e.form_id\n" +
                 "\tleft outer join openmrs.obs o on o.encounter_id=e.encounter_id and o.voided=0\n" +
                 "\t and o.concept_id in (165196,163589,160303)\n" +
-                "where e.voided=0 \n" +
+                "where  e.encounter_datetime between date(:startDate) and date(:endDate) and e.voided=0 \n" +
                 "group by e.patient_id, e.encounter_id;");
 
         return dsd;
