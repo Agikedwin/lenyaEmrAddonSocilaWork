@@ -48,7 +48,9 @@ public class SGBVReportBuilder extends  AbstractReportBuilder {
 
         dsd.setSqlQuery("\n" +
                 "select\n" +
-                "    concat_ws(\" \",pn.given_name, pn.family_name) as \"CLIENT NAME\",\n" +
+                "    concat_ws(\" \",pn.given_name, pn.family_name) as \"Client Name\",\n" +
+                "    TIMESTAMPDIFF(YEAR,birthdate,CURDATE()) AS Age,\n" +
+                "    p.gender as \"Sex\",\n" +
                 "\te.patient_id as \"PID\",\n" +
                 "\te.location_id as \"LID\",\n" +
                 "\tdate(e.encounter_datetime) as \"VISIT DATE\",\n" +
@@ -78,7 +80,7 @@ public class SGBVReportBuilder extends  AbstractReportBuilder {
                 "    max(if(o.concept_id=163541,(case o.value_coded when 163563 then \"Less than 18 yrs\" when 163562 then \"18-24 yrs\"\n" +
                 "    when \"163332\" then \"25-34\"  when 1734 then \"35-49 yrs\" when 163328 then \"50 yrs and above\" else \"\" end),null)) as \"Perpetrators Age\",\n" +
                 "\n" +
-                "    max(if(o.concept_id=1533,(case o.value_coded when 1534 then \"Male\" when 1535 then \"Female\" else \"\" end),null)) as \"Perpetrators Gender\",\n" +
+                "    max(if(o.concept_id=1533,(case o.value_coded when 1534 then \"Male\" when 1535 then \"Female\" else \"\" end),null)) as \"Perpetrators Sex\",\n" +
                 "    max(if(o.concept_id = 5096, o.value_datetime,null)) as \"Next Appointment\"\n" +
                 "    \n" +
                 "from openmrs.encounter e \n" +

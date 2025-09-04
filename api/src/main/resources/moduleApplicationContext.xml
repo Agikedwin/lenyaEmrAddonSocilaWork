@@ -472,11 +472,32 @@
 		<property name="htmlform" value="keaddonexample:digitalXRay.html" />
 	</bean>
 
+	<bean id="keaddonexample.form.digitalXRayRevised" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="06d3291c-6bf4-4c1f-8429-5fca7ce004c8" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:digitalXRayRevised.html" />
+	</bean>
 
-
-
-
-
+	<!-- Coptic programs enrolment form 	-->
+	<bean id="keaddonexample.form.copticProgramEnrolment" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+		<property name="targetUuid" value="24744abf-5ead-4003-9304-d701f95f63d3" />
+		<property name="apps">
+			<set>
+				<ref bean="keaddonexample.app.example" />
+				<ref bean="kenyaemr.app.chart" />
+				<ref bean="kenyaemr.app.clinician" />
+			</set>
+		</property>
+		<property name="icon" value="keaddonexample:forms/example.png" />
+		<property name="htmlform" value="keaddonexample:copticProgramEnrolment.html" />
+	</bean>
 
 	<bean id="keaddonexample.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
 		<property name="commonPatientForms">
@@ -542,14 +563,12 @@
 				<!--PMTCT- OVC Integration -->
 				<ref bean="keaddonexample.form.pmtctovcintegration" />
 
-				<!-- DIGITAL X Ray -->
+				<!-- DIGITAL X Ray
 				<ref bean="keaddonexample.form.digitalXRay" />
+				-->
 
-
-
-
-
-
+				<!-- DIGITAL X Ray Revised-->
+				<ref bean="keaddonexample.form.digitalXRayRevised" />
 			</set>
 		</property>
 
@@ -576,8 +595,8 @@
 	<bean id="coptic.module.program" class="org.openmrs.module.kenyacore.program.ProgramDescriptor">
 		<property name="targetUuid" value="1d63ef6d-431b-45c8-9989-eac2e534ae55" />
 		<property name="eligibilityCalculation" value="org.openmrs.module.keaddonsocialwork.calculation.EligibleForExampleProgramCalculation" />
-		<property name="defaultEnrollmentForm" ref="keaddonexample.form.snsForm"  />
-		<property name="defaultCompletionForm" ref="keaddonexample.form.formutou" />
+		<property name="defaultEnrollmentForm" ref="keaddonexample.form.copticProgramEnrolment"  />
+		<property name="defaultCompletionForm" ref="keaddonexample.form.copticProgramEnrolment" />
 		<property name="reports">
 			<set>
 				<ref bean="kenyaemr.coptic.module.report.utou" />
@@ -676,18 +695,7 @@
 
 
 
-	<bean id="kenyaemr.coptic.module.report.digitalxray" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
-		<property name="targetUuid" value="95fcc2df-ed3b-44d4-a829-f16e68934bc4"/>
-		<property name="name" value="Digital X-RAY Report" />
-		<property name="description" value="Chest Only" />
-		<property name="apps">
-			<set>
-				<ref bean="kenyaemr.app.reports" />
-			</set>
-		</property>
-		<property name="template" value="keaddonexample:digitalxray.xls" />
-		<property name="repeatingSection" value="sheet:1,row:2,dataset:digitalxray" />
-	</bean>
+
 
 	<bean id="kenyaemr.coptic.module.report.sns" class="org.openmrs.module.kenyacore.report.HybridReportDescriptor">
 		<property name="targetUuid" value="298c54a5-5b9b-4431-a38a-859930c8cb3d"/>

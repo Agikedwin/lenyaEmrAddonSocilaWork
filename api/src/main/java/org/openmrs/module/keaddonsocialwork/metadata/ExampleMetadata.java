@@ -97,10 +97,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String CANCERTREATMENTFORM ="5ae026d7-14e6-42ba-be48-c3b79443e081";
 		public  static  final  String UDABCANCERTREATMENTFORM ="0555888f-63a9-449e-89f7-7625f867265b";
 
-		// GBV
-		public  static  final  String GBVFORM = "2c6da7fb-421c-45a1-9954-902a871d1ad6";
+		// PVC
+		public  static  final  String PVCFORM = "2c6da7fb-421c-45a1-9954-902a871d1ad6";
 
-		public static  final String SGBVFORM = "4b800d02-b0f6-4cf1-8f98-5a137f9bac72";
+		public static  final String SPVCFORM = "4b800d02-b0f6-4cf1-8f98-5a137f9bac72";
 
 		// HTS
 		public  static  final  String HTSFORM  = "f9042a21-4a8e-4c7f-a3a8-eebe03908d1b";
@@ -128,6 +128,11 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String SOCIALWORKPHONECONTACTENC = "12752422-7ab9-44e9-beae-06e8c306996b";
 
 		public static  final String DIGITALXRAY = "34a739ea-5eb8-4523-8f82-cc6d0f8d51b0";
+
+		public  static  final  String COPTICPROGRAMENROLMENTENCOUNTER ="ea94216c-3f93-48dc-8243-c0068d95123a";
+
+		//DIGITAL X_RAY REVICED
+		public  static  final String DIGITALXRAYREVISED_ENCOUNTER = "157c5382-7cfe-4202-9a61-4305a533b636";
 
 
 
@@ -205,10 +210,10 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		public  static  final  String CANCERTREATMENTFORM ="010461c9-0102-42aa-b3e1-030b3682b8f9";
 		public  static  final  String UDABCANCERTREATMENTFORM ="b69580d3-c242-4f2f-ae49-283f8e719b55";
 
-		// GBV
-		public  static  final  String GBVFORM = "8d056a0b-9f8e-4a47-84c0-47bcd5f34534";
+		// PVC
+		public  static  final  String PVCFORM = "8d056a0b-9f8e-4a47-84c0-47bcd5f34534";
 
-		public static  final String SGBVFORM = "5f48c23d-a859-4446-86c7-4282b0516559";
+		public static  final String SPVCFORM = "5f48c23d-a859-4446-86c7-4282b0516559";
 
 		// HTS
 		public  static  final  String HTSFORM  = "304d1b97-0481-4d3a-87d2-5c95c45ebc39";
@@ -238,6 +243,13 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		public static  final String DIGITALXRAY = "a298d515-e3cb-47e7-a5be-288cb603576c";
 
+		public  static  final  String COPTICPROGRAMENROLMENTFORM ="24744abf-5ead-4003-9304-d701f95f63d3";
+
+		//DIGITAL X_RAY REVICED FORM
+		public  static  final String DIGITALXRAYREVISED_FORM = "06d3291c-6bf4-4c1f-8429-5fca7ce004c8";
+
+
+
 
 	}
 	public static final class _Program {
@@ -247,11 +259,11 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 	public static final class _Concept {
 
 		public static final String COPTICMODULE = "165645AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-		// static final String SGBVCONCEPT = "162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+		// static final String SPVCCONCEPT = "162725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
 		//public static final String MEDICALFUNURSE = "160303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
-		//public static final StriPng GBV = "160955AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+		//public static final StriPng PVC = "160955AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
 		//public static final String OVCENROLMENT = "160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
@@ -395,14 +407,14 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(form("Cancer Treatment Form", "v 3.x", _EncounterType.CANCERTREATMENTFORM, "3.0" , _Form.CANCERTREATMENTFORM));
 
 
-		// GBV
-		install(encounterType("GBV Screening", "GBV Coptic Form", _EncounterType.GBVFORM));
+		// PVC
+		install(encounterType("PVC Screening", "PVC Coptic Form", _EncounterType.PVCFORM));
 
-		install(form("GBV Screening", "v 3.x", _EncounterType.GBVFORM, "3.0" , _Form.GBVFORM));
+		install(form("PVC Screening", "v 3.x", _EncounterType.PVCFORM, "3.0" , _Form.PVCFORM));
 
-		install(encounterType("SGBV Screening", "SGBV Coptic Form", _EncounterType.SGBVFORM));
+		install(encounterType("SPVC Screening", "SPVC Coptic Form", _EncounterType.SPVCFORM));
 
-		install(form("SGBV Follow up", "v 3.x", _EncounterType.SGBVFORM, "3.0" , _Form.SGBVFORM));
+		install(form("SPVC Follow up", "v 3.x", _EncounterType.SPVCFORM, "3.0" , _Form.SPVCFORM));
 
 		// HTS
 		install(encounterType("HTS  Self Testing", "HTS  Self Testing ", _EncounterType.HTSFORM));
@@ -446,9 +458,14 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(form("Return To Care Form", "v 3.x", _EncounterType.RETURNTOCARE, "3.0", _Form.RETURNTOCAREFORM));
 
 		//Digital X-RAY
-		//install(encounterType("Coptic Digital X-RAY", "Coptic Digital X-RAY 3x", _EncounterType.RETURNTOCARE));
+		install(encounterType("Digital X-RAY Encounter", "Coptic Digital X-RAY 3x", _EncounterType.DIGITALXRAY));
 
-		install(form("Coptic Digital Chest X-RAY", "v 3.x", _EncounterType.RETURNTOCARE, "3.0", _Form.DIGITALXRAY));
+		install(form("Coptic Digital Chest X-RAY", "v 3.x", _EncounterType.DIGITALXRAY, "3.0", _Form.DIGITALXRAY));
+
+		//Digital X-RAY REVISED DIGITAL CHEST X-RAY (CXR)
+		install(encounterType("Digital Chest X-RAY Revised", "Coptic Digital X-RAY 3x", _EncounterType.DIGITALXRAYREVISED_ENCOUNTER));
+
+		install(form("Digital Chest (CXR) X-RAY Revised", "v 3.2", _EncounterType.DIGITALXRAYREVISED_ENCOUNTER, "3.2", _Form.DIGITALXRAYREVISED_FORM));
 
 
 		//PMTCT OVC Integration
@@ -456,16 +473,21 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		install(form("Social Work Phone Contact", "v 3.x", _EncounterType.SOCIALWORKPHONECONTACTENC, "3.0", _Form.SOCIALWORKPHONECONTACTFORM));
 
+		//Coptic Enrolment
+		install(encounterType("Coptic Program Enrolment Enc", "Coptic Enrolment Encounter ", _EncounterType.COPTICPROGRAMENROLMENTENCOUNTER));
+
+		install(form("Coptic Program Enrolment", "v 3.x", _EncounterType.COPTICPROGRAMENROLMENTENCOUNTER, "3.0", _Form.COPTICPROGRAMENROLMENTFORM));
+
 
 		//Installing program
 		install(program("Coptic Program", "Coptic Module Customized Reports", _Concept.COPTICMODULE, _Program.COPTICMODULE));
 
-		//install(program("Coptic Reports", "Sexual Gender Based Violence", _Concept.SGBVCONCEPT, _Program.COPTICMODULE));
+		//install(program("Coptic Reports", "Sexual Gender Based Violence", _Concept.SPVCCONCEPT, _Program.COPTICMODULE));
 
 
 		//install(program("Coptic Reports", "Medical Follow up Nurse Report", _Concept.MEDICALFUNURSE, _Program.COPTICMODULE));
 
-		//install(program("Coptic Reports", "GBV Report", _Concept.GBV, _Program.COPTICMODULE));
+		//install(program("Coptic Reports", "PVC Report", _Concept.PVC, _Program.COPTICMODULE));
 
 
 		//install(program("Coptic Reports", "OVC ENROLMENT Reports", _Concept.OVCENROLMENT, _Program.COPTICMODULE));
