@@ -41,66 +41,532 @@ public class SGBVReportBuilder extends  AbstractReportBuilder {
      */
     protected DataSetDefinition reportColumns() {
         SqlDataSetDefinition dsd = new SqlDataSetDefinition();
-        dsd.setName("sgbv");
-        dsd.setDescription("SGBV Line list");
+        dsd.setName("pvcspvc");
+        dsd.setDescription("PVC AND SPVC Line List");
         dsd.addParameter(new Parameter("startDate", "Start Date", Date.class));
         dsd.addParameter(new Parameter("endDate", "End Date", Date.class));
 
-        dsd.setSqlQuery("\n" +
-                "select\n" +
-                "    concat_ws(\" \",pn.given_name, pn.family_name) as \"Client Name\",\n" +
-                "    TIMESTAMPDIFF(YEAR,birthdate,CURDATE()) AS Age,\n" +
-                "    p.gender as \"Sex\",\n" +
-                "\te.patient_id as \"PID\",\n" +
-                "\te.location_id as \"LID\",\n" +
-                "\tdate(e.encounter_datetime) as \"VISIT DATE\",\n" +
-                "    concat_ws(\" \",pnn.given_name, pnn.family_name) as \"Provider Name\",\n" +
-                "    max(if(o.concept_id=165349,o.obs_datetime,null)) as \"SGBV Date\",\n" +
-                "    max(if(o.concept_id=1521,o.obs_datetime,null)) as \"Violence Time\",\n" +
-                "    CONCAT_WS(\"   \",max(if(o.concept_id=165205,(case o.value_coded when 152292 then \"Sexual Assault\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 152292 then \"Sexual Assault\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 127910 then \"Rape\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 140790 then \"Attempted Rape\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 138447 then \"Sodomy\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 126302 then \"Intimate partner\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 148143 then \"Attempted Defilement\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 118686 then \"Defilement\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 139108 then \"Sexual harassment\"  else \"\" end),null)),\n" +
-                "    max(if(o.concept_id=165205,(case o.value_coded when 163065 then \"Indecent Act\"  else \"\" end),null))\n" +
-                "    \n" +
-                "    ) as  \"Violence Type\",\n" +
-                "    max(if(o.concept_id=163488,(case o.value_coded when 160542 then \"OPD\" when 167050 then \"IPD\" when  159372 then \"CCC\" when 5622 then \"Others\" else if(o.concept_id=163530,o.value_text,null) end),null)) as \"Service Delivery Point\",\n" +
-                "    coalesce( max(if(o.concept_id=162165,o.value_text,null)), max(if(o.concept_id=163530,o.value_text,null)),\n" +
-                "    max(if(o.concept_id=164803,o.value_text,null)), max(if(o.concept_id=163530,o.value_text,null))) as Client_Number,\n" +
-                "    max(if(o.concept_id=159427,(case o.value_coded when 664 then \"Negative\" when 664 then \"Negative\"  when 703 then \"Positive\" when 1065 then \"Known Positive\" when 1118 then \"Not done\" when 1138 then \"Not Eligible\"  else \"\" end),null)) as \"Test Results\",\n" +
-                "\tmax(if(o.concept_id=165093,(case o.value_coded when 123154 then \"Trauma\" when 166536 then \"Given PEP within 72 hrs\"  \n" +
-                "    when 60570 then \"Given ECP within 120 hrs\" when 5490 then \"Psychosocial Support\" when 160551 then \"Police referral\" \n" +
-                "    when 118668 then \"STI Prophylaxis\"  when 5622 then if(o.concept_id=165145, o.value_text,null) else \"\" end),null)) as \"Services Offered\",\n" +
-                "    max(if(o.concept_id=165229,(case o.value_coded when 166051 then \"Known\" when 1067 then \"Unknown\" else \"\" end),null)) as \"Perpetrators\",\n" +
-                "    max(if(o.concept_id=163541,(case o.value_coded when 163563 then \"Less than 18 yrs\" when 163562 then \"18-24 yrs\"\n" +
-                "    when \"163332\" then \"25-34\"  when 1734 then \"35-49 yrs\" when 163328 then \"50 yrs and above\" else \"\" end),null)) as \"Perpetrators Age\",\n" +
-                "\n" +
-                "    max(if(o.concept_id=1533,(case o.value_coded when 1534 then \"Male\" when 1535 then \"Female\" else \"\" end),null)) as \"Perpetrators Sex\",\n" +
-                "    max(if(o.concept_id = 5096, o.value_datetime,null)) as \"Next Appointment\"\n" +
-                "    \n" +
-                "from openmrs.encounter e \n" +
-                "\tinner join openmrs.person_name pn on pn.person_id=e.patient_id and pn.voided=0\n" +
-                "    inner join openmrs.patient_identifier pi  on pi.patient_id=e.patient_id and pn.voided=0 \n" +
-                "\tinner join openmrs.person p on p.person_id=e.patient_id and p.voided=0\n" +
-                "    inner join openmrs.encounter_provider ep on e.encounter_id = ep.encounter_id\n" +
-                "\tinner join openmrs.provider pv on pv.provider_id = ep.provider_id\n" +
-                "\tinner join openmrs.person_name pnn on pnn.person_id = pv.person_id\n" +
-                "    \n" +
-                "\tinner join\n" +
-                "\t(\n" +
-                "\t\tselect form_id from openmrs.form where\n" +
-                "\t\t\tuuid in('5f48c23d-a859-4446-86c7-4282b0516559')\n" +
-                "\t) f on f.form_id=e.form_id\n" +
-                "\tleft outer join openmrs.obs o on o.encounter_id=e.encounter_id and o.voided=0\n" +
-                "\t and o.concept_id in (165349,165205,163530,162165,1521,163530,164803,163530,163488,164803,163530,159427,165093,165145,5622,165229,\n" +
-                "     163541,1533,5096,162166)\n" +
-                " where e.encounter_datetime between date(:startDate) and date(:endDate) and e.voided=0\n" +
-                "group by e.patient_id, e.encounter_id;");
+        dsd.setSqlQuery("SELECT \n" +
+                " ANY_VALUE(c.identifier) AS `Patient Identifier`,\n" +
+                "                        ANY_VALUE(CAST(`openmrs`.`r`.`encounter_datetime` AS DATE)) AS `Visit Date`, \n" +
+                "                        ANY_VALUE(CAST(`openmrs`.`r`.`date_created` AS DATE)) AS `Last Updated`,\n" +
+                "                        ANY_VALUE(`openmrs`.`q`.`name`) AS `Form Name`,\n" +
+                "                        ANY_VALUE((SELECT\n" +
+                "                                    `openmrs`.`users`.`username`\n" +
+                "                                FROM\n" +
+                "                                    `openmrs`.`users`\n" +
+                "                                WHERE\n" +
+                "                                    (`openmrs`.`users`.`user_id` = `openmrs`.`v`.`creator`))) AS `Recorded By`,\n" +
+                "                        IF((MAX(`openmrs`.`r`.`date_created`) > MIN(`openmrs`.`r`.`date_created`)),\n" +
+                "                                MAX(`openmrs`.`r`.`date_created`),\n" +
+                "                                NULL) AS `Last Modified Date`,\n" +
+                "                        MAX(\n" +
+                "                        CASE\n" +
+                "                            WHEN v.concept_id IN (5096)\n" +
+                "                            THEN v.value_datetime\n" +
+                "                            ELSE NULL\n" +
+                "                        END\n" +
+                "                    ) AS `Incident Date`,\n" +
+                "                        CASE\n" +
+                "                             -- SPVC Follow up takes precedence over a recorded Physical classification.\n" +
+                "                             WHEN MAX(IF(TRIM(`openmrs`.`q`.`name`) = 'SPVC Follow up', 1, 0)) = 1\n" +
+                "                                 THEN 'Sexual'\n" +
+                "                             ELSE NULLIF(\n" +
+                "                                 MAX(IF(`openmrs`.`v`.`concept_id` = 165205,\n" +
+                "                                     CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                         WHEN 152370 THEN 'Sexual'\n" +
+                "                                         WHEN 118668 THEN 'Emmotional'\n" +
+                "                                         WHEN 152292 THEN 'Physical'\n" +
+                "                                         ELSE ''\n" +
+                "                                     END,\n" +
+                "                                     NULL)),\n" +
+                "                                 ''\n" +
+                "                             )\n" +
+                "                         END AS `Type of Violence`,\n" +
+                "                        /* Sexual subtype must be populated only for sexual-violence encounters.\n" +
+                "                       152292 under 165205 = PHYSICAL; under 167255 = SEXUAL ASSAULT.\n" +
+                "                       An explicit Physical/Emotional classification takes precedence over a\n" +
+                "                       form-name fallback, preventing physical cases from being misclassified. */\n" +
+                "                      CASE\n" +
+                "                          WHEN MAX(IF(v.concept_id = 165205\n" +
+                "                                      AND v.value_coded IN (152292, 118668), 1, 0)) = 1\n" +
+                "                              THEN NULL\n" +
+                "                          WHEN MAX(IF(v.concept_id = 165205\n" +
+                "                                      AND v.value_coded = 152370, 1, 0)) = 1\n" +
+                "                               OR MAX(IF(TRIM(`openmrs`.`q`.`name`) = 'SPVC Follow up', 1, 0)) = 1\n" +
+                "                              THEN COALESCE(\n" +
+                "                                  MAX(IF(\n" +
+                "                                      (v.concept_id IN (165205, 167255)\n" +
+                "                                       AND v.value_coded IN (127910, 140790, 118686,\n" +
+                "                                                             148143, 163065, 139108,\n" +
+                "                                                             138447, 126582, 126302))\n" +
+                "                                      OR (v.concept_id = 167255 AND v.value_coded = 152292),\n" +
+                "                                      CASE v.value_coded\n" +
+                "                                          WHEN 127910 THEN 'Rape'\n" +
+                "                                          WHEN 140790 THEN 'Attempted Rape'\n" +
+                "                                          WHEN 118686 THEN 'Defilement'\n" +
+                "                                          WHEN 148143 THEN 'Attempted Defilement'\n" +
+                "                                          WHEN 163065 THEN 'Indecent Act'\n" +
+                "                                          WHEN 139108 THEN 'Sexual harassment'\n" +
+                "                                          WHEN 138447 THEN 'Sodomy'\n" +
+                "                                          WHEN 126582 THEN 'Sexual Assault'\n" +
+                "                                          WHEN 152292 THEN 'Sexual Assault'\n" +
+                "                                          WHEN 126302 THEN 'Intimate partner'\n" +
+                "                                          ELSE NULL\n" +
+                "                                      END,\n" +
+                "                                      NULL\n" +
+                "                                  )),\n" +
+                "                                  'Sexual (type not specified)'\n" +
+                "                              )\n" +
+                "                          ELSE NULL\n" +
+                "                      END AS `Sexual Violence Subtype`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 163488),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 159372 THEN 'CCC'\n" +
+                "                                    WHEN 160542 THEN 'OPD'\n" +
+                "                                    WHEN 167050 THEN 'IPD'\n" +
+                "                                    WHEN 1000479 THEN 'Community'\n" +
+                "                                    WHEN 2002553 THEN 'Police'\n" +
+                "                                    WHEN 2028434 THEN 'Children Office'\n" +
+                "                                    WHEN 2028068 THEN 'School'\n" +
+                "                                    WHEN 162690 THEN 'CHP'\n" +
+                "                                    WHEN 160551 THEN 'Self Referral'\n" +
+                "                                    WHEN 5622 THEN 'Other'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referred From`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` IN(163530,162165)),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_text`),\n" +
+                "                                NULL)) AS `Other Referral Details`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165229),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1067 THEN 'unknown'\n" +
+                "                                    WHEN 166051 THEN 'known'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Perpetrator Known Status`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 163541),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 163562 THEN '18-24 yrs'\n" +
+                "                                    WHEN 163332 THEN '25-34 yrs'\n" +
+                "                                    WHEN 1734 THEN '35-49 yrs'\n" +
+                "                                    WHEN 163328 THEN '50 yrs and above'\n" +
+                "                                    WHEN 163563 THEN 'Less than 18 yrs'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Perpetrator Age Group`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1533),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1535 THEN 'Female'\n" +
+                "                                    WHEN 1534 THEN 'Male'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Perpetrator Sex`,\n" +
+                "                        /***services offered for PVC cases****/\n" +
+                "                      MAX(IF((`openmrs`.`v`.`concept_id` = 31),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 160570 THEN 'HIV Testing'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Physical/Emotional - HIV Testing Offered`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 31),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 118668 THEN 'Pyschosocial'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Physical/Emotional - Psychosocial Support Offered`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 31),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 166536 THEN 'referral for Legai Aid'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Physical/Emotional - Legal Aid Referral Offered`,\n" +
+                "                        /***services offered for sPVC cases****/\n" +
+                "                                MAX(IF((`openmrs`.`v`.`concept_id` = 165093),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 160570 THEN 'Given ECP within 120 hrs'\n" +
+                "                                    WHEN 118668 THEN 'STI Prophylaxis'\n" +
+                "                                    WHEN 166536 THEN 'Given PEP within 72 hrs'\n" +
+                "                                    WHEN 161194 THEN 'HTS'\n" +
+                "                                    WHEN 2025973 THEN 'Hepatisis B'\n" +
+                "                                    WHEN 159708 THEN 'HPV'\n" +
+                "                                    WHEN 5488 THEN 'Adherence Counselling'\n" +
+                "                                    WHEN 5490 THEN 'Psychosocial Support'\n" +
+                "                                    WHEN 160551 THEN 'P3'\n" +
+                "                                    WHEN 123154 THEN 'Referral'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Sexual Violence - Services Offered`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 166586),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for HIV Testing`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 159427),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                   WHEN 1118 THEN 'Not done'\n" +
+                "                                    WHEN 703 THEN 'Positive'\n" +
+                "                                    WHEN 664 THEN 'Negative'\n" +
+                "                                    WHEN 1065 THEN 'Known Positive'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `HIV Test Results`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 164845),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for PEP`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  165060),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Initiated on PEP`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165249),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for STI Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  165200),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Initiated on STI Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  1670),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for ECP`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  1669),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Initiated on ECP`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  2032006),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for Hepatitis B Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  2031734),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Initiated on Hepatitis B Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  124957),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for Tetanus Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  54),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Tetanus Given`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  1000079),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for HPV Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  167843),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `HPV Given`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  168823),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for Psychosocial Support`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  167843),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Psychosocial Support Provided`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  165104),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for Adherence Counselling`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  166487),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Adherence Counselling Offered`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  169279),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for P3`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =  165793),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `P3 Form Completed`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Eligible for Referral Services`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 664 THEN 'Legal AID'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referral - Legal Aid`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 703 THEN 'shelter'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referral - Shelter`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Economic Empowerment'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referral - Economic Empowerment`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1528 THEN 'Child Protection'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referral - Child Protection`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000031 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1118 THEN 'others'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Referral - Other`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 162166),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_text`),\n" +
+                "                                NULL)) AS `Case Notes`,\n" +
+                "                        /***Followup visits***/\n" +
+                "                                      MAX(IF((`openmrs`.`v`.`concept_id` = 164181),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 163332 THEN '2nd visit'\n" +
+                "                                    WHEN 1734 THEN '3rd Visit'\n" +
+                "                                    WHEN 163328 THEN '4th Visit'\n" +
+                "                                    WHEN 163563 THEN '5th Visit'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Follow-up Visit Number`,\n" +
+                "                        /***2nd Visit**/\n" +
+                "                            MAX(IF((`openmrs`.`v`.`concept_id` = 166848),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 2 - Actual Return Date`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 166665 ),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Given'\n" +
+                "                                    WHEN 1066 THEN 'Not Given'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 2 - PEP Adherence`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165353),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Given'\n" +
+                "                                    WHEN 1066 THEN 'Not Given'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 2 - Psychosocial Support`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 2031563),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Given'\n" +
+                "                                    WHEN 1066 THEN 'Not Given'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 2 - Referral Uptake`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 160753),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 2 - Next Appointment`,\n" +
+                "                        /***3rd Visit**/\n" +
+                "                                        MAX(IF((`openmrs`.`v`.`concept_id` = 163260),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 3 - Actual Return Date`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165233),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 138571 THEN 'Positive'\n" +
+                "                                    WHEN 664 THEN 'Negative'\n" +
+                "                                    WHEN 1118 THEN 'Not Done'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 3 - HIV Test Result`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1945),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 3 - Pregnancy Test Done`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165128),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 3 - Referral Uptake`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 2032241),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 3 - PEP Completion`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 2032975),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 3 - Next Appointment`,\n" +
+                "                        /**4th Visit**/\n" +
+                "                                        MAX(IF((`openmrs`.`v`.`concept_id` = 164891),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 4 - Actual Return Date`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 2031577),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Given'\n" +
+                "                                    WHEN 1066 THEN 'Not Given'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 4 - Hepatitis B Vaccine`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 167093),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 4 - Psychosocial Support`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 159777),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 4 - Referral Uptake`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1410),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 4 - Next Appointment`,\n" +
+                "                        /***5th Visit**/\n" +
+                "                                  MAX(IF((`openmrs`.`v`.`concept_id` = 162572),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 5 - Actual Return Date`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1356),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 703 THEN 'Positive'\n" +
+                "                                    WHEN 664 THEN 'Negative'\n" +
+                "                                    WHEN 1118 THEN 'Not Done'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 5 - HIV Test Result`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165127),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 5 - Psychosocial Support`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 165221),\n" +
+                "                                (CASE `openmrs`.`v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Visit 5 - Referral Uptake`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 1000172),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Visit 5 - Next Appointment`,\n" +
+                "                        /***Legal AID Section***/\n" +
+                "                    MAX(IF((`openmrs`.`v`.`concept_id` = 2002338),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_text`),\n" +
+                "                                NULL)) AS `Court File Number`,\n" +
+                "                        MAX(IF((`v`.`concept_id` =  165144),\n" +
+                "                                TRIM(`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Report Date`,\n" +
+                "                        MAX(IF((`v`.`concept_id` =  160753),\n" +
+                "                                TRIM(`v`.`value_datetime`),\n" +
+                "                                NULL)) AS `Date Bond Received`,\n" +
+                "                        MAX(IF((`v`.`concept_id` = 168333),\n" +
+                "                                (CASE `v`.`value_coded`\n" +
+                "                                    WHEN 1065 THEN 'Yes'\n" +
+                "                                    WHEN 1066 THEN 'No'\n" +
+                "                                    WHEN 1067 THEN 'Unknown'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Services Offered to Perpetrator`,\n" +
+                "                        MAX(IF((`v`.`concept_id` = 167823),\n" +
+                "                                  (CASE `v`.`value_coded`\n" +
+                "                                    WHEN 165179 THEN 'Police Investigation'\n" +
+                "                                    WHEN 167667 THEN 'Court Hearing'\n" +
+                "                                    WHEN 418 THEN 'Ruling'\n" +
+                "                                    WHEN 2014522 THEN 'Judgement'\n" +
+                "                                    WHEN 2022534 THEN 'Acquittal'\n" +
+                "                                    WHEN 163495 THEN 'Withdrawal'\n" +
+                "                                    WHEN 166536 then 'Sentencing'\n" +
+                "                                    WHEN 5490 then 'Case pending'\n" +
+                "                    WHEN 123154 then 'Adjournment'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Legal Case Status`,\n" +
+                "                        MAX(IF((`v`.`concept_id` = 167116),\n" +
+                "                                (CASE `v`.`value_coded`\n" +
+                "                                    WHEN 162725 THEN 'Acquittal'\n" +
+                "                                    WHEN 2014000 THEN 'Conviction'\n" +
+                "                                    ELSE ''\n" +
+                "                                END),\n" +
+                "                                NULL)) AS `Final Judgement`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` = 159791),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_text`),\n" +
+                "                                NULL)) AS `Duration of Conviction`,\n" +
+                "                        MAX(IF((`openmrs`.`v`.`concept_id` =2002154),\n" +
+                "                                TRIM(`openmrs`.`v`.`value_text`),\n" +
+                "                                NULL)) AS `Final Case Outcome`\n" +
+                "                    FROM\n" +
+                "                            ((((((`openmrs`.`obs` `v`\n" +
+                "                            JOIN `openmrs`.`person` `n` ON (((`openmrs`.`v`.`person_id` = `openmrs`.`n`.`person_id`)\n" +
+                "                                AND (`openmrs`.`v`.`voided` = 0))))\n" +
+                "                            JOIN `openmrs`.`patient` `b` ON ((`openmrs`.`b`.`patient_id` = `openmrs`.`n`.`person_id`)))\n" +
+                "                            JOIN `openmrs`.`encounter` `r` ON ((`openmrs`.`r`.`encounter_id` = `openmrs`.`v`.`encounter_id`)))\n" +
+                "                            JOIN `openmrs`.`form` `q` ON ((`openmrs`.`q`.`encounter_type` = `openmrs`.`r`.`encounter_type`)))\n" +
+                "                            JOIN `openmrs`.`patient_identifier` `c` ON ((`openmrs`.`b`.`patient_id` = `openmrs`.`c`.`patient_id`))))\n" +
+                "                        WHERE\n" +
+                "                            ((`openmrs`.`r`.`encounter_datetime` BETWEEN  :startDate AND :endDate)\n" +
+                "                                AND (`openmrs`.`q`.`uuid` in ( '8d056a0b-9f8e-4a47-84c0-47bcd5f34534', '5f48c23d-a859-4446-86c7-4282b0516559')))\n" +
+                "                        GROUP BY `openmrs`.`r`.`encounter_id`;");
 
         return dsd;
 

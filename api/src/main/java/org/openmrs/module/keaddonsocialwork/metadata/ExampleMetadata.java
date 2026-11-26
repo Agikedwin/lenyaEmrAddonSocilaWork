@@ -134,6 +134,9 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		//DIGITAL X_RAY REVICED
 		public  static  final String DIGITALXRAYREVISED_ENCOUNTER = "157c5382-7cfe-4202-9a61-4305a533b636";
 
+		//TPT Non-Initiation
+		public  static  final String TPTNONINITIATION_ENCOUNTER = "8f0c4043-b4fe-4bcc-8274-ea5653f36d18";
+
 
 
 
@@ -247,6 +250,9 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 
 		//DIGITAL X_RAY REVICED FORM
 		public  static  final String DIGITALXRAYREVISED_FORM = "06d3291c-6bf4-4c1f-8429-5fca7ce004c8";
+
+		//TPT Non-Initiation Form
+		public  static  final String TPTNONINITIATION_FORM  = "44027bce-45d1-43d8-a024-6af802ebb009";
 
 
 
@@ -477,6 +483,12 @@ public class ExampleMetadata extends AbstractMetadataBundle {
 		install(encounterType("Coptic Program Enrolment Enc", "Coptic Enrolment Encounter ", _EncounterType.COPTICPROGRAMENROLMENTENCOUNTER));
 
 		install(form("Coptic Program Enrolment", "v 3.x", _EncounterType.COPTICPROGRAMENROLMENTENCOUNTER, "3.0", _Form.COPTICPROGRAMENROLMENTFORM));
+
+
+		//Coptic TPT Non-Initiation
+		install(encounterType("TPT Non Initiation Deferral", "Coptic TPT Deferral", _EncounterType.TPTNONINITIATION_ENCOUNTER));
+
+		install(form("Coptic TPT Deferral", "v 3.x", _EncounterType.TPTNONINITIATION_ENCOUNTER, "3.0", _Form.TPTNONINITIATION_FORM));
 
 
 		//Installing program
